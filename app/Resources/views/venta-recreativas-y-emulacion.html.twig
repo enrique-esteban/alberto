@@ -1,0 +1,66 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Venta de máquinas arcade y emuladores' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li class="current-page"><a href="{{ path('sales', { 'slug': 'recreativas-y-emulacion'}) }}">Máquinas arcade y emulación</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="little">Recreativas y emulación</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Máquinas recreativas y emulación</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <img src="{{ asset('web/images/pages/arcade-juego-metal-slug.jpg') }}" alt="juego arcade metal slug" Title="Juego arcade Metal Slug de Neo Geo" width="930" height="166" class="img-center"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="seven column">
+            <p align="justify" class="margin-bottom">Los que ya contamos con unos años a nuestras espaldas recordamos con gran cariño los salones recreativos y los más jóvenes hoy en día disfrutan de grandes clásicos de los videojuegos en una industria retro que cada día tiene un mayor auge en un mundo como el de los videojuegos.<br>Conscientes de esto queremos ofrecer a nuestros clientes la posibilidad de tener estos juegos en su propia casa. Somos especialistas en el maquinas arcade de fabricación propia y también podemos configurar cualquiera que sea tu dispositivo (Tablet, portátil, Smartphone…)para que puedas disfrutar de estos juegos.<br>Llámenos sin compromiso o venga a nuestra tienda y estaremos encantados de recibirle.</p>
+
+            <img src="{{ asset('web/images/pages/jugando-sonic-en-emulador-de-smartphone.jpg') }}" alt="juego sonic en un emulador de smartphone" title="Smartphone emulando el juego de Sega, Sonic" width="530" height="267">
+        </div>
+
+        <div class="five column">
+            <img src="{{ asset('web/images/pages/maquina-recreativa-neo-geo.png') }}" alt="imagen juego Metal Slug" Title="Juego arcade de Neo Geo, Metal Slug" width="294" height="534" class="img-center"/>
+        </div>
+
+         <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

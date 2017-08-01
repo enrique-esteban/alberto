@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- header start here -->
+    <header>
+        {% block header %}
+            <!-- top info start here -->
+            <div id="top-info">
+                <div class="row">
+                    <div class="twelve column">
+                        <div class="phonemail-area">
+                            <i class="icon-phonealt"></i><span>912 546 050</span>
+                            <i class="icon-emailalt"></i><span>{% block email %}info@expertosit.es{% endblock %}</span>
+                        </div>
+                        {#<div class="flag-area">
+                            <span>Language</span>
+                            <a href="#"><img src="{{ asset('web/images/flags/id.gif" alt=""/></a>
+                            <a href="#"><img src="{{ asset('web/images/flags/us.gif" alt=""/></a>
+                        </div>#}
+                    </div>
+                </div>
+            </div>
+            <!-- top info end here -->
+
+            <div id="mainmenu-wrapper">
+                <div class="row">
+                    <div class="twelve column">
+                        <div id="mainwrapper-left">
+                            <!-- logo start here -->
+                            <div id="logo">
+                                <a href="{{ path('index') }}"><img src="{{ asset('web/images/logo-grey.png') }}" alt="logo de Expertosit" title="Logo de Expertosit" class="retina" /></a>
+                            </div>           
+                            <!-- logo end here -->
+                        </div>
+                        <div id="mainwrapper-right">
+
+                            <!-- top socials start here -->
+                            <div id="top-socials">
+                                <ul class="socials-list">
+                                    <li><a title="Facebook" href="https://www.facebook.com/Expertosit-cursos-y-reparaciones-1692506624384592" target="_blank"><i class="social-facebook"></i></a></li>
+                                    <li><a title="Twitter" href="https://twitter.com/expertosit" target="_blank"><i class="social-twitter"></i></a></li>
+                                    <li><a title="Youtube" href="https://www.youtube.com/channel/UCXh_c0kzEf3-oQVoVMeY8_w" target="_blank"><i class="social-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- top socials end here -->
+                            
+                            <!-- navigation start here servicios|cursos|venta-de-piezas|sobre-nosotros-->
+                            {# Se define el valor default para nav como index #}
+                            {% if nav is not defined %}
+                                {% set nav = 'index' %}
+                            {% endif %}
+                            <nav id="mainmenu">
+                                <ul id="menu">
+                                    <li {% if nav == "index" %}class="selected"{% endif %}>
+                                        <a href="{{ path('index') }}">Inicio</a>
+                                    </li>
+
+
+                                    <li {% if nav == "cursos" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
+                                        <a>Cursos</a>
+                                        <ul>
+                                            <li>
+                                                <a class="sublink" href="{{ path('courses', { 'slug': 'reparacion-de-moviles' }) }}">Reparación de móviles</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="sublink" href="{{ path('courses', { 'slug': 'iniciacion-a-las-nuevas-tecnologias' }) }}">Iniciación a las nuevas tecnologias</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li {% if nav == "reparaciones" %}class="selected"{% endif %}>
+                                        <a href="{{ path('technical-support') }}">Servicio técnico</a>
+                                    </li>
+
+                                    <li {% if nav == "ventas" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
+                                        <a>Ventas</a>
+                                        <ul>
+                                            <li>
+                                                <a class="sublink" href="{{ path('sales', { 'slug': 'repuestos-y-consumibles' }) }}">Repuestos y consumibles</a>
+                                            </li>
+
+                                            <li>
+                                                <a class="sublink" href="{{ path('sales', { 'slug': 'recreativas-y-emulacion' }) }}">Recreativas y emulación</a>
+                                            </li>
+                                            <li>
+                                                <a class="sublink" href="{{ path('sales', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li {% if nav == "contacto" %}class="selected"{% endif %}>
+                                        <a href="{{ path('contact') }}">Contacto</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- navigation end here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </header>
+    <!-- header end here -->
+
+    {% block sub_header %}{% endblock %}
+
+
+    <section id="content-wrapper">
+        {% block content %}{% endblock %}
+    </section>
+
+    <footer>   
+        {% block footer %}
+            <div class="row">
+                <div class="four column mobile-five">
+                    <div id="logo-footer"><a href="{{ path('index') }}"><img src="{{ asset('web/images/logo-white.png') }}" alt="logo de Expertosit" title="Logo de Expertosit" class="retina"/></a></div>
+                   
+                    <ul class="social-list circle-social">
+                        <li><a title="Facebook" href="https://www.facebook.com/Expertosit-cursos-y-reparaciones-1692506624384592"><i class="social-facebook"></i></a></li>
+                        <li><a title="Twitter" href="https://twitter.com/expertosit"><i class="social-twitter"></i></a></li>
+                        <li><a title="Youtube" href="https://www.youtube.com/channel/UCXh_c0kzEf3-oQVoVMeY8_w"><i class="social-youtube"></i></a></li>
+                    </ul>
+                    
+                    <div id="fb-root"></div>
+                    <script>
+                        (function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9&appId=445659522208135";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                    </script>
+                    <div class="fb-like"
+                        data-href="http://www.expertosit.es/"
+                        data-layout="button_count"
+                        data-action="like"
+                        data-size="small"
+                        data-show-faces="false"
+                        data-share="true"
+                        data-colorscheme="dark">
+                    </div>
+                </div>
+                
+                <div class="four column mobile-five offset-by-four">
+                    <h4>Indice</h4>
+                    <ul class="no-bullet">
+                        <li>
+                            <a href="{{ path('index') }}">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('technical-support') }}">Reparaciones</a>
+                        </li>
+                        <li class="no-bullet">
+                            <a>Cursos</a>
+                            <ul class="no-bullet">
+                                <li>
+                                    <a href="{{ path('courses', { 'slug': 'reparacion-de-moviles' }) }}">Reparación de móviles</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('courses', { 'slug': 'iniciacion-a-las-nuevas-tecnologias' }) }}">Iniciación a las nuevas tecnologías</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="no-bullet">
+                            <a>Ventas</a>
+                            <ul class="no-bullet">
+                                <li>
+                                    <a href="{{ path('sales', { 'slug': 'repuestos-y-consumibles' }) }}">Repuesto y consumibles</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('sales', { 'slug': 'recreativas-y-emulacion' }) }}">Recreativas y emulación</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('sales', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve column text-center">
+                    <p class="copyright">
+                        &copy; 2017 <a href="http://www.enrique-esteban.hol.es/">Enrique Esteban Plaza</a>. 
+                        | <a href="{{ path('static', { 'slug': 'aviso-legal' }) }}">Aviso legal</a> 
+                        | <a href="{{ path('static', { 'slug': 'politicas-de-privacidad' }) }}">Política de privacidad</a> 
+                        | <a href="{{ path('sitemap', { '_format': 'xml'}) }}" target="_blank">SiteMap.</a>
+                    </p>
+                </div>
+            </div>
+        {% endblock %}
+        
+    </footer>
+{% endblock %}

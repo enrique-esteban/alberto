@@ -1,0 +1,193 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title 'Contacto' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="three column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li class="current-page"><a href="{{ path('contact') }}">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="nine column pagetitle">
+                <h1>Contacto</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% if message is defined %}
+            <div class="twelve column">
+                {% if message.check == true %}
+                    <div class="alert success"><i class="icon-ok"></i>El mensage de <strong>{{ message.email}}</strong> ha sido enviado correctamente.</div>
+                {% else %}
+                    <div class="alert error"><i class="icon-ok"></i>No se ha podido enviar el mensage de <strong>{{ message.email}}</strong></div>
+                    </span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="twelve column">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column text-center">
+            <h4>Póngase en contacto con nosotros</h4>
+
+            <p class="lead" align="justify">¿Desea conocer mejor nuestra oferta? O simplemente quiere conocer más aspectos sobre los cursos. No dude en consultarnos cualquier duda a través de nuestro formulario de contacto, estamos aquí para ayudarle.&#65279;</p>
+    </div>
+
+    <div class="row">
+        <div class="seven column">
+            <div id="contact-form-area">
+                <!-- Contact Form Start //-->
+                {{ form_start(form, { 'attr': { 'id': 'contactform' } }) }}
+                    <fieldset>
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.subject) }}
+                        {{ form_row(form.body) }}
+                        <label for="recaptcha" class="require">Captcha <em>*</em></label>
+                        <div class="g-recaptcha" id="recaptcha" data-sitekey="6LeH8x8UAAAAAKZtdZ6MD2lGCX4KfcYXo5j8R1Z2" data-callback="enableBtn"></div>
+                        {{ form_row(form.submit) }}
+                        {% if message is defined %}
+                            {% if message.check == true %}
+                                <span class="check-ok">
+                                    {{ message.text }}
+                                </span>
+                            {% else %}
+                                <span class="check-fail">
+                                    {{ message.text }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+                        <div class="clear"></div>
+                    </fieldset>
+                    {{ form_end(form) }}
+                <!-- Contact Form End //-->
+            </div>
+        </div>
+
+        <div class="five column">
+            <div class="note">
+                <address>
+                    <strong>Expertosit.</strong><br>
+                    <i class="icon-home"></i>Calle Consenso, 30, 28041, Madrid<br/>
+                    <i class="icon-phonealt"></i>912 546 050<br/>
+                    <i class="icon-whatsapp"></i>615 849 881<br/>
+                    <i class="icon-emailalt"></i>info@expertosit.es
+                </address>
+
+                <address>
+                    <strong>Horario:</strong><br>
+                    <i class="icon-time"></i>Lunes - Viernes : de 10 a 21<br/>
+                    <i class="icon-time"></i>Sábado : de 10 a 14<br/>
+                </address>
+            </div>
+
+            <ul class="social-list circle-social">
+                <li class="facebook-color"><a href="https://www.facebook.com/Expertosit-cursos-y-reparaciones-1692506624384592" title="Facebook"><i class="social-facebook"></i></a></li>
+                <li class="twitter-color"><a href="https://twitter.com/expertosit" title="Twitter"><i class="social-twitter"></i></a></li>
+                <li class="youtube-color"><a href="https://www.youtube.com/channel/UCXh_c0kzEf3-oQVoVMeY8_w" title="Youtube"><i class="social-youtube"></i></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- ////////////////////////////////// -->
+    <!-- //      Javascript Files        // -->
+    <!-- ////////////////////////////////// -->
+    {#
+    <script src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') }}"></script>
+    <script src="{{ asset('http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAsfs3ehk8DQ4jmjHAwbHBY58QInkz-n7U') }}"></script>
+    <script src="{{ asset('web/js/gmaps.js') }}"></script>
+    <script src="{{ asset('web/js/modernizr.js') }}"></script>
+    <script src="{{ asset('web/js/jquery.themepunch.plugins.min.js') }}"></script>
+    <script src="{{ asset('web/js/superfish.js') }}"></script>
+    <script src="{{ asset('web/js/mediaelement-and-player.min.js') }}"></script>
+    <script src="{{ asset('web/js/jquery.flexisel.js') }}"></script>
+    <script src="{{ asset('web/js/jquery.fancybox.js?v=2.0.6') }}"></script>
+    <script src="{{ asset('web/js/jquery.fancybox-media.js?v=1.0.3') }}"></script>
+    <script src="{{ asset('web/js/jflickrfeed.min.js') }}"></script>
+    <script src="{{ asset('web/js/accordion-functions.js') }}" ></script>
+    <script src="{{ asset('web/js/theme-functions.js') }}"></script>
+    <script src="{{ asset('web/js/jquery.retina.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    #}
+    {{ parent() }}
+
+    <script src="{{ asset('http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAsfs3ehk8DQ4jmjHAwbHBY58QInkz-n7U') }}"></script>
+    <script src="{{ asset('web/js/gmaps.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script>
+        $(document).ready(function() {
+            //Retina Image
+            $('img.retina').retina('@2x');
+
+            //Map Jquery
+            var map = new GMaps({
+                el: '#map',
+                lat: 40.357981,
+                lng: -3.686210,
+                zoom: 14,
+                zoomControl : true,
+                zoomControlOpt: {
+                    style : 'SMALL',
+                    position: 'TOP_LEFT'
+                },
+                panControl : false,
+                streetViewControl : false,
+                mapTypeControl: false,
+                overviewMapControl: false 
+            });
+
+            map.addMarker({
+                lat: 40.357981,
+                lng: -3.686210,
+                icon: "{{ asset('web/images/map-marker.png') }}"
+            });
+
+            var styles = [
+                {
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [
+                        { lightness: 100 },
+                        { visibility: "simplified" }
+                  ]
+                }, {
+                    featureType: "road",
+                    elementType: "labels",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }
+            ];
+
+            map.addStyle({
+                  styledMapName:"Styled Map",
+                  styles: styles,
+                  mapTypeId: "map_style"  
+            });
+
+            map.setStyle("map_style");
+        });
+    </script>
+
+    <script>
+        function enableBtn() {
+            document.getElementById("contactMail_submit").disabled = false;
+        }
+    </script>
+    <script>$('#noscript').remove();</script>
+{% endblock %}

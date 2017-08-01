@@ -1,0 +1,70 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Venta de de repuesto y consumibles' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li class="current-page"><a href="{{ path('sales', { 'slug': 'repuestos-y-consumibles'}) }}">Repuestos y consumibles</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="little">Repuestos y consumibles</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Venta de repuestos y consumibles</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <img src="{{ asset('web/images/pages/fondo-venta-repuestos.jpg') }}" alt="esaprate de la tienda vintage" Title="Escaparate de la tienda con varios productos informáticos" width="930" height="253" class="img-center"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="seven column">
+            <p align="justify">En Expertosit no sólo reparamos todo tipo de dispositivos, si no que queremos ofrecer a nuestros clientes todo tipo de soluciones y servicios.<br>Para esto somos distribuidores de repuestos y de todo tipo de accesorios para telefonía, informática y consumibles.<br>Necesitas un repuesto para tu Tablet, Smartphone o portátil? Ponte en contacto con nosotros y te lo enviamos en menos de 24 horas a donde nos digas.<br>Trabajamos a nivel nacional con tiendas de reparación y servicio técnico.<br>Necesitas una funda, protector de pantalla o algún accesorio para tu Smartphone? En nuestra tienda podrás encontrarlos a los mejores precios del mercado. Ven y pregúntanos, si no contamos con él en tienda te lo pedimos.<br>Ven a visitarnos y estaremos encantados de ayudarte.</p>
+        </div>
+
+        <div class="five column img-center">
+            <img src="{{ asset('web/images/pages/venta-fundas-smarphone-table.jpg') }}" alt="fundas Smartphone" Title="Juego de fundas para un Smartphone" width="321" height="225" class="img-center"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <img src="{{ asset('web/images/pages/productos-informatica.jpg') }}" alt="productos informatics variados" Title="Varios productos informáticos" width="930" height="269" class="img-center"/>
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

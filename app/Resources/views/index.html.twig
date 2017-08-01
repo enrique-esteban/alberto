@@ -1,0 +1,309 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Inicio' %}
+
+{% block sub_header %}
+    <!-- slideshow start here -->
+    <section id="slideshow-container">
+        <div class="banner">
+            <ul>      
+                <!-- slide 1 -->
+                <li data-transition="fade">
+                    <img src="{{ asset('web/images/slideshow/bg-aula.jpg') }}" alt="Fondo aula de cursos" width="1126" height="450" />
+
+                    <div class="caption general_caption fade" data-x="100" data-y="58" data-speed="2500" data-endspeed="1000" data-start="300" data-end="7700" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <img class="border" src="{{ asset('web/images/slideshow/aula-cursos.jpg') }}" alt="Aula de Expertosit" title="Aula de los cursos de Expertosit" width="444" height="320">
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="60" data-speed="900" data-endspeed="900" data-start="100" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-bottom: none">Aprende una nueva</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="105" data-speed="900" data-endspeed="900" data-start="500" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-bottom: none; border-top: none">profesión en</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="150" data-speed="900" data-endspeed="900" data-start="600" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-top: none">nuestros centros</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="250" data-speed="900" data-start="1200" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Cursos a varios niveles
+                        </p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="280" data-speed="900" data-start="1215" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Haz practicas ilimitadas con nosotros.
+                        </p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="310" data-speed="900" data-start="1230" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Domina tanto el hardware como el software.
+                        </p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="590" data-y="340" data-speed="900" data-start="1245" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Para iPhone y Android.
+                        </p>
+                    </div>
+                </li> <!-- End slide 1 -->
+
+                <!-- slide 2 -->
+                <li data-transition="fade">
+                    <img src="{{ asset('web/images/slideshow/bg-taller.jpg') }}" alt="Fondo taller" width="1126" height="450"/>
+
+                    <div class="caption general_caption fade" data-x="500" data-y="58" data-speed="2500" data-endspeed="1000" data-start="300" data-end="7700" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <img class="border" src="{{ asset('web/images/slideshow/taller-servicio-tecnico.jpg') }}" alt="Reparando en el taller" title="Haciendo reparación en el taller de servicio técnico" width="500" height="300">
+                    </div>
+
+                    <div class="caption general_caption media-position15 lfl ltl"  data-x="122" data-y="90" data-speed="900" data-endspeed="900" data-start="100" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-bottom: none">Reparaciones y</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position15 lfl ltl"  data-x="122" data-y="135" data-speed="900" data-endspeed="900" data-start="800" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-top: none">servicio técnico</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position15 lfl ltl"  data-x="122" data-y="240" data-speed="900" data-start="1200" data-easing="easeOutBack">
+                        <p class="lead">
+                            De dispositivos móviles e informática,<br>sea cual sea su problema,<br>con garantía y máxima calidad.
+                        </p>
+                    </div>
+                </li><!-- End slide 2 -->
+
+                <!-- slide 3 -->
+                <li data-transition="fade">
+                    <img src="{{ asset('web/images/slideshow/bg-hard-disk.jpg') }}" alt="Fondo disco duro" width="1126" height="450" />
+                    
+                    <div class="caption general_caption fade" data-x="132" data-y="58" data-speed="2500" data-endspeed="1000" data-start="300" data-end="7700" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <img class="border" src="{{ asset('web/images/slideshow/Hard_Disk_head_top.jpg') }}" alt="interior disco duro" title="Interior de un disco duro" width="500" height="333">
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="655" data-y="100" data-speed="900" data-endspeed="900" data-start="100" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-bottom: none">Recuperación de</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="655" data-y="145" data-speed="900" data-endspeed="900" data-start="800" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border" style="text-transform: initial; border-top: none">datos perdidos</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="655" data-y="240" data-speed="900" data-start="1200" data-easing="easeOutBack">
+                        <p class="lead">
+                            Recuperamos los datos de discos duros dañados
+                        </p>
+                    </div>
+                </li><!-- End slide 3 -->
+
+                <!-- slide 4 -->
+                <li data-transition="fade">
+                    <img src="{{ asset('web/images/slideshow/bg-kof2.jpg') }}" alt="Fondo arcade King of Fighters" width="1126" height="450" />
+
+                    <div class="caption general_caption lfb" data-x="750" data-y="58" data-speed="2500" data-endspeed="1000" data-start="300" data-end="7700" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <img src="{{ asset('web/images/slideshow/maquina-recreativa-neo-geo.png') }}" alt="maquina recreativa neo geo" title="Maquina recreativa de Neo Geo" width="300" height="538">
+                    </div>
+
+                    <div class="caption general_caption media-position15 lfl ltl"  data-x="50" data-y="90" data-speed="900" data-endspeed="900" data-start="100" data-end="7700" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h1 class="border"  style="text-transform: initial;">Venta de máquinas arcade y emuladores</h1>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="90" data-y="200" data-speed="900" data-start="1200" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Tenemos máquinas arcade y de emulación.
+                        </p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="90" data-y="250" data-speed="900" data-start="1250" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            Hecha a medida.
+                        </p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 lfr"  data-x="90" data-y="300" data-speed="900" data-start="1300" data-easing="easeOutBack">
+                        <p class="lead-alt">
+                            <i class="icon-ok-sign"></i>
+                            tanto Raspberry Pi como HyperSpin.
+                        </p>
+                    </div>
+                </li><!-- End slide 4 -->
+
+                <!-- slide 5 -->
+                <li data-transition="fade">
+                    <img src="{{ asset('web/images/slideshow/bg-code-1.jpg') }}" alt=""/>
+                    
+                    <div class="caption general_caption media-icon fade" data-x="292" data-y="88" data-speed="2500" data-endspeed="1000" data-start="300" data-end="8000" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <i class="flat-responsive"></i>
+                    </div>
+
+                    <div class="caption general_caption media-icon fade" data-x="442" data-y="88" data-speed="2500" data-endspeed="1000" data-start="600" data-end="8000" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <i class="flat-tools"></i>
+                    </div>
+
+                    <div class="caption general_caption media-icon fade" data-x="592" data-y="88" data-speed="2500" data-endspeed="1000" data-start="900" data-end="8000" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <i class="flat-statistic"></i>
+                    </div>
+
+                    <div class="caption general_caption media-icon fade" data-x="742" data-y="88" data-speed="2500" data-endspeed="1000" data-start="1200" data-end="8000" data-easing="easeOutExpo" data-endeasing="easeInExpo">
+                        <i class="flat-wallet"></i>
+                    </div>
+                    
+                    <div class="caption general_caption media-position6 fade"  data-x="207" data-y="200" data-speed="900" data-endspeed="1000" data-start="1200" data-end="8000" data-easing="easeOutBack" data-endeasing="easeInBack">
+                        <h2 style="text-transform: initial;">Desarrolle su web personal con nosotros</h2>
+                    </div>
+
+                    <div class="caption general_caption media-position14 fade"  data-x="275" data-y="275" data-speed="250" data-start="1500" data-end="8000" data-easing="easeOutBack">
+                        <p class="lead-alt">Diseño web moderno, atractivo, personalizado y adaptado a los dispositivos móviles.</p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 fade"  data-x="375" data-y="325" data-speed="250" data-start="1500" data-end="8000" data-easing="easeOutBack">
+                        <p class="lead-alt">Desarrollo usando las ultimas tecnologias disponibles.</p>
+                    </div>
+
+                    <div class="caption general_caption media-position14 fade"  data-x="340" data-y="375" data-speed="250" data-start="1500" data-end="8000" data-easing="easeOutBack">
+                        <p class="lead-alt">Optimización SEO y SEM para potenciar su negocio en la web.</p>
+                    </div>
+                </li>
+            </ul><!-- End slide 5 -->
+
+            <div class="tp-bannertimer tp-bottom"></div>
+        </div>        
+    </section>
+    <!-- slideshow end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">     
+        <div class="twelve column text-center">
+            <h3 class="largemargin-bottom">¡Bienvenido a <span class="highlight">Expertosit</span> en Madrid!</h3>
+            <p class="lead strong">Somos un <strong class="green">servicio técnico integral</strong> para portátiles y smartphones, <strong class="green">venta de repuestos</strong> y <strong class="green">centro de formación</strong> para técnicos en reparación de <strong class="green">dispositivos móviles, portátiles</strong> y mucho más.</p>
+            <p class="lead strong">La única academia de Madrid que ofrecemos <strong class="green">practicas reales</strong> en nuestra tienda.</p>
+        </div>
+        
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">           
+        <div class="six column mobile-two">
+            <h4><a href="{{ path('courses', { 'slug': 'reparacion-de-moviles'}) }}">Cursos</a></h4>
+            <i class="flat-book float-right"></i>
+            <p>Curso de reparacion de varios niveles, aprende una nueva profesión en nuestros centros, y haz practicas ilimitadas con nosotros.</p>
+        </div>
+
+        <div class="six column mobile-two">
+            <h4><a href="{{ path('technical-support') }}">Reparación</a></h4>
+            <i class="flat-tools float-right"></i>
+            <p>Reparaciones y servicio técnico para dispositivos móviles e informática. Repara tus dispositivos con nostoros sea cual sea su problema, con garantía y máxima calidad. Además, recuperamos discos duros y salvamos tus datos.</p>
+        </div>
+        <div class="six column mobile-two">
+            <h4><a href="{{ path('sales', { 'slug': 'repuestos-y-consumibles'}) }}">Venta</a></h4>
+            <i class="flat-shop float-right"></i>
+            <p>Somos distribuidores de repuestos y herramientas. Con ofertas exclusivas, contacta con nosotros para más información. Servimos en toda España.</p>
+        </div>
+        <div class="six column mobile-two">
+            <h4><a href="{{ path('sales', { 'slug': 'recreativas-y-emulacion'}) }}">Arcades</a></h4>
+            <i class="flat-console float-right"></i>
+            <p>También tenemos máquinas arcades y de emulación, a medida, tanto Raspberry Pi como HyperSpin.</p>
+        </div>
+    </div>
+
+    <div class="row grey-column bottom">
+        <div class="twelve column">
+            <h4 class="smallmargin-bottom">Nuestros colaboradores</h4>
+
+            <ul class="client-box">
+                <li>
+                    <a href="https://iesangelcorella.es/" target="_blank">
+                        <img src="{{ asset('web/images/pages/logo-angel-corella.jpg') }}" alt="logo del ies angel corella" title="I.E.S. Angel Corella" class="retina" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.iesvillaverde.es/" target="_blank">
+                        <img src="{{ asset('web/images/pages/logo-villaverde.jpg') }}" alt="logo del ies villaverde" title="I.E.S. Villaverde" class="retina" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://infoacoso.es/" target="_blank">
+                        <img src="{{ asset('web/images/pages/logo-infoacoso.jpg') }}" alt="logo de infoacoso" title="Infoacoso.es" class="retina" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://laucidelmovil.com/" target="_blank">
+                        <img src="{{ asset('web/images/pages/logo-la-uci-del-movil.jpg') }}" alt="logo de la uci del movil" title="La UCI del móvil" class="retina" />
+                    </a>
+                </li>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {#
+    <script src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/modernizr.js') }}"></script>
+    <script src="{{ asset('js/jquery.themepunch.plugins.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('js/superfish.js') }}"></script>
+    <script src="{{ asset('js/mediaelement-and-player.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.flexisel.js') }}"></script>
+    <script src="{{ asset('js/jquery.fancybox.js?v=2.0.6') }}"></script>
+    <script src="{{ asset('js/jquery.fancybox-media.js?v=1.0.3') }}"></script>
+    <script src="{{ asset('js/jflickrfeed.min.js') }}"></script>
+    <script src="{{ asset('js/accordion-functions.js') }}" ></script>
+    <script src="{{ asset('js/theme-functions.js') }}"></script>
+    <script src="{{ asset('js/jquery.retina.js') }}"></script>
+    #}
+
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+            //Retina Image
+            $('img.retina').retina('@2x');
+
+            //Slideshow
+            $('.banner').revolution({
+                delay:9000,
+                startwidth:1126,
+                startheight:450,
+                navigationType:"none",          // bullet, thumb, none
+                navigationArrows:"solo",        // nexttobullets, solo (old name verticalcentered), none
+                navigationStyle:"navbar",       // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+                navigationHAlign:"center",      // Vertical Align top,center,bottom
+                navigationVAlign:"bottom",      // Horizontal Align left,center,right
+                navigationHOffset:0,
+                navigationVOffset:0,
+                soloArrowLeftHalign:"left",
+                soloArrowLeftValign:"center",
+                soloArrowLeftHOffset:20,
+                soloArrowLeftVOffset:0,
+                soloArrowRightHalign:"right",
+                soloArrowRightValign:"center",  
+                soloArrowRightHOffset:20,
+                soloArrowRightVOffset:0,
+                touchenabled:"on",              // Enable Swipe Function : on/off
+                onHoverStop:"off",              // Stop Banner Timet at Hover on Slide on/off
+                stopAtSlide:-1,                 // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                stopAfterLoops:-1,              // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+                hideCaptionAtLimit:0,           // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                hideAllCaptionAtLilmit:0,       // Hide all The Captions if Width of Browser is less then this value
+                hideSliderAtLimit:0,            // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+                shadow:0,                       // 0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
+                fullWidth:"off"                 // Turns On or Off the Fullwidth Image Centering in FullWidth Modus
+            })
+        });
+    </script>
+
+    <script>
+        $('#noscript').remove();
+    </script>
+{% endblock %}

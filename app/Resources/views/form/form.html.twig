@@ -1,0 +1,21 @@
+{% use "form_div_layout.html.twig" %}
+
+{% block text_row %}
+	<label for="{{ id }}" class="required">{{ label }} <em>*</em></label>
+	<input type="text" id="{{ id }}" name="{{ full_name }}" class="textfield" required="required" />
+{% endblock text_row %}
+
+{% block email_row %}
+	<label for="{{ id }}" class="required">{{ label }} <em>*</em></label>
+	<input type="email" id="{{ id }}" name="{{ full_name}}" class="textfield" required="required" />
+{% endblock email_row %}
+
+{% block textarea_row %}
+	<label for="f{{ id }}" class="required">{{ label }} <em>*</em></label>
+	<textarea id="{{ id }}" name="{{ full_name }}"  class="textarea" cols="2" rows="6" required="required"></textarea>
+{% endblock textarea_row %}
+
+{% block submit_row %}
+	<label for="{{ id }}" class="required">&nbsp;</label>
+	<button type="submit"  id="{{ id }}" name="{{ full_name}}" class="buttoncontact" disabled="true">{{ label }}</button>
+{% endblock submit_row %}

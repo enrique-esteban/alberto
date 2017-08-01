@@ -1,0 +1,131 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Servicio técnico' %}
+
+{% block email  'repuestos@expertosit.es' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li class="current-page"><a href="{{ path('technical-support') }}">Servicio técnico</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1>Servicio técnico</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Reparaciones y servicio técnico</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six column">
+            <img src="{{ asset('web/images/pages/servicio-tecnico-reparanción-smartphone-en-el-taller.jpg') }}" alt="Reparando un smartphone en el taller" title="Servicio técnico especializado" width="447" height="268" class="img-center"/>
+        </div>
+
+        <div class="six column">
+            <p align="justify">En Expertosit somos especialistas en la reparación de terminales móviles, portátiles y ordenadores de sobremesa de cualquier marca, con garantía tanto de piezas originales como de mano de obra.<br>Reparamos sea cual sea el problema:  Teléfonos mojados, software, problemas de sonido, rotura de pantallas, sin señal, no reconocimiento de la microsim, resoldado de circuitos integrados, etc.<br>Contamos en nuestro laboratorio propio con todas las más avanzadas herramientas para el diagnóstico y reparación de los terminales así como con técnicos con una amplia experiencia en el sector de la informática y la telefonía móvil.<br>Si necesitas una reparación exprés, consúltanos antes de traernos tu terminal y tendremos tus piezas listas para que puedas tenerlo lo más rápido posible.</p>
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-portfolio"></i>
+            </div>
+            <h4>Experiencia y profesionalidad</h4> 
+            <p>En Expertosit ofrecemos un servicio técnico profesional y de calidad en la reparación de sus dispositivos.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-check"></i>
+            </div>
+            <h4>Piezas de calidad</h4> 
+            <p>Utilizamos las mejores piezas disponibles para las reparaciones y además todas ellas disponen de garantía.</p>  
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-count"></i>
+            </div>
+            <h4>Servicio rápido</h4> 
+            <p>Otro de nuestros cometidos es causarte el menor inconveniente, intentaremos ofrecer el servicio en el menor tiempo posible.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-search"></i>
+            </div>
+            <h4>Diagnostico gratuito</h4> 
+            <p>Realizamos el diagnostico sin ningún compromiso y completamente gratis. Tú tendrás la última palabra en caso de reparaciones.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-money"></i>
+            </div>
+            <h4>Precios económicos</h4> 
+            <p>Ofrecemos a nuestros clientes precios económicos, con una gran competitividad en relación calidad/precio.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-calendar"></i>
+            </div>
+            <h4>6 meses de garantía</h4> 
+            <p>Todas nuestras servicios, ya sean reparaciones de hardware o software, disponen de 6 meses de garantía.</p>  
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-love"></i>
+            </div>
+            <h4>Compromiso con el cliente</h4> 
+            <p>La satisfacción nuestros clientes es nuestra meta a seguir.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="flatborder-bottom">
+                <i class="flat-book"></i>
+            </div>
+            <h4>Formamos futuros técnicos</h4> 
+            <p>En Expertosit tambíen formamos futuros técnico, siguiendo los mismos paradigmas de calidad y eficiencia.</p>
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestras tarifas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

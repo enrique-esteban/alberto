@@ -1,0 +1,75 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Cursos de formación: Iniciación a las nuevas tecnologías' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Cursos</a></li>
+                    <li class="current-page"><a href="{{ path('contact') }}">Iniciación a las nuevas tecnologías</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="very-little">Iniciación a nuevas técnologías</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="five column">
+            <img src="{{ asset('web/images/pages/aula-curso-iniciacion-informatica-01.jpg') }}" alt="aula cursos, vistra trasera 1" title="Vista trasera del aula de los cursos" width="352" height="198" class="img-center margin-top"/>
+        </div>
+
+        <div class="seven column">
+            <p align="justify">En Expertosit somos conscientes de lo que ha avanzado la tecnología desde hace escasamente una década y para ayudar a las personas mayores y no tan mayores a adaptarse a ello, hemos creado una serie de cursos específicos para este tipo de necesidades.<br>Necesitas mandar un correo electrónico?, pedir cita médica a través del Smartphone?, enviar o recibir fotos de tus familiares?, vas a regalar a tus padres un Smartphone para comunicarte con ellos pero no saben manejarlo?<br>Seguramente tus respuestas sean afirmativas y en Expertosit estamos para ayudarte. Nuestros profesores cuentan con la experiencia necesaria para transmitirte todos estos conocimientos y que aprendas con nosotros en un ambiente cómodo y familiar.</p>
+        </div>
+    </div>
+
+    <div class="row">
+         <div class="seven column">
+            <p align="justify">Aprendizaje dinámico: Nuestros cursos se adaptan a ti, ya que podrás tener un aprendizaje adaptado. Nuestros cursos no tienen un horario fijo y solo pagarás por las clases que realices, centrándonos en los que necesitas aprender.<br>Grupos reducidos: En Expertosit queremos atenderte como te mereces y por eso en nuestros cursos siempre disponemos de no más de 4 alumnos por curso. Tráete tus dispositivos: Puedes traerte tus propios dispositivos y aprender a manejarlos con nosotros tanto smartphones, tablets como portátiles. Llámanos para más información y estaremos encantados de atenderte.</p>
+            
+            <div class="twelve column">
+                <hr/>
+            </div>
+
+            <div class="ten colum offset-by-one">
+                <div class="note-folded green">
+                    <div class="flatborder-bottom">
+                        <i class="icon-whatsapp icon-big"></i>
+                    </div>
+                    <p class="lead">También disponemos de un profesor, conectado vía Whatsapp, que responderá a todas las dudas y preguntas que te surjan a lo largo del curso.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="five column">
+            <img src="{{ asset('web/images/pages/aula-curso-iniciacion-informatica-02.jpg') }}" alt="aula cursos, vista trasera 2" title="Otra vista trasera del aula de los cursos" width="286" height="381" class="img-center"/>
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

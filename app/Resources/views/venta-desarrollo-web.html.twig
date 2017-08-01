@@ -1,0 +1,134 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Desarrollo Web' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li class="current-page"><a href="{{ path('sales', { 'slug': 'desarrollo-web'}) }}">Desarrollo web</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1>Desarrollo web</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Desarrollamos sus páginas web</h2>
+            <p>Como se suele decir "si no estás en Internet no existes", la sociedad moderna ha dado un giro drástico hacia la interoperatividad y servicios adaptados a Internet y la nube, potenciado además por el auge de los dispositivos móviles, si lo que desea para su empresa es expandirse a través de Internet y tener así parecencia virtual, en Expertosit le ofrecemos un servicio moderno para la creación de su página web.</p>
+
+            <div class="twelve column">
+                <hr/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="five column">
+            <div class="note">
+                <h6>¿Por qué confiar en ExpertoIT?</h6>
+                <p class="text_small">Ofrecemos un servicio moderno haciendo uso de las nuevas tecnologías, con diseños modernos y adaptables a dispositivos móviles, .</p>
+            </div>
+
+            <h4>Nuestras capacidades</h4>
+            <p>Estas son alguna de nuestras capacidades en el desarrollo de sitios web</p>
+            <span class="progress-title">HTML5 / CSS3</span><span class="progress-meter">95%</span>
+            <div id="blue-bar" class="ui-progress-bar ui-container">
+                <div class="ui-progress green"></div>
+            </div>
+
+            <span class="progress-title">PHP / MySQL</span><span class="progress-meter">70%</span>
+            <div id="red-bar" class="ui-progress-bar ui-container">
+                <div class="ui-progress green"></div>
+            </div>
+
+            <span class="progress-title">Symfony / Prestashop</span><span class="progress-meter">70%</span>
+            <div id="red-bar" class="ui-progress-bar ui-container">
+                <div class="ui-progress green"></div>
+            </div>
+
+            <span class="progress-title">Photoshop / Illustrator</span><span class="progress-meter">80%</span>
+            <div id="orange-bar" class="ui-progress-bar ui-container">
+                <div class="ui-progress green"></div>
+            </div>
+
+            <span class="progress-title">SEO/SEM</span><span class="progress-meter">70%</span>
+            <div id="red-bar" class="ui-progress-bar ui-container">
+                <div class="ui-progress green"></div>
+            </div>
+        </div>
+
+        <div class="seven column">
+            <div class="row">
+                <div class="twelve column mobile-two">
+                    <div class="flatborder">
+                        <i class="flat-responsive medium"></i>
+                    </div>
+                    <h4>Diseño</h4>
+                    <p class="text-overflow">Trabajamos con plantillas modernas que adaptamos a sus preferencias. Usando las últimas tecnologías HTML5/CSS3 y adaptado a dispositivos móviles, con posicionamiento SEO y analítica SEM.</p>
+                </div>
+
+                <div class="twelve column mobile-two">
+                    <div class="flatborder">
+                        <i class="flat-tools medium"></i>
+                    </div>
+                    <h4>Desarrollo</h4>
+                    <p class="text-overflow">Desarrollamos su web usando las tecnologías más punteras (Symfony, Prestashop, Wordpress) y que mejor se adapte a sus necesidades.</p>
+                </div>
+
+                <div class="twelve column mobile-two">
+                    <div class="flatborder">
+                        <i class="flat-statistic medium"></i>
+                    </div>
+                    <h4>SEO y SEM</h4>
+                    <p class="text-overflow">Gestionamos la analítica de su web para buscar el mejor posicionamientos posible o la mayor rentabilidad de sus anuncios de Google.</p>
+                </div>
+
+                <div class="twelve column mobile-two">
+                    <div class="flatborder">
+                        <i class="flat-wallet medium"></i>
+                    </div>
+                    <h4>Precios Competitivos</h4>
+                    <p class="text-overflow">Nuestra relación calidad/precio es insuperable, ofrecemos un servicio de calidad a un precio muy asequible.</p>
+                </div>
+
+                <div class="twelve column mobile-two">
+                    <div class="flatborder">
+                        <i class="flat-shop medium"></i>
+                    </div>
+                    <h4>Cree su tienda online</h4>
+                    <p class="text-overflow">¿Necesita expandir su negocio a través de Internet? Nosotros también desarrollamos su tienda online en Prestashop.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

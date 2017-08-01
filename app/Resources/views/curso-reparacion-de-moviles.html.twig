@@ -1,0 +1,359 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Cursos de formación para dispositivos móviles e informática' %}
+
+{% block email  'cursos@expertosit.es' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Cursos</a></li>
+                    <li class="current-page"><a href="{{ path('contact') }}">Reparación de móviles</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="little">Reparación de moviles</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Puedes mover el mundo</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="five column">
+            <img src="{{ asset('web/images/pages/aula-curso-reparacion-moviles-01.jpg') }}" alt="aula cursos, vista trasera 1" title="Vista trasera del aula de los cursos" width="366" height="274" class="img-center"/>
+        </div>
+
+        <div class="seven column">
+            <p align="justify"><br>Desde que Steve Jobs, allá por el 2007 pronunciara la frase: "Es como tener tu vida entera en el bolsillo y le hemos llamado Iphone", la telefonía móvil y los dispositivos que llevamos con nosotros día a día se han convertido en compañeros inseparables que utilizamos en cada momento para tareas tan dispares como hablar por teléfono, escuchar música, consultar el correo, el tráfico, las direcciones con el gps, noticias, compartir fotos en redes sociales, crear grupos en aplicaciones de chat, inmortalizar momentos con la cámara, etc.<br>Es por esto que es un mundo en continuo movimiento y auge. Así no es de extrañar, al mirar en Forbes las marcas más valiosas del mundo, y ver a Google y a Apple peleando por el primer puesto año tras año.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six column">
+            <p align="justify">Los dispositivos portátiles junto a Internet han cambiado nuestra vida, es un hecho, ya nada es como antes de que aparecieran y en Expertosit lo sabemos, por eso hace ya más de dos años comenzamos en este mundo. No sólo como una oportunidad laboral si no como entusiastas de todos los gadgets que aparecen mes a mes en el mercado.<br>Nos gusta lo que hacemos y ahora queremos transmitir ese entusiasmo y conocimiento a nuestros alumnos en forma de cursos de formación en reparación, mantenimiento y aprovechamiento de estos aparatos y de sus sistemas operativos.<br>¿Porqué mi teléfono se descarga tan rápido?, ¿Porqué se calienta en exceso?, Mi Tablet no enciende a pesar de que la batería es nueva, Cómo puedo recuperar mis fotos borradas?... Todas estas son preguntas que surgen todos los días debido a la gran expansión de estos nuevos smartphones en la sociedad. Pensemos por un momento en que supiéramos darle respuesta y solución a estas cuestiones: Una oportunidad laboral se abre ante nosotros con más de 30 millones de estos aparatos usándose día a día en nuestro país.<br>En Expertosit contamos con todas las herramientas de reparación y diagnostico que existen a día de hoy en el mercado y puedes aprender a utilizarlas con nuestros cursos de reparación de telefonía móvil y tablets. A continuación listamos nuestras características.</p>
+        </div>
+
+         <div class="six column">
+            <img src="{{ asset('web/images/pages/taller-del-aula.jpg') }}" alt="taller del aula" title="Taller del aula para las prácticas" class="img-center" width="515" height="525" />                
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-cpu-processor"></i>
+                <p>Board - Placa</p>
+            </div>
+            <p>Localización de cortos en boards y cómo solucionarlos (spray congelante y cámaras térmicas).</p>
+        </div>
+        
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-batterycharging"></i>
+                <p>Batería</p>
+            </div>
+            <p>Mantenimiento, testeo y reactivación de baterías de litio.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-resistor"></i>
+                <p>Soldadura</p>
+            </div>
+            <p>Soldadura de componentes smd, switches de encendido, volumen, reset, conectores de carga, técnica de revoleado de ic con pasta de soldadura, etc.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-bandwidth"></i>
+                <p>Multímetro</p>
+            </div>
+            <p>Uso del multímetro y comportamiento de los principales componentes de una placa (bobinas, diodos, condensadores, etc.).</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-dedicatedserver"></i>
+                <p>Sulfatado</p>
+            </div>
+            <p>Recuperación de placas sulfatadas por humedad o sumergimiento.</p>
+        </div>
+        
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-iphone"></i>
+                <p>Pantalla</p>
+            </div>
+            <p>Laminación de pantallas con la técnica del hilo de acero.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-whatsapp"></i>
+                <p>Whatsapp</p>
+            </div>
+            <p>Profesor conectado a Whatsapp que responderá a todas tus dudas.</p>
+        </div>
+
+        <div class="three column text-center mobile-two">
+            <div class="circle-border">
+                <i class="icon-plus-sign"></i>
+                <p>Otros</p>
+            </div>
+            <p>Y muchas más.</p>
+        </div>
+    </div>
+
+    <div class="row grey-column-bg">
+        <div class="twelve column">
+            <h2>¿Por qué realizar el curso con Expertosit?</h2>
+
+            <ul class="check">
+                <li>Prácticas con nosotros en nuestra tienda.</li>
+                <li>Profesores conectados vía whatsapp y telefóno</li>
+                <li>Te proveemos de todas las herramientas y respuestos que necesites</li>
+                <li>Te asesoramos en las reparaciones que no sepas realizar</li>
+                <li>Entraras en nuestra bolsa de empleo para futuras colaboraciones</li>
+                <li>Con nosotros aprenderás todo lo necesario para enfrentarte a cualquier tipo de avería sea cual sea</li>
+                <li>No sólo somos academia, también somos servicio técnico y tenemos tienda donde recibimos a diario todo tipo de dispositivos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="five column offset-by-one">
+            <div class="note-folded">
+                <h4>Regalos Exclusivos</h4>
+                <p>Al finalizar el curso, además de tú título, recibe en exclusiva una cubeta de ultrasonidos y un juego de destornilladores de precisión como regalo.</p>
+            </div>
+        </div>
+        <div class="six column">
+            <img src="{{ asset('web/images/pages/regalos-fin-curso.jpg') }}" alt="regalos fin de curso" title="Regalos de fin de curso para los alumnos" width="359" height="179">
+        </div>
+
+        <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <h4>Temporalización del curso</h4>
+
+            <!-- Tabla curso senior -->
+            <div class="six column">
+                <h5 class="courses">Curso Senior (50h. de clases + 50h. prácticas)</h5>
+
+                <ul class="tabs-right">
+                    <li class="active"><a href="#tab-sample1">Día 1</a></li>
+                    <li><a href="#tab-sample2">Día 2</a></li>
+                    <li><a href="#tab-sample3">Día 3</a></li>
+                    <li><a href="#tab-sample4">Día 4</a></li>
+                    <li><a href="#tab-sample5">Día 5</a></li>
+                    <li><a href="#tab-sample6">Día 6</a></li>
+                    <li><a href="#tab-sample7">Día 7</a></li>
+                    <li><a href="#tab-sample8">Día 8</a></li>
+                    <li><a href="#tab-sample9">Día 9</a></li>
+                    <li><a href="#tab-sample10">Día 10</a></li>
+                </ul>
+                <div class="tab_container-right tab-courses">
+                    <div id="tab-sample1" class="tab_content-right" style="display: block;">
+                        <h6>Cómo diagnosticar averías en dispositivos</h6>
+
+                        <ul class="pin">
+                            <li>Introducción a la electrónica básica.</li>
+                            <li>Esquemáticos para reconocimiento de componentes y guías de desarme para dispositivos móviles.</li>
+                            <li>Uso del multímetro para detectar polaridad en las placas, medidas de baterías, comportamiento de componentes, etc.</li>
+                            <li>Uso de la fuente de alimentación para el diagnóstico de fallos.</li>
+                            <li>Manejo y configuración de estación de soldadura para soldar y desoldar conectores de carga, switches, circuitos integrados…</li>
+                            <li>Uso del microscopio para soldadura, detección de componentes smd en mal estado, conectores sulfatados, etc.</li>
+                            <li>Uso de la cubeta de ultrasonidos para limpieza de placas y recuperación de dispositivos mojados.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample2" class="tab_content-right" style="display: block;">
+                        <h6>Reconocimiento de componentes</h6>
+
+                        <ul class="pin">
+                            <li>Conocimiento de los componentes de hardware de un dispositivo móvil y para qué sirven.</li>
+                            <li>Prácticas de búsqueda de componentes en esquemáticos y en Internet para su sustitución.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample3" class="tab_content-right" style="display: block;">
+                        <h6>Iphone</h6>
+
+                        <ul class="pin">
+                            <li>Reconocimiento de partes de los Iphones.</li>
+                            <li>Práctica de desarme de Iphones.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample4" class="tab_content-right" style="display: block;">
+                        <h6>Software Android</h6>
+
+                        <ul class="pin">
+                            <li>Historia de Android.</li>
+                            <li>Seguridad.</li>
+                            <li>Rooteo de terminales.</li>
+                            <li>Particiones del sistema.</li>
+                            <li>Cómo actuar ante fallos de software.</li>
+                            <li>Herramientas ADB y Fastboot.</li>
+                            <li>Desbloqueo de Bootloaders.</li>
+                            <li>Uso de softwares para la reinstalación de firmwares (Odin, Phonenix Suite, SP flash…).</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample5" class="tab_content-right" style="display: block;">
+                        <h6>Software IOs</h6>
+
+                        <ul class="pin">
+                            <li>Historia de IOs.</li>
+                            <li>Seguridad.</li>
+                            <li>Jailbreack.</li>
+                            <li>Actualización automática y downgradeo de Ios.</li>
+                            <li>Cómo actuar ante los diferentes fallos de software.</li>
+                            <li>Uso de Itunes para restauración del sistema operativo.</li>
+                            <li>Errores de software más comunes.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample6" class="tab_content-right" style="display: block;">
+                        <h6>Soldadura</h6>
+
+                        <ul class="pin">
+                            <li>Prácticas de soldadura en componentes smd.</li>
+                            <li>Prácticas de soldadura de conectores de carga.</li>
+                            <li>Práctica de soldaduras de botoneras de encendido y volumen.</li>
+                            <li>Práctica de soldadura y reboleo de circuitos integrados (pmic, memorias, ic táctil).</li>
+                            <li>Prácticas de soldadura y jumpers con microscopio e hilo de cobre (recuperar pistas dañadas o perdidas).</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample7" class="tab_content-right" style="display: block;">
+                        <h6>Pantallas</h6>
+
+                        <ul class="pin">
+                            <li>Prácticas de cambio de pantallas.</li>
+                            <li>Prácticas de laminación y separación de pantallas  (estación separadora, cola, lámpara uva).</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample8" class="tab_content-right" style="display: block;">
+                        <h6>Desarme Android</h6>
+
+                        <ul class="pin">
+                            <li>Este día lo dedicaremos a practicar las materias del cursos que hayan podido general más dudas (soldadura, software, diagramas, etc.).</li>
+                            <li>PUedes traer dispositivos de amigos o familiares para hacerles un diagnostico y reparación con todo lo que has aprendido.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample9" class="tab_content-right" style="display: block;">
+                        <h6>Introducción a la Informática</h6>
+
+                        <ul class="pin">
+                            <li>Conceptos generales de la informática y la reparación.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-sample10" class="tab_content-right" style="display: block;">
+                        <h6>Examen final</h6>
+
+                        <ul class="pin">
+                            <li>El último día realizaremos una prueba escrita donde comprobaremos, con preguntas a desarrollar, todo lo que hemos aprendido durante el curso. Es la mejor forma para que aparezcan las dudas que nos hayan podido surgir durante los días de curso.</li>
+                        </ul>
+                    </div>
+                </div>  
+            </div> 
+            <!-- Fin tabla curso senior -->
+
+            <!-- Tabla curso express -->
+            <div class="six column">
+                <h5 class="courses">Curso Express (20h. de clases + 30h. prácticas)</h5>
+
+                <ul class="tabs-left">
+                    <li><a href="#tab-sample11">Día 1</a></li>
+                    <li><a href="#tab-sample12">Día 2</a></li>
+                </ul>
+                <div class="tab_container-left tab-courses">
+                    <div id="tab-sample11" class="tab_content-left">
+                        <h6>Mañana:</h6>
+
+                        <ul class="pin">
+                            <li>Diagnosis de terminales y detección de fallos en placa y por software.</li>
+                        </ul>
+
+                        <h6>Tarde:</h6>
+
+                        <ul class="pin">
+                            <li>Desarme y reconocimiento de partes de la placa (CPU, modem, módulo wifi, antena, etc.).</li>
+                            <li>Introducción a la ciberseguridad.</li>
+                        </ul>                        
+                    </div>
+
+                    <div id="tab-sample12" class="tab_content-left">
+                        <h6>Mañana:</h6>
+
+                        <ul class="pin">
+                            <li>Historia de Android.</li>
+                            <li>Software Andoroid.</li>
+                            <li>Reinstalación de firmware.</li>
+                            <li>Desbloqueo de bootloaderes.</li>
+                            <li>Bypass cuentas Google.</li>
+                        </ul>
+
+                        <h6>Tarde:</h6>
+
+                        <ul class="pin">
+                            <li>Historia del software IOs.</li>
+                            <li>Downgraded de dispositivos IOs.</li>
+                            <li>Jailbreak.</li>
+                            <li>Recuperación de dispositivos Apple.</li>
+                            <li>Soldadura de conectores de carga.</li>
+                            <li>Jumpers.</li>
+                            <li>Switches.</li>
+                            <li>ICS y reboleados.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin tabla curso express -->
+        </div>
+
+         <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
