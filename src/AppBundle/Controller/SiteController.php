@@ -33,6 +33,25 @@ class SiteController extends Controller
     }
 
     /**
+     * Pagina de testeo
+     *
+     * @Route("/test/", name="test")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function textAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+        $engagements = $em->getRepository('AppBundle:Engagement')->findAll();
+
+        return $this->render('test.html.twig', array(
+            'users' => $users,
+            'engagements' => $engagements,
+            'nav' => 'index'
+        ));
+    }
+
+    /**
      * Muestra el formulario de contacto y también procesa el envío de emails.
      *
      * @Route("/contacto/", name="contact")
@@ -44,20 +63,13 @@ class SiteController extends Controller
     {
         $contactMail = new ContactMail();
         
-        $form = $this->createForm(ContactMailType::class, $contactMail);
+        $form = $this->createForm(ContactMailType::class, null);
         
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
-                
-                /*$content = $this->renderView('Emails/contacto.html.twig', array(
-                    'name' => $data->getName(),
-                    'email' => $data->getEmail(),
-                    'subject' => $data->getSubject(),
-                    'body' => $data->getBody()
-                ));*/
                 
                 $content = sprintf(" Remitente: %s \n\n Email:\n %s \n\n Mensaje:\n %s \n\n Dirección IP: %s \n",
                     $data->getName(),
@@ -69,7 +81,7 @@ class SiteController extends Controller
                 $to = 'info@expertosit.es';
                 $subject = $data->getSubject();
 
-                // Devido a una restricción de 1and1 se usa la función mail de php (recomendada por el servicio técnico)
+                // Devido a una restricción de 1and1 se usa la función mail de php
                 $headers = 'From: ' . $data->getEmail() . PHP_EOL;
                 $sended = mail( $to, $subject, $content, $headers );
 
@@ -214,14 +226,14 @@ class SiteController extends Controller
      * )
      *
      * @param $slug slug de la página estatica a visualizar
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function siteMapAction()
     {
-        return $this->render('sitemap.xml.twig', array('nav' => 'index' ));
+        return $this->render('sitemap.xml.twig', ['nav' => 'index']);
     }
 
-    /** 
+    /**
      * Muestra alguna páginas estaticas que están fuera del menú principal, como por ejemplo el aviso legal.
      * 
      * @Route(
@@ -236,21 +248,5 @@ class SiteController extends Controller
     public function staticAction($slug)
     {
         return $this->render(sprintf('%s.html.twig', $slug), array('nav' => 'index' ));
-    }
-
-
-     /** 
-     * @Route("/photos/", name="photos")
-     *
-     * @return Response
-     */
-    public function photosAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $photos = new Photo();
-        $photos = $em->getRepository('AppBundle:Photos')->findAll();
-
-        return $this->render('photos.html.twig', array('photos' => 'photos' ));
     }
 }

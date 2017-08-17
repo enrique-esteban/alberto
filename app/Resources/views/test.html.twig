@@ -1,0 +1,36 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Venta de máquinas arcade y emuladores' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li class="current-page"><a href="{{ path('test', { 'slug': 'test'}) }}">Test</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1>Test</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Test</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column text-center">
+            {{ dump(users, engagements) }}
+        </div>
+    </div>
+
+{% endblock %}
