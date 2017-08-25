@@ -7,8 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Repair
  *
- * @ORM\Table(name="repair")
+ * @ORM\Table(name="Repair")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RepairRepository")
+ *
+ * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
 class Repair
 {
@@ -27,6 +29,34 @@ class Repair
      * @ORM\Column(name="code", type="string", length=10, unique=true)
      */
     private $code;
+
+    /**
+     * Many Features have One Client.
+     * @ORM\ManyToOne(targetEntity="Client", inversedBy="repairs")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $client;
+
+    /**
+     * Many Features have One Client.
+     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="repairs")
+     * @ORM\JoinColumn(name="repair_assigned", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $repaierAssigned;
+
+    /**
+     * Many Features have One Client.
+     * @ORM\ManyToOne(targetEntity="Device", inversedBy="repairs", cascade={"persist"})
+     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $device;
+
+    /**
+    * Many Features have One Client.
+    * @ORM\ManyToOne(targetEntity="State", inversedBy="repairs")
+    * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE")
+    */
+    private $state;
 
     /**
      * @var string
@@ -59,22 +89,21 @@ class Repair
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime")
+     * @ORM\Column(name="start_date", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="deliveryDate", type="datetime", nullable=true)
+     * @ORM\Column(name="delivery_date", type="datetime", nullable=true)
      */
     private $deliveryDate;
-
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -248,5 +277,100 @@ class Repair
     {
         return $this->deliveryDate;
     }
-}
 
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Client $client
+     *
+     * @return Repair
+     */
+    public function setClient(\AppBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set repaierAssigned
+     *
+     * @param \AppBundle\Entity\Employee $repaierAssigned
+     *
+     * @return Repair
+     */
+    public function setRepaierAssigned(\AppBundle\Entity\Employee $repaierAssigned = null)
+    {
+        $this->repaierAssigned = $repaierAssigned;
+
+        return $this;
+    }
+
+    /**
+     * Get repaierAssigned
+     *
+     * @return \AppBundle\Entity\Employee
+     */
+    public function getRepaierAssigned()
+    {
+        return $this->repaierAssigned;
+    }
+
+    /**
+     * Set device
+     *
+     * @param \AppBundle\Entity\Device $device
+     *
+     * @return Repair
+     */
+    public function setDevice(\AppBundle\Entity\Device $device = null)
+    {
+        $this->device = $device;
+
+        return $this;
+    }
+
+    /**
+     * Get device
+     *
+     * @return \AppBundle\Entity\Device
+     */
+    public function getDevice()
+    {
+        return $this->device;
+    }
+
+    /**
+     * Set state
+     *
+     * @param \AppBundle\Entity\State $state
+     *
+     * @return Repair
+     */
+    public function setState(\AppBundle\Entity\State $state = null)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \AppBundle\Entity\State
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+}

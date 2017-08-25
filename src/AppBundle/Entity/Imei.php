@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="imei")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImeiRepository")
+ *
+ * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
 class Imei
 {
@@ -28,11 +30,17 @@ class Imei
      */
     private $code;
 
+    /**
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="Sale", inversedBy="imeis")
+     * @ORM\JoinColumn(name="sale_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $sale;
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -62,5 +70,28 @@ class Imei
     {
         return $this->code;
     }
-}
 
+    /**
+     * Set sale
+     *
+     * @param \AppBundle\Entity\Sale $sale
+     *
+     * @return Imei
+     */
+    public function setSale(\AppBundle\Entity\Sale $sale = null)
+    {
+        $this->sale = $sale;
+
+        return $this;
+    }
+
+    /**
+     * Get sale
+     *
+     * @return \AppBundle\Entity\Sale
+     */
+    public function getSale()
+    {
+        return $this->sale;
+    }
+}

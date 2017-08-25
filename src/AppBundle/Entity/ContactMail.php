@@ -47,7 +47,7 @@ class ContactMail
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -59,7 +59,7 @@ class ContactMail
     public function setSubject($subject)
     {
         $this->subject = $subject;
-    
+
         return $this;
     }
 
@@ -71,7 +71,7 @@ class ContactMail
     public function setBody($body)
     {
         $this->body = $body;
-    
+
         return $this;
     }
 
@@ -79,5 +79,4 @@ class ContactMail
     {
         return $this->body;
     }
-
 }

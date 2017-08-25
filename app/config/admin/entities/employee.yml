@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        Employee:
+            class: AppBundle\Entity\Employee
+            password_encoding: { algorithm: 'bcrypt', cost: 4 }
+            list:
+                title: 'Empleados'
+                fields: ['id', 'isActive', 'username', 'email', 'completeName', 'address',  { property: 'telephone', type: 'tel' }, 'type', 'role' ]
+            show:
+                fields: ['id', 'username', 'email', 'name', 'lastName', 'address', { property: 'telephone', type: 'tel' }, 'type', 'role', 'isActive' ]
+            form:
+                fields:
+                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-6' }
+                    - { property: 'username' }
+                    - { property: 'password', type: 'text' }
+                    - { property: 'isActive' }
+                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
+                    - { property: 'name' }
+                    - { property: 'lastName' }
+                    - { property: 'email' }
+                    - { property: 'address' }
+                    - { type: 'group', label: 'Other Information', icon: 'briefcase', css_class: 'col-sm-6' }
+                    - { property: 'type'}
+                    - { property: 'role'}

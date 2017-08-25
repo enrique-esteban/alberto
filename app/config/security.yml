@@ -2,7 +2,7 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        BlogBundle\Entity\User:
+        AppBundle\Entity\Employee:
             algorithm: bcrypt
             cost: 4
 
@@ -10,7 +10,7 @@ security:
     providers:
         backend:
             entity:
-                class: AppBundle:User
+                class: AppBundle:Employee
                 property: username
 
     firewalls:

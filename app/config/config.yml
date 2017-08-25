@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: admin/ }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -70,16 +71,3 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-
-easy_admin:
-    #Entidades:
-    entities:
-        Usuario:
-            class: AppBundle\Entity\User
-        Orden:
-            class: AppBundle\Entity\Engagement
-
-    #Personalización:
-    site_name: '<img src="/images/logo-grey.png" alt="logo de Expertosit" title="Logo de Expertosit" height="20" width="163">'
-    design:
-        brand_color: '#97b830'

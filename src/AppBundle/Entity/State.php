@@ -7,8 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * State
  *
- * @ORM\Table(name="state")
+ * @ORM\Table(name="State")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\StateRepository")
+ *
+ * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
 class State
 {
@@ -35,11 +37,38 @@ class State
      */
     private $description;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=255)
+     */
+    private $color;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Repair", mappedBy="state")
+     */
+    private $repairs;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Sale", mappedBy="state")
+     */
+    private $sales;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -93,5 +122,96 @@ class State
     {
         return $this->description;
     }
-}
 
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return State
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Add repair
+     *
+     * @param \AppBundle\Entity\Repair $repair
+     *
+     * @return State
+     */
+    public function addRepair(\AppBundle\Entity\Repair $repair)
+    {
+        $this->repairs[] = $repair;
+
+        return $this;
+    }
+
+    /**
+     * Remove repair
+     *
+     * @param \AppBundle\Entity\Repair $repair
+     */
+    public function removeRepair(\AppBundle\Entity\Repair $repair)
+    {
+        $this->repairs->removeElement($repair);
+    }
+
+    /**
+     * Get repairs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepairs()
+    {
+        return $this->repairs;
+    }
+
+    /**
+     * Add sale
+     *
+     * @param \AppBundle\Entity\Sale $sale
+     *
+     * @return State
+     */
+    public function addSale(\AppBundle\Entity\Sale $sale)
+    {
+        $this->sales[] = $sale;
+
+        return $this;
+    }
+
+    /**
+     * Remove sale
+     *
+     * @param \AppBundle\Entity\Sale $sale
+     */
+    public function removeSale(\AppBundle\Entity\Sale $sale)
+    {
+        $this->sales->removeElement($sale);
+    }
+
+    /**
+     * Get sales
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSales()
+    {
+        return $this->sales;
+    }
+}
