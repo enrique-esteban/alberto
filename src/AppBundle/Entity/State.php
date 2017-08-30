@@ -214,4 +214,23 @@ class State
     {
         return $this->sales;
     }
+
+    /**
+     * @return array
+     */
+    public function getNameAndColor()
+    {
+        return array(
+            'name' => $this->getName(),
+            'color' => $this->getColor()
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

@@ -277,28 +277,26 @@ class Client
         return $this->sales;
     }
 
+    /**
+     * @return null|string
+     */
     public function getCompleteName () {
-        if ($this->name && $this->lastName) {
-            return $this->name.' '.$this->lastName;
+        if ($this->getName() && $this->getLastName()) {
+            return $this->getName().' '.$this->getLastName();
         }
-        elseif ($this->name) {
-            return $this->name;
+        elseif ($this->getName()) {
+            return $this->getName();
         }
         else {
             return null;
         }
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        if ($this->name && $this->lastName) {
-            return $this->name.' '.$this->lastName.' <'.$this->email.'>';
-        }
-        elseif ($this->name) {
-            return $this->name.' <'.$this->email.'>';
-        }
-        else {
-            return $this->email;
-        }
+        return $this->getName().' '.$this->getLastName().' <'.$this->getEmail().'>';
     }
 }

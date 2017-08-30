@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Imei
  *
- * @ORM\Table(name="imei")
+ * @ORM\Table(name="Imei")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImeiRepository")
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
@@ -33,7 +33,7 @@ class Imei
     /**
      * Many Features have One Product.
      * @ORM\ManyToOne(targetEntity="Sale", inversedBy="imeis")
-     * @ORM\JoinColumn(name="sale_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="sale_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $sale;
 
@@ -93,5 +93,13 @@ class Imei
     public function getSale()
     {
         return $this->sale;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCode();
     }
 }

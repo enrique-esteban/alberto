@@ -4,17 +4,14 @@ easy_admin:
             class: AppBundle\Entity\Client
             list:
                 title: 'Clientes'
-                fields: ['id', 'completeName', 'email', 'address', { property: 'telephone', type: 'tel' }]
-#            show:
-#                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: '%app.path.user_contracts%' }]
-#            form:
-#                fields:
-#                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }
-#                    - { property: 'username' }
-#                    - { property: 'isActive' }
-#                    - { type: 'group', label: 'Contact Information', icon: 'envelope-o', css_class: 'col-sm-4' }
-#                    - { property: 'email' }
-#                    - { type: 'group', label: 'Legal Information', icon: 'briefcase', css_class: 'col-sm-4' }
-#                    - { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
-#                    - { type: 'group', label: 'Transactions History', icon: 'money', css_class: 'col-sm-12' }
-#                    - { property: 'purchases', css_class: 'col-sm-12' }
+                fields: ['id', 'completeName', 'email', 'address',  { property: 'telephone', type: 'tel' }, 'repairs', { property: 'sales', label: 'Compras' } ]
+            show:
+                fields: ['id', 'name', 'lastName', 'email', 'address', { property: 'telephone', type: 'tel' }, 'repairs', { property: 'sales', label: 'Compras' } ]
+            form:
+                fields:
+                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
+                    - { property: 'name' }
+                    - { property: 'lastName' }
+                    - { property: 'email' }
+                    - { property: 'telephone' }
+                    - { property: 'address' }

@@ -33,11 +33,13 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setAddress(null);
         $employee->setEmail('admin@admin.com');
         $employee->setType('Administrador web');
-        $employee->setRole('ROLE_ADMIN');
-        $employee->setIsActive(true);
+        $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
+        $employee->setEnabled(true);
 
         $plainPassword = 'ys1fdm.*';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+
+        $employee->setPlainPassword($plainPassword);
         $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-admin', $employee);
@@ -53,11 +55,13 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setAddress(null);
         $employee->setEmail('nadocamerx@gmail.com');
         $employee->setType('Chupamingas');
-        $employee->setRole('ROLE_ADMIN');
-        $employee->setIsActive(true);
+        $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
+        $employee->setEnabled(true);
 
         $plainPassword = '06tisotexper';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+
+        $employee->setPlainPassword($plainPassword);
         $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-alberto', $employee);
@@ -73,11 +77,13 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setAddress(null);
         $employee->setEmail('expertosit06@gmail.com');
         $employee->setType('Dueño');
-        $employee->setRole('ROLE_ADMIN');
-        $employee->setIsActive(true);
+        $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
+        $employee->setEnabled(true);
 
         $plainPassword = '16tisotexper';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+
+        $employee->setPlainPassword($plainPassword);
         $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-florin', $employee);

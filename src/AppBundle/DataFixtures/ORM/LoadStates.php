@@ -26,7 +26,7 @@ class LoadStates extends AbstractFixture implements OrderedFixtureInterface
 
         $state->setName('En progreso');
         $state->setDescription('La reparación está en progreso');
-        $state->setColor('Blue');
+        $state->setColor('Orange');
 
         $this->addReference('state-en-progreso', $state);
         $manager->persist($state);
@@ -35,8 +35,8 @@ class LoadStates extends AbstractFixture implements OrderedFixtureInterface
         $state = new State();
 
         $state->setName('Para entregar');
-        $state->setDescription('El dispositivo ha sido reparado y está listo para la entrega');
-        $state->setColor('Orange');
+        $state->setDescription('El dispositivo ha sido reparado o vendido, pero no ha sido entregado al dueño');
+        $state->setColor('Blue');
 
         $this->addReference('state-para-entrega', $state);
         $manager->persist($state);
@@ -44,8 +44,8 @@ class LoadStates extends AbstractFixture implements OrderedFixtureInterface
         // Insertamos otro estado
         $state = new State();
 
-        $state->setName('Para venta');
-        $state->setDescription('El dispositivo está listo para la venta');
+        $state->setName('En venta');
+        $state->setDescription('El dispositivo está en venta');
         $state->setColor('Orange');
 
         $this->addReference('state-para-venta', $state);
@@ -75,8 +75,8 @@ class LoadStates extends AbstractFixture implements OrderedFixtureInterface
         $state = new State();
 
         $state->setName('Cancelado');
-        $state->setDescription('La compra o reparación han sido cancelados');
-        $state->setColor('Black');
+        $state->setDescription('La compra o reparación ha sido cancelada');
+        $state->setColor('Grey');
 
         $this->addReference('state-cancelado', $state);
         $manager->persist($state);

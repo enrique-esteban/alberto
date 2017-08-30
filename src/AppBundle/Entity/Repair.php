@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Repair")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RepairRepository")
+ * @ORM\HasLifecycleCallbacks()
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
@@ -26,35 +27,35 @@ class Repair
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=10, unique=true)
+     * @ORM\Column(name="code", type="string", length=15, unique=true)
      */
     private $code;
 
     /**
      * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="repairs")
-     * @ORM\JoinColumn(name="client_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $client;
 
     /**
      * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="Employee", inversedBy="repairs")
-     * @ORM\JoinColumn(name="repair_assigned", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="repair_assigned", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
-    private $repaierAssigned;
+    private $repairAssigned;
 
     /**
      * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="Device", inversedBy="repairs", cascade={"persist"})
-     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $device;
 
     /**
     * Many Features have One Client.
     * @ORM\ManyToOne(targetEntity="State", inversedBy="repairs")
-    * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE")
+    * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE", nullable=false)
     */
     private $state;
 
@@ -303,27 +304,27 @@ class Repair
     }
 
     /**
-     * Set repaierAssigned
+     * Set repairAssigned
      *
-     * @param \AppBundle\Entity\Employee $repaierAssigned
+     * @param \AppBundle\Entity\Employee $repairAssigned
      *
      * @return Repair
      */
-    public function setRepaierAssigned(\AppBundle\Entity\Employee $repaierAssigned = null)
+    public function setRepairAssigned(\AppBundle\Entity\Employee $repairAssigned = null)
     {
-        $this->repaierAssigned = $repaierAssigned;
+        $this->repairAssigned = $repairAssigned;
 
         return $this;
     }
 
     /**
-     * Get repaierAssigned
+     * Get repairAssigned
      *
      * @return \AppBundle\Entity\Employee
      */
-    public function getRepaierAssigned()
+    public function getRepairAssigned()
     {
-        return $this->repaierAssigned;
+        return $this->repairAssigned;
     }
 
     /**
@@ -372,5 +373,31 @@ class Repair
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCode().' - '.$this->getClient().' - '.$this->getDevice();
+    }
+
+    /**
+     * HasLifecycleCallbacks: Establecemos algunos valores automáticamente antes de persistir la entidad
+     *
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $date = new \DateTime('now');
+
+        // Establecemos la fecha de inicio, si no existe ya
+        $this->startDate = $date;
+
+        // Creamos un código de compra usando la hora Unix actual, en caso de que no haya sido establecido manualmente
+        if (!$this->code) {
+            $this->code = $date->format('U');
+        }
     }
 }

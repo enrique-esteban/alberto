@@ -143,7 +143,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('Oppo');
-        $device->setIcon('oppo.png');
+        $device->setIcon('oppo.jpg');
         $device->setModel('R9s');
         $device->setWebPage('http://www.oppo.com/en/smartphone-r9s/');
 
@@ -154,7 +154,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('Huawei');
-        $device->setIcon('huawei.png');
+        $device->setIcon('huawei.jpg');
         $device->setModel('P8 Lite');
         $device->setWebPage('http://www.huaweispain.com/smartphones/huawei-p8-lite/');
 
@@ -165,7 +165,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('Huawei');
-        $device->setIcon('huawei.png');
+        $device->setIcon('huawei.jpg');
         $device->setModel('P9 Lite');
         $device->setWebPage('http://www.huaweispain.com/smartphones/huawei-p9-lite/');
 
@@ -176,7 +176,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('BQ');
-        $device->setIcon('bq.png');
+        $device->setIcon('bq.jpg');
         $device->setModel('Aquaris X5');
         $device->setWebPage('https://www.bq.com/es/aquaris-x5');
 
@@ -187,7 +187,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('BQ');
-        $device->setIcon('bq.png');
+        $device->setIcon('bq.jpg');
         $device->setModel('Aquaris M5');
         $device->setWebPage('https://www.bq.com/es/aquaris-m5');
 
@@ -198,7 +198,7 @@ class LoadDevices extends AbstractFixture implements OrderedFixtureInterface
         $device = new Device();
 
         $device->setBrand('Moto');
-        $device->setIcon('motorola.png');
+        $device->setIcon('motorola.jpg');
         $device->setModel('G5 Plus');
         $device->setWebPage('https://www.motorola.es/products/moto-g-plus');
 

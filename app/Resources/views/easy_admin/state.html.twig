@@ -1,0 +1,14 @@
+{% if value.color == 'Orange' %}
+    {% set color = 'warning' %}
+{% elseif value.color == 'Blue' %}
+    {% set color = 'primary' %}
+{% elseif value.color == 'Green' %}
+    {% set color = 'success' %}
+{% elseif value.color == 'Red' %}
+    {% set color = 'danger' %}
+{% elseif value.color == 'Grey' %}
+    {% set color = 'default' %}
+{% endif %}
+
+
+<span class="label label-{{ color|default('primary') }}">{{ value.name }}</span>

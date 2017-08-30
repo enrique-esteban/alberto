@@ -4,9 +4,9 @@ easy_admin:
             class: AppBundle\Entity\Device
             list:
                 title: 'Dispositivos'
-                fields: [{ property: 'icon', type: 'image', base_path: 'images/brands' }, 'id', 'brand', 'model', { property: 'webPage', type: 'url' }]
-#            show:
-#                fields: ['id', 'isActive', 'username', 'email', 'purchases', { property: 'contract', template: 'contract.html.twig', base_path: '%app.path.user_contracts%' }]
+                fields: [{ property: 'icon', type: 'image', base_path: 'images/brands' }, 'id', 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
+            show:
+                fields: [{ property: 'icon', type: 'image', base_path: 'images/brands' }, 'id', 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
 #            form:
 #                fields:
 #                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }

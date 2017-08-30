@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Sale")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SaleRepository")
+ * @ORM\HasLifecycleCallbacks()
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
@@ -24,9 +25,16 @@ class Sale
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=15, unique=true)
+     */
+    private $code;
+
+    /**
      * Many Features have One Product.
      * @ORM\ManyToOne(targetEntity="Device", inversedBy="sales", cascade={"persist"})
-     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $device;
 
@@ -67,7 +75,7 @@ class Sale
     /**
      * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="Employee", inversedBy="sales")
-     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $seller;
 
@@ -95,14 +103,14 @@ class Sale
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="sale_date", type="datetime", nullable=true)
      */
-    private $date;
+    private $saleDate;
 
     /**
      * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="State", inversedBy="sales")
-     * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $state;
 
@@ -272,13 +280,13 @@ class Sale
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \DateTime $saleDate
      *
      * @return Sale
      */
-    public function setDate($date)
+    public function setSaleDate($saleDate)
     {
-        $this->date = $date;
+        $this->saleDate = $saleDate;
 
         return $this;
     }
@@ -288,9 +296,9 @@ class Sale
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getSaleDate()
     {
-        return $this->date;
+        return $this->saleDate;
     }
 
     /**
@@ -421,5 +429,43 @@ class Sale
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getCode().' - '.$this->getDevice();
+    }
+
+    /**
+     * HasLifecycleCallbacks: Establecemos algunos valores automáticamente antes de persistir la entidad
+     *
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        // Creamos un código de compra usando la hora Unix actual, en caso de que no haya sido establecido manualmente
+        if (!$this->code) {
+            $date = new \DateTime('now');
+            $this->code = $date->format('U');
+        }
     }
 }

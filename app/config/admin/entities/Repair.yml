@@ -1,0 +1,27 @@
+easy_admin:
+    entities:
+        Repair:
+            class: AppBundle\Entity\Repair
+            password_encoding: { algorithm: 'bcrypt', cost: 4 }
+            list:
+                title: 'Reparaciones'
+                fields: ['id', 'code', 'client', 'repairAssigned', 'device', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'description', 'cost', 'advance', 'discount', 'startDate', 'deliveryDate' ]
+            show:
+                fields: ['id', 'code', 'client', 'repairAssigned', 'device', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'description', 'cost', 'advance', 'discount', 'startDate', 'deliveryDate' ]
+#            form:
+#                fields:
+#                    - { type: 'group', label: 'Repair info', icon: 'cg', css_class: 'col-sm-6' }
+#                    - { property: 'username' }
+#                    - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+#                    - { property: 'enabled' }
+#
+#                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
+#                    - { property: 'name' }
+#                    - { property: 'lastName' }
+#                    - { property: 'email' }
+#                    - { property: 'telephone', type: 'number' }
+#                    - { property: 'address' }
+#
+#                    - { type: 'group', label: 'Other Information', icon: 'briefcase', css_class: 'col-sm-6' }
+#                    - { property: 'type'}
+#                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }

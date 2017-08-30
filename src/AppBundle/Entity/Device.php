@@ -246,8 +246,11 @@ class Device
         return $this->sales;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        return $this->brand.' '.$this->model;
+        return $this->getBrand().' '.$this->getModel();
     }
 }
