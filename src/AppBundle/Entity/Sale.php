@@ -60,13 +60,11 @@ class Sale
     private $category;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Imei", mappedBy="sale")
+     * @ORM\OneToMany(targetEntity="Imei", mappedBy="sale",  cascade={"persist","remove"}, orphanRemoval=true)
      */
     private $imeis;
 
     /**
-     * Many Features have One Client.
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="sales")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
@@ -113,8 +111,7 @@ class Sale
      * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $state;
-
-
+    
     /**
      * Constructor
      */
@@ -131,6 +128,30 @@ class Sale
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Sale
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -278,7 +299,7 @@ class Sale
     }
 
     /**
-     * Set date
+     * Set saleDate
      *
      * @param \DateTime $saleDate
      *
@@ -292,7 +313,7 @@ class Sale
     }
 
     /**
-     * Get date
+     * Get saleDate
      *
      * @return \DateTime
      */
@@ -308,7 +329,7 @@ class Sale
      *
      * @return Sale
      */
-    public function setDevice(\AppBundle\Entity\Device $device = null)
+    public function setDevice(\AppBundle\Entity\Device $device)
     {
         $this->device = $device;
 
@@ -390,7 +411,7 @@ class Sale
      *
      * @return Sale
      */
-    public function setSeller(\AppBundle\Entity\Employee $seller = null)
+    public function setSeller(\AppBundle\Entity\Employee $seller)
     {
         $this->seller = $seller;
 
@@ -414,7 +435,7 @@ class Sale
      *
      * @return Sale
      */
-    public function setState(\AppBundle\Entity\State $state = null)
+    public function setState(\AppBundle\Entity\State $state)
     {
         $this->state = $state;
 
@@ -434,25 +455,9 @@ class Sale
     /**
      * @return string
      */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
-
-    /**
-     * @return string
-     */
     public function __toString()
     {
-        return $this->getCode().' - '.$this->getDevice();
+        return $this->getDevice().' <'.$this->getCode().'>';
     }
 
     /**

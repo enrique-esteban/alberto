@@ -4,17 +4,15 @@ easy_admin:
             class: AppBundle\Entity\Device
             list:
                 title: 'Dispositivos'
-                fields: [{ property: 'icon', type: 'image', base_path: 'images/brands' }, 'id', 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
+                sort: [ 'brand', 'ASC' ]
+                fields: [ { property: 'brand.image', type: 'image', base_path: '%vich_product_images%', label: 'Imagen' }, 'brand', 'model', { property: 'webPage', type: 'url' } ]
             show:
-                fields: [{ property: 'icon', type: 'image', base_path: 'images/brands' }, 'id', 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
-#            form:
-#                fields:
-#                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }
-#                    - { property: 'username' }
-#                    - { property: 'isActive' }
-#                    - { type: 'group', label: 'Contact Information', icon: 'envelope-o', css_class: 'col-sm-4' }
-#                    - { property: 'email' }
-#                    - { type: 'group', label: 'Legal Information', icon: 'briefcase', css_class: 'col-sm-4' }
-#                    - { property: 'contractFile', type: 'Vich\UploaderBundle\Form\Type\VichFileType' }
-#                    - { type: 'group', label: 'Transactions History', icon: 'money', css_class: 'col-sm-12' }
-#                    - { property: 'purchases', css_class: 'col-sm-12' }
+                fields: [ 'id', { property: 'brand.image', type: 'image', base_path: '%vich_product_images%', label: 'Imagen' }, 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
+            form:
+                fields:
+                    - { type: 'group', label: 'Device Information', icon: 'mobile', css_class: 'col-sm-12' }
+                    - { property: 'brand' }
+                    - { property: 'model' }
+
+                    - { type: 'group', label: 'Web Page', icon: 'external-link', css_class: 'col-sm-12' }
+                    - { property: 'webPage', type: 'url' }

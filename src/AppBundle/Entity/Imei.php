@@ -78,7 +78,7 @@ class Imei
      *
      * @return Imei
      */
-    public function setSale(\AppBundle\Entity\Sale $sale = null)
+    public function setSale(\AppBundle\Entity\Sale $sale)
     {
         $this->sale = $sale;
 

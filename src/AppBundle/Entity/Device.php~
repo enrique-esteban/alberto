@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Device
+ *
+ * @ORM\Table(name="Device")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DeviceRepository")
+ *
+ * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
+ */
+class Device
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
+     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $brand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="model", type="string", length=255)
+     */
+    private $model;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="web_page", type="string", length=255, nullable=true)
+     */
+    private $webPage;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Repair", mappedBy="device")
+     */
+    private $repairs;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Sale", mappedBy="device")
+     */
+    private $sales;
+}

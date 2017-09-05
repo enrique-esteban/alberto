@@ -4,14 +4,15 @@ easy_admin:
             class: AppBundle\Entity\Client
             list:
                 title: 'Clientes'
-                fields: ['id', 'completeName', 'email', 'address',  { property: 'telephone', type: 'tel' }, 'repairs', { property: 'sales', label: 'Compras' } ]
+                sort: [ 'email', 'ASC']
+                fields: ['completeName', 'email', 'address',  { property: 'telephone', type: 'tel' }, 'repairs', { property: 'sales', label: 'Compras' } ]
             show:
                 fields: ['id', 'name', 'lastName', 'email', 'address', { property: 'telephone', type: 'tel' }, 'repairs', { property: 'sales', label: 'Compras' } ]
             form:
                 fields:
-                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
+                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-8' }
                     - { property: 'name' }
                     - { property: 'lastName' }
-                    - { property: 'email' }
-                    - { property: 'telephone' }
+                    - { property: 'email', type: 'email' }
+                    - { property: 'telephone', type: 'number' }
                     - { property: 'address' }

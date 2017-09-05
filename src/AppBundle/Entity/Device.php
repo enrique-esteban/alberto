@@ -3,12 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * Device
  *
- * @ORM\Table(name="Device", uniqueConstraints={@UniqueConstraint(name="device_unique", columns={"brand", "model"})})
+ * @ORM\Table(name="Device")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DeviceRepository")
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
@@ -25,9 +24,8 @@ class Device
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="brand", type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
+     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $brand;
 
@@ -44,13 +42,6 @@ class Device
      * @ORM\Column(name="web_page", type="string", length=255, nullable=true)
      */
     private $webPage;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="icon", type="string", length=255, nullable=true)
-     */
-    private $icon;
 
     /**
      * One Product has Many Features.
@@ -80,30 +71,6 @@ class Device
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param string $brand
-     *
-     * @return Device
-     */
-    public function setBrand($brand)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return string
-     */
-    public function getBrand()
-    {
-        return $this->brand;
     }
 
     /**
@@ -155,27 +122,27 @@ class Device
     }
 
     /**
-     * Set icon
+     * Set brand
      *
-     * @param string $icon
+     * @param \AppBundle\Entity\Brand $brand
      *
      * @return Device
      */
-    public function setIcon($icon)
+    public function setBrand(\AppBundle\Entity\Brand $brand = null)
     {
-        $this->icon = $icon;
+        $this->brand = $brand;
 
         return $this;
     }
 
     /**
-     * Get icon
+     * Get brand
      *
-     * @return string
+     * @return \AppBundle\Entity\Brand
      */
-    public function getIcon()
+    public function getBrand()
     {
-        return $this->icon;
+        return $this->brand;
     }
 
     /**
@@ -246,9 +213,6 @@ class Device
         return $this->sales;
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return $this->getBrand().' '.$this->getModel();

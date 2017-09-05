@@ -89,6 +89,6 @@ class LoadImeis extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 30;
+        return 40;
     }
 }

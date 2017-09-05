@@ -20,7 +20,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale = new Sale();
 
         $sale->setCode('1A1A1A1A1A');
-        $sale->setDevice($this->getReference('device-iphone-7'));
+        $sale->setDevice($this->getReference('device-idevice-7'));
         $sale->setColor('negro');
         $sale->setStorageSize('128 Gb');
         $sale->setCategory('A');
@@ -32,14 +32,14 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setState($this->getReference('state-para-venta'));
         //$sale->setSaleDate(new \DateTime('Now -'.rand(0, 5).'days'));
 
-        $this->addReference('sale-iphone-7', $sale);
+        $this->addReference('sale-idevice-7', $sale);
         $manager->persist($sale);
 
         // Insertamos otra factura de compra
         $sale = new Sale();
 
         $sale->setCode('2B2B2B2B2B');
-        $sale->setDevice($this->getReference('device-iphone-7-plus'));
+        $sale->setDevice($this->getReference('device-idevice-7-plus'));
         $sale->setColor('oro rosa');
         $sale->setStorageSize('512 Gb');
         $sale->setCategory('A');
@@ -51,7 +51,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setState($this->getReference('state-entregado'));
         $sale->setSaleDate(new \DateTime('Now -'.rand(0, 5).'days'));
 
-        $this->addReference('sale-iphone-7-plus', $sale);
+        $this->addReference('sale-idevice-7-plus', $sale);
         $manager->persist($sale);
 
         // Insertamos otra factura de compra
@@ -136,6 +136,6 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 20;
+        return 30;
     }
 }

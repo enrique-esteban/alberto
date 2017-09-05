@@ -11,7 +11,7 @@ easy_admin:
             - label: 'Products'
               icon: 'archive' # book
               children:
-                   - { entity: 'Repair', icon: 'wrench', params: { sortField: 'starDate' }, default: true }
+                   - { entity: 'Repair', icon: 'wrench', params: { sortField: 'startDate' }, default: true }
                    - { entity: 'Sale', icon: 'credit-card' }
             - label: 'Users'
               icon: 'users'
@@ -22,7 +22,8 @@ easy_admin:
               icon: 'tablet'
               children:
                   - { entity: 'Device', icon: 'mobile' }
-                  - { entity: 'Imei', icon: 'asterisk' }
+                  - { entity: 'Imei', icon: 'barcode' }
+                  - { entity: 'Brand', icon: 'mobile' }
             - label: 'Others'
               icon: 'asterisk'
               children:
