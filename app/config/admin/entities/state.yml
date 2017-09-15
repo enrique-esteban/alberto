@@ -5,21 +5,12 @@ easy_admin:
             password_encoding: { algorithm: 'bcrypt', cost: 4 }
             list:
                 title: 'Estados'
-                fields: ['id', { property: 'nameAndColor', template: 'state.html.twig', label: 'Name' }, 'description' ]
+                fields: [ { property: 'nameAndColor', template: 'state.html.twig', label: 'Name' }, 'description' ]
             show:
-                fields: ['id', { property: 'nameAndColor', template: 'state.html.twig', label: 'Name' }, 'description', 'color' ]
-#            form:
-#                fields:
-#                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-6' }
-#                    - { property: 'username' }
-#                    - { property: 'plainPassword', type: 'text', type_options: { required: false } }
-#                    - { property: 'enabled' }
-#                    - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
-#                    - { property: 'name' }
-#                    - { property: 'lastName' }
-#                    - { property: 'email' }
-#                    - { property: 'telephone', type: 'number' }
-#                    - { property: 'address' }
-#                    - { type: 'group', label: 'Other Information', icon: 'briefcase', css_class: 'col-sm-6' }
-#                    - { property: 'type'}
-#                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                fields: ['id', { property: 'nameAndColor', template: 'state.html.twig', label: 'Name' }, 'description', 'color', 'repairs', 'sales' ]
+            form:
+                fields:
+                    - { type: 'group', label: 'State', icon: 'cog', css_class: 'col-sm-12' }
+                    - { property: 'name' }
+                    - { property: 'color', type: 'choice', type_options: { choices: { Blue: 'Blue', Grenn: 'Green', Grey: 'Grey', Orange: 'Orange', Red: 'Red' } } }
+                    - { property: 'description', type: 'ckeditor' }

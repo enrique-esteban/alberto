@@ -1,0 +1,171 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title 'Vista reparación ' ~ repair.code %}
+
+{% block sub_header %}
+<!-- pagetitle start here -->
+<section id="pagetitle-container">
+    <div class="row">
+        <div class="five column breadcrumb">
+            <ul>
+                <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                <li><a>Reparación</a></li>
+                <li class="current-page"><a href="{{ path('repair-query') }}">{{ repair.code }}</a></li>
+            </ul>
+        </div>
+        <div class="seven column pagetitle">
+            <h1 class="little">Reparación {{ repair.code }}</h1>
+        </div>
+    </div>
+</section>
+<!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="twelve column">
+        <h4>Dispositivo: {{ repair.device.phone }}</h4>
+    </div>
+</div>
+
+<!-- Brand Image -->
+<div class="row">
+    <!-- Left Side -->
+    <div class="nine column">
+        <!-- Brand Image -->
+        <div class="four column">
+            <ul class="client-box brand">
+                <li><img src="{{ asset('/images/brands/') ~ repair.device.phone.brand.image }}" alt=""></li>
+            </ul>
+        </div>
+        <!-- Brand Image End -->
+
+        <!-- Table -->
+        <div class="eight column">
+            <table class="table-{{ repair.state.color|lower }}">
+                <thead>
+                    <th >Code:</th>
+                    <th>Estado:</th>
+
+                </thead>
+                <tbody>
+                    <td>{{ repair.code }}</td>
+                    <td>{{ repair.state }}</td>
+                </tbody>
+            </table>
+        </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="twelve column">
+            <table class="table-{{ repair.state.color|lower }}">
+                <tr>
+                    <td colspan="2">Dispositivo</td>
+                    <td>Color</td>
+                    <td>Capacidad</td>
+                    <td>Imei primario</td>
+                    <td>Imei secundario</td>
+                </tr>
+
+                <tr class="odd">
+                    <td colspan="2">{{ repair.device.phone }}</td>
+                    <td>{{ repair.device.color|capitalize }}</td>
+                    <td>{{ repair.device.storageSize }}</td>
+                    <td>{{ repair.device.imeiPrimary }}</td>
+                    <td>{{ repair.device.imeiSecondary }}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="twelve column">
+            <table class="table-{{ repair.state.color|lower }}">
+                <tr>
+                    <td>Descripción</td>
+                </tr>
+
+                <tr class="odd">
+                    <td>{{ repair.description }}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="twelve column">
+            <table>
+                <tr>
+                    <td>Cliente</td>
+                    <td>Empleado</td>
+                </tr>
+                <tr class="odd">
+                    <td>{{ repair.client.completeName }}</td>
+                    <td>{{ repair.repairAssigned.completeName }}</td>
+                </tr>
+             </table>
+        </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="six column">
+            <table>
+                <tr>
+                    <td colspan="3">Fecha de ingreso</td>
+                    <td colspan="3">Fecha de entrega</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="3">{{ repair.startDate|date("m/d/Y")  }}</td>
+                    <td colspan="3">{{ repair.deliveryDate|date("m/d/Y")  }}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="six column">
+            <table>
+                <tr>
+                    <td colspan="2">Precio</td>
+                    <td colspan="2">Adelanto</td>
+                    <td colspan="2">Descuento</td>
+                </tr>
+                <tr class="odd">
+                    <td colspan="2">{{ repair.cost }}</td>
+                    <td colspan="2">{{ repair.advance }}</td>
+                    <td colspan="2">{{ repair.discount }}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Table End -->
+    </div>
+    <!-- Left Side End -->
+
+    <!-- Right Side -->
+    <div class="three column">
+        <div class="note">
+            <h4>Ayuda:</h4>
+            <p>A la izquierda se muestra los datos más relevantes del dispositivo a reparar.</p>
+            <p>A continuación mostramos la lista de estados disponibles:</p>
+            <ul class="no-bullet">
+                <li><span class="highlight red">Aprobación pendiente</span></li>
+                <li>Aun no ha sido aprobado para su reparación.</li>
+                <li><span class="highlight orange">En progreso</span></li>
+                <li>La reparación está en marcha.</li>
+                <li><span class="highlight blue">Para entregar</span></li>
+                <li>Está reparado y listo para la entrega.</li>
+                <li><span class="highlight green">Entregado</span></li>
+                <li>Ha sido reparado y entregado a su dueño.</li>
+                <li><span class="highlight grey">Cancelado</span></li>
+                <li>La reparación ha sido cancelada.</li>
+            </ul>
+            <p>Si tiene alguna duda puede ponerse en contacto con ExpertosIT a través de los siguientes datos:</p>
+            <address>
+                <i class="icon-phonealt"></i>912 546 050<br/>
+                <i class="icon-emailalt"></i>info@expertosit.es
+            </address>
+        </div>
+    </div>
+    <!-- Right Side End -->
+</div>
+{% endblock %}

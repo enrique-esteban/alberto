@@ -41,28 +41,16 @@ class Sale
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=100)
-     */
-    private $color;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="storage_size", type="string", length=100)
-     */
-    private $storageSize;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="category", type="string", length=1)
      */
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="Imei", mappedBy="sale",  cascade={"persist","remove"}, orphanRemoval=true)
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="State", inversedBy="sales", cascade={"persist"})
+     * @ORM\JoinColumn(name="state_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
-    private $imeis;
+    private $state;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="sales")
@@ -106,21 +94,6 @@ class Sale
     private $saleDate;
 
     /**
-     * Many Features have One Client.
-     * @ORM\ManyToOne(targetEntity="State", inversedBy="sales")
-     * @ORM\JoinColumn(name="state", referencedColumnName="id", onDelete="CASCADE", nullable=false)
-     */
-    private $state;
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->imeis = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -152,54 +125,6 @@ class Sale
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set color
-     *
-     * @param string $color
-     *
-     * @return Sale
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * Get color
-     *
-     * @return string
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * Set storageSize
-     *
-     * @param string $storageSize
-     *
-     * @return Sale
-     */
-    public function setStorageSize($storageSize)
-    {
-        $this->storageSize = $storageSize;
-
-        return $this;
-    }
-
-    /**
-     * Get storageSize
-     *
-     * @return string
-     */
-    public function getStorageSize()
-    {
-        return $this->storageSize;
     }
 
     /**
@@ -347,37 +272,27 @@ class Sale
     }
 
     /**
-     * Add imei
+     * Set state
      *
-     * @param \AppBundle\Entity\Imei $imei
+     * @param \AppBundle\Entity\State $state
      *
      * @return Sale
      */
-    public function addImei(\AppBundle\Entity\Imei $imei)
+    public function setState(\AppBundle\Entity\State $state)
     {
-        $this->imeis[] = $imei;
+        $this->state = $state;
 
         return $this;
     }
 
     /**
-     * Remove imei
+     * Get state
      *
-     * @param \AppBundle\Entity\Imei $imei
+     * @return \AppBundle\Entity\State
      */
-    public function removeImei(\AppBundle\Entity\Imei $imei)
+    public function getState()
     {
-        $this->imeis->removeElement($imei);
-    }
-
-    /**
-     * Get imeis
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImeis()
-    {
-        return $this->imeis;
+        return $this->state;
     }
 
     /**
@@ -426,30 +341,6 @@ class Sale
     public function getSeller()
     {
         return $this->seller;
-    }
-
-    /**
-     * Set state
-     *
-     * @param \AppBundle\Entity\State $state
-     *
-     * @return Sale
-     */
-    public function setState(\AppBundle\Entity\State $state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return \AppBundle\Entity\State
-     */
-    public function getState()
-    {
-        return $this->state;
     }
 
     /**

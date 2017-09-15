@@ -69,8 +69,16 @@
                                         </ul>
                                     </li>
 
-                                    <li {% if nav == "reparaciones" %}class="selected"{% endif %}>
-                                        <a href="{{ path('technical-support') }}">Servicio técnico</a>
+                                    <li {% if nav == "reparaciones" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
+                                        <a>Reparaciones</a>
+                                        <ul>
+                                            <li>
+                                                <a class="sublink" href="{{ path('technical-support') }}">Servicio técnico</a>
+                                            </li>
+                                            <li>
+                                                <a class="sublink" href="{{ path('repair-query') }}">Consulta de estado de reparación</a>
+                                            </li>
+                                        </ul>
                                     </li>
 
                                     <li {% if nav == "ventas" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
@@ -150,7 +158,11 @@
                             <a href="{{ path('index') }}">Inicio</a>
                         </li>
                         <li>
-                            <a href="{{ path('technical-support') }}">Reparaciones</a>
+                            <a>Reparaciones</a>
+                            <ul class="no-bullet">
+                                <li><a href="{{ path('technical-support') }}">Servicio técnico</a></li>
+                                <li><a href="{{ path('repair-query') }}">Consulta de reparación</a></li>
+                            </ul>
                         </li>
                         <li class="no-bullet">
                             <a>Cursos</a>

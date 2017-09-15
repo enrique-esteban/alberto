@@ -5,29 +5,30 @@ easy_admin:
             password_encoding: { algorithm: 'bcrypt', cost: 4 }
             list:
                 title: 'Ventas'
-                sort: [ 'device', 'ASC' ]
-                fields: ['code', 'device', 'color', 'storageSize', 'category',  { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
+                sort: [ 'saleDate', 'ASC' ]
+                fields: ['code', 'device', 'category', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
             show:
-                fields: ['id', 'code', 'device', 'color', 'storageSize', 'category', 'imeis', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
+                fields: ['id', 'code', 'device', 'device.color', 'device.storageSize', 'category', 'device.imeiPrimary', 'device.imeiSecondary', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
             form:
                 fields:
-                    - { type: 'group', label: 'Code', icon: 'barcode', css_class: 'col-sm-12' }
+                    - { type: 'group', label: 'Code', icon: 'barcode', css_class: 'col-sm-4' }
                     - { property: 'code', help: 'Código alfanumérico de 15 dígitos max., si no se especifica es auto generado', css_class: 'large', type_options: { required: false } }
 
-                    - { type: 'group', label: 'Device info', icon: 'mobile', css_class: 'col-sm-7' }
-                    - { type: 'divider' }
-                    - { property: 'device' }
-                    - { property: 'color' }
-                    - { property: 'storageSize' }
-                    - { property: 'category' }
-                    - { property: 'imeis', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ImeiType', by_reference: false, required: true } }
-
-                    - { type: 'group', label: 'Sale info', icon: 'credit-card', css_class: 'col-sm-5' }
+                    - { type: 'group', label: 'User info', icon: 'users', css_class: 'col-sm-4' }
                     - { property: 'client', }
                     - { property: 'seller' }
+
+                    - { type: 'group', label: 'Device', icon: 'mobile', css_class: 'col-sm-4' }
+                    - { property: 'device' }
+                    - { property: 'category' }
                     - { property: 'state' }
-                    - { type: 'divider' }
+                    #- { property: 'imeis', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ImeiType', by_reference: false, required: true } }
+
+
+                    - { type: 'group', label: 'Sale', icon: 'credit-card', css_class: 'col-sm-6' }
                     - { property: 'price', type: 'money', type_options: { currency: 'EUR' } }
                     - { property: 'advance', type: 'money', type_options: { currency: 'EUR' } }
                     - { property: 'discount', type: 'money', type_options: { currency: 'EUR' } }
+
+                    - { type: 'group', label: 'Date', icon: 'calendar', css_class: 'col-sm-6' }
                     - { property: 'saleDate' }

@@ -24,24 +24,39 @@ class Device
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
-     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Phone", inversedBy="devices")
+     * @ORM\JoinColumn(name="phone_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $brand;
+    private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="model", type="string", length=255)
+     * @ORM\Column(name="color", type="string", length=100)
      */
-    private $model;
+    private $color;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="web_page", type="string", length=255, nullable=true)
+     * @ORM\Column(name="storage_size", type="string", length=100)
      */
-    private $webPage;
+    private $storageSize;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imei_primary", type="string", length=20, unique=true)
+     */
+    private $imeiPrimary;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imei_secondary", type="string", length=20, nullable=true, unique=true)
+     */
+    private $imeiSecondary;
+
 
     /**
      * One Product has Many Features.
@@ -54,6 +69,7 @@ class Device
      * @ORM\OneToMany(targetEntity="Sale", mappedBy="device")
      */
     private $sales;
+
     /**
      * Constructor
      */
@@ -74,15 +90,111 @@ class Device
     }
 
     /**
-     * Set model
+     * Set color
      *
-     * @param string $model
+     * @param string $color
      *
      * @return Device
      */
-    public function setModel($model)
+    public function setColor($color)
     {
-        $this->model = $model;
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set storageSize
+     *
+     * @param string $storageSize
+     *
+     * @return Device
+     */
+    public function setStorageSize($storageSize)
+    {
+        $this->storageSize = $storageSize;
+
+        return $this;
+    }
+
+    /**
+     * Get storageSize
+     *
+     * @return string
+     */
+    public function getStorageSize()
+    {
+        return $this->storageSize;
+    }
+
+    /**
+     * Set imeiPrimary
+     *
+     * @param string $imeiPrimary
+     *
+     * @return Device
+     */
+    public function setImeiPrimary($imeiPrimary)
+    {
+        $this->imeiPrimary = $imeiPrimary;
+
+        return $this;
+    }
+
+    /**
+     * Get imeiPrimary
+     *
+     * @return string
+     */
+    public function getImeiPrimary()
+    {
+        return $this->imeiPrimary;
+    }
+
+    /**
+     * Set imeiSecondary
+     *
+     * @param string $imeiSecondary
+     *
+     * @return Device
+     */
+    public function setImeiSecondary($imeiSecondary)
+    {
+        $this->imeiSecondary = $imeiSecondary;
+
+        return $this;
+    }
+
+    /**
+     * Get imeiSecondary
+     *
+     * @return string
+     */
+    public function getImeiSecondary()
+    {
+        return $this->imeiSecondary;
+    }
+
+    /**
+     * Set model
+     *
+     * @param \AppBundle\Entity\Phone $phone
+     *
+     * @return Device
+     */
+    public function setPhone(\AppBundle\Entity\Phone $phone = null)
+    {
+        $this->phone = $phone;
 
         return $this;
     }
@@ -90,59 +202,11 @@ class Device
     /**
      * Get model
      *
-     * @return string
+     * @return \AppBundle\Entity\Phone
      */
-    public function getModel()
+    public function getPhone()
     {
-        return $this->model;
-    }
-
-    /**
-     * Set webPage
-     *
-     * @param string $webPage
-     *
-     * @return Device
-     */
-    public function setWebPage($webPage)
-    {
-        $this->webPage = $webPage;
-
-        return $this;
-    }
-
-    /**
-     * Get webPage
-     *
-     * @return string
-     */
-    public function getWebPage()
-    {
-        return $this->webPage;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \AppBundle\Entity\Brand $brand
-     *
-     * @return Device
-     */
-    public function setBrand(\AppBundle\Entity\Brand $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \AppBundle\Entity\Brand
-     */
-    public function getBrand()
-    {
-        return $this->brand;
+        return $this->phone;
     }
 
     /**
@@ -213,8 +277,11 @@ class Device
         return $this->sales;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
-        return $this->getBrand().' '.$this->getModel();
+        return (string)$this->getPhone().' <'.$this->getImeiPrimary().'>';
     }
 }

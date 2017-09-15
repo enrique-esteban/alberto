@@ -33,7 +33,8 @@ class ContactMailType extends AbstractType
                 'label' => 'Mensaje' )
             )
             ->add('submit', @TYPE\SubmitType::class, array(
-                'label' => 'Enviar'
+                'label' => 'Enviar',
+                'disabled' => true
             ))
         ;
     }

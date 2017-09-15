@@ -19,6 +19,14 @@
   <loc>http://www.expertosit.es/servicio-tecnico/</loc>
 </url>
 <url>
+  <loc>http://www.expertosit.es/consulta-de-reparacion/</loc>
+</url>
+{% for repair in repairs %}
+<url>
+  <loc>http://www.expertosit.es/reparacion/{{ repair.code }}/</loc>
+</url>
+{% endfor %}
+<url>
   <loc>http://www.expertosit.es/venta/repuestos-y-consumibles/</loc>
 </url>
 <url>
@@ -35,5 +43,14 @@
 </url>
 <url>
   <loc>http://www.expertosit.es/sitemap/xml</loc>
+</url>
+<url>
+  <loc>http://www.expertosit.es/login</loc>
+</url>
+<url>
+  <loc>http://www.expertosit.es/login_check</loc>
+</url>
+<url>
+  <loc>http://www.expertosit.es/logout</loc>
 </url>
 </urlset>

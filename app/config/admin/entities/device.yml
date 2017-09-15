@@ -4,15 +4,17 @@ easy_admin:
             class: AppBundle\Entity\Device
             list:
                 title: 'Dispositivos'
-                sort: [ 'brand', 'ASC' ]
-                fields: [ { property: 'brand.image', type: 'image', base_path: '%vich_product_images%', label: 'Imagen' }, 'brand', 'model', { property: 'webPage', type: 'url' } ]
+                max_results: 10
+                fields: [ 'phone', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary' ]
             show:
-                fields: [ 'id', { property: 'brand.image', type: 'image', base_path: '%vich_product_images%', label: 'Imagen' }, 'brand', 'model', { property: 'webPage', type: 'url' }, 'repairs', 'sales' ]
+                fields: [ 'id', 'phone', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary', 'repairs', 'sales'  ]
             form:
                 fields:
-                    - { type: 'group', label: 'Device Information', icon: 'mobile', css_class: 'col-sm-12' }
-                    - { property: 'brand' }
-                    - { property: 'model' }
+                    - { type: 'group', label: 'Device Information', icon: 'mobile', css_class: 'col-sm-6' }
+                    - { property: 'phone' }
+                    - { property: 'color' }
+                    - { property: 'storageSize' }
 
-                    - { type: 'group', label: 'Web Page', icon: 'external-link', css_class: 'col-sm-12' }
-                    - { property: 'webPage', type: 'url' }
+                    - { type: 'group', label: 'IMEI', icon: 'barcode', css_class: 'col-sm-6' }
+                    - { property: 'imeiPrimary' }
+                    - { property: 'imeiSecondary' }

@@ -55,7 +55,7 @@ class LoadBrands extends AbstractFixture implements OrderedFixtureInterface
         // Insertamos otra marca:
         $brand = new Brand();
 
-        $brand->setName('Honer');
+        $brand->setName('Honor');
         $brand->setImage('honor.jpg');
 
         $this->addReference('brand-honor', $brand);

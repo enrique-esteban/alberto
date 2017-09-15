@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} !^(www)\.
+    RewriteRule ^(.*?)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+    
+    # Explicitly disable rewriting for front controllers
+    RewriteRule ^app_dev.php - [L]
+    RewriteRule ^app.php - [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Change below before deploying to production
+    RewriteRule ^(.*)$ /app.php [QSA,L]
+    #RewriteRule ^(.*)$ /app_dev.php [QSA,L]
+
+</IfModule>

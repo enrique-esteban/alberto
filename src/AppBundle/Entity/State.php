@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="State")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\StateRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks()
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
@@ -232,5 +234,22 @@ class State
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * HasLifecycleCallbacks: Se elimina el formato de CKEditor antes de guardarla en la base de datos
+     *
+     * @ORM\PreFlush()
+     */
+    public function editDescription()
+    {
+        // Quitamos las etiquetas HTML:
+        $this->description = strip_tags($this->description);
+
+        // Decodificamos también las caracteres especiales de HTML:
+        $this->description = html_entity_decode($this->description);
+
+        // Eliminamos los posibles espacios en blanco que hayan quedado
+        $this->description = trim($this->description);
     }
 }

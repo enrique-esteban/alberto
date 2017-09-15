@@ -35,9 +35,9 @@ class Brand
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Device", mappedBy="brand")
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="brand")
      */
-    private $models;
+    private $phones;
 
     /**
      * It only stores the name of the image associated with the product.
@@ -67,7 +67,7 @@ class Brand
      */
     public function __construct()
     {
-        $this->models = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -135,14 +135,14 @@ class Brand
     *
     * @return Brand
     */
-    public function setImageFile(File $image = null)
+    public function setImageFile(File $imageFile = null)
     {
-        $this->imageFile = $image;
+        $this->imageFile = $imageFile;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
+        if ($imageFile) {
             $this->updatedAt = new \DateTime('now');
         }
 
@@ -193,7 +193,7 @@ class Brand
      */
     public function addModel(\AppBundle\Entity\Device $model)
     {
-        $this->models[] = $model;
+        $this->phones[] = $model;
 
         return $this;
     }
@@ -205,7 +205,7 @@ class Brand
      */
     public function removeModel(\AppBundle\Entity\Device $model)
     {
-        $this->models->removeElement($model);
+        $this->phones->removeElement($model);
     }
 
     /**
@@ -213,9 +213,9 @@ class Brand
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getModels()
+    public function getPhones()
     {
-        return $this->models;
+        return $this->phones;
     }
 
     /**

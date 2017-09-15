@@ -1,0 +1,67 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title 'Consulta de la reparación' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Reparaciones</a></li>
+                    <li class="current-page"><a href="{{ path('repair-query') }}">Consulta de reparación</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="little">Consulta de reparación</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for message in app.session.flashBag().get('error') %}
+        <div class="twelve column">
+                <div class="alert error">
+                    <i class="icon-warning-sign"></i>{{ message|raw }}
+                </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="six column">
+        <h4 class="smallmargin-bottom">Consulta el estado de tu reparación:</h4>
+
+        <hr class="margin-top2"/>
+        <div id="contact-form-area">
+            <!-- Contact Form Start //-->
+            {% form_theme form 'form/form.html.twig' %}
+
+            {{ form_start(form, { 'attr': { 'id': 'contactform' } }) }}
+            <fieldset>
+                {{ form_row(form.code) }}
+                {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+            </fieldset>
+            <!-- Contact Form End //-->
+        </div>
+    </div>
+
+    <div class="six column">
+        <div class="note">
+            <h4>Ayuda:</h4>
+            <p>Tienes que introducir un código de reparación válido, el cual será suministrado por alguno de nuestros empleados en el momento de la tramitación.</p>
+            <p>En caso de que no disponga de dicho código o lo haya olvidado puede ponerse en contacto con ExpertosIT a través de los siguientes datos:</p>
+            <address>
+                <i class="icon-phonealt"></i>912 546 050<br/>
+                <i class="icon-emailalt"></i>info@expertosit.es
+            </address>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

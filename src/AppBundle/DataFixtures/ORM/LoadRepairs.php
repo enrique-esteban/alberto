@@ -38,7 +38,7 @@ class LoadRepairs extends AbstractFixture implements OrderedFixtureInterface
 
         $repair->setClient($this->getReference('client-enrique'));
         $repair->setCode('2B2B2B2B2B');
-        $repair->setDevice($this->getReference('device-iphone-7'));
+        $repair->setDevice($this->getReference('device-iphone-7-2'));
         $repair->setRepairAssigned($this->getReference('employee-florin'));
         $repair->setDescription('Pantalla Rota');
         $repair->setState($this->getReference('state-en-progreso'));
@@ -123,6 +123,6 @@ class LoadRepairs extends AbstractFixture implements OrderedFixtureInterface
 
     public function getOrder()
     {
-        return 30;
+        return 40;
     }
 }

@@ -380,7 +380,7 @@ class Repair
      */
     public function __toString()
     {
-        return $this->getCode().' - '.$this->getClient().' - '.$this->getDevice();
+        return $this->getClient().' - '.$this->getDevice().' - <'.$this->getCode().'>';
     }
 
     /**
@@ -392,7 +392,7 @@ class Repair
     {
         $date = new \DateTime('now');
 
-        // Establecemos la fecha de inicio, si no existe ya
+        // Establecemos la fecha de inicio
         $this->startDate = $date;
 
         // Creamos un código de compra usando la hora Unix actual, en caso de que no haya sido establecido manualmente

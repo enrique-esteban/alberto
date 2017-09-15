@@ -22,16 +22,22 @@
 
 {% block content %}
     <div class="row">
-        {% if message is defined %}
+        {% for message in app.session.flashBag().get('success') %}
             <div class="twelve column">
-                {% if message.check == true %}
-                    <div class="alert success"><i class="icon-ok"></i>El mensage de <strong>{{ message.email}}</strong> ha sido enviado correctamente.</div>
-                {% else %}
-                    <div class="alert error"><i class="icon-ok"></i>No se ha podido enviar el mensage de <strong>{{ message.email}}</strong></div>
-                    </span>
-                {% endif %}
+                <div class="alert success">
+                    <i class="icon-ok"></i>{{ message|raw }}
+                </div>
             </div>
-        {% endif %}
+        {% endfor %}
+
+        {% for message in app.session.flashBag().get('error') %}
+            <div class="twelve column">
+
+                <div class="alert error">
+                    <i class="icon-warning-sign"></i>{{ message|raw }}
+                </div>
+            </div>
+        {% endfor %}
 
         <div class="twelve column">
             <div id="map"></div>

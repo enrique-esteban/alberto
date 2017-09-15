@@ -24,6 +24,7 @@ class Employee extends BaseUser
      */
     protected $id;
 
+
     /**
      * @var string
      *
@@ -38,12 +39,6 @@ class Employee extends BaseUser
      */
     protected $lastName;
 
-//    /**
-//     * @var string
-//     *
-//     * @ORM\Column(name="email", type="string", length=255, unique=true)
-//     */
-//    protected $email;
 
     /**
      * @var string
@@ -77,7 +72,14 @@ class Employee extends BaseUser
      * @ORM\OneToMany(targetEntity="Sale", mappedBy="seller")
      */
     protected $sales;
-    
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Set name

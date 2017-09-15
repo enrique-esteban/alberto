@@ -1,0 +1,72 @@
+{% extends 'frontend.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title 'Formulario de Login' %}
+
+{% block sub_header %}
+<!-- pagetitle start here -->
+<section id="pagetitle-container">
+    <div class="row">
+        <div class="five column breadcrumb">
+            <ul>
+                <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                <li class="current-page"><a href="{{ path('contact') }}">Login</a></li>
+            </ul>
+        </div>
+        <div class="seven column pagetitle">
+            <h1>Login</h1>
+        </div>
+    </div>
+</section>
+<!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Formulario de Login</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six column offset-by-three">
+            <div class="alert">
+            <form action="{{ path("fos_user_security_check") }}" method="post" id="loginform">
+                <fieldset>
+                    {% if error %}
+                        <div class="alert error">
+                            <i class="icon-warning-sign"></i>
+                            {{ 'errors'|transchoice(1, domain = 'EasyAdminBundle') }}
+                            <strong>
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </strong>
+                        </div>
+                    {% endif %}
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                    <label for="username">{{ 'security.login.username'|trans }}<em>*</em></label>
+                    <input class="textfield" type="text" id="username" name="_username" required="required" />
+
+                    <label for="password">{{ 'security.login.password'|trans }}<em>*</em></label>
+                    <input class="textfield" type="password" id="password" name="_password" required="required" />
+
+                    <div class="checkbox-label">
+                        <div class="tag">{{ 'security.login.remember_me'|trans }}</div>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="checkbox" class="regular-checkbox" checked /><label for="checkbox"></label>
+                    </div>
+
+                    {#<div class="checkbox">#}
+                        {#<input type="checkbox" value="1" id="checkboxInput" name="" />#}
+                        {#<label for="checkboxInput"></label>#}
+                    {#</div>#}
+                    <button type="submit" class="btn btn-primary" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+                </fieldset>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

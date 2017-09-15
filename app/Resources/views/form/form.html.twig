@@ -17,5 +17,5 @@
 
 {% block submit_row %}
 	<label for="{{ id }}" class="required">&nbsp;</label>
-	<button type="submit"  id="{{ id }}" name="{{ full_name}}" class="buttoncontact" disabled="true">{{ label }}</button>
+	<button type="submit"  id="{{ id }}" name="{{ full_name}}" class="buttoncontact" {{ block('button_attributes') }}>{{ label }}</button>
 {% endblock submit_row %}

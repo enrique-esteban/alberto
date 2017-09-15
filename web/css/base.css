@@ -85,6 +85,7 @@ line-height: 22px;
 sup {bottom:1px;}
 sub {top:1px;font-size:.6em;}
 em {font-style:italic;}
+strong.flash {font-weight: bold;  line-height: inherit;}/*Modificado*/
 strong.green {font-weight: bold;  line-height: inherit; color: #9eaf6b; } /*Modificado*/
 small {font-size:80%;}
 
@@ -106,6 +107,11 @@ top:-1px;
 }
 
 .highlight {padding:0px 6px 4px 6px; background:#97b830; color:#fff; vertical-align:baseline; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;}
+.highlight.blue { background: #0e7ac3; } /*Modificado*/
+.highlight.green { background: #94ba65; } /*Modificado*/
+.highlight.grey { background: #5e5e5e; } /*Modificado*/
+.highlight.orange { background: #ee7e3f; } /*Modificado*/
+.highlight.red { background: #e94e4e; } /*Modificado*/
 .smallmargin-bottom {margin-bottom:4px;}
 .smallmargin-bottom2 {margin-bottom:-5px;}
 .margin-bottom {margin-bottom: 8px;}

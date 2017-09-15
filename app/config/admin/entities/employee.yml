@@ -9,18 +9,23 @@ easy_admin:
                 fields: ['enabled', 'username', 'email', 'completeName', 'address',  { property: 'telephone', type: 'tel' }, 'type', 'roles' ]
             show:
                 fields: ['id', 'username', 'email', 'name', 'lastName', 'address', { property: 'telephone', type: 'tel' }, 'type', 'roles', 'enabled', 'repairs', 'sales' ]
+            new:
+                fields:
+                    - { property: 'plainPassword', type: 'text', type_options: { required: false } }
             form:
                 fields:
                     - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-6' }
                     - { property: 'username' }
                     - { property: 'plainPassword', type: 'text', type_options: { required: false } }
                     - { property: 'enabled' }
+
                     - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
                     - { property: 'name' }
                     - { property: 'lastName' }
                     - { property: 'email', type: 'email' }
                     - { property: 'telephone', type: 'number' }
                     - { property: 'address' }
+
                     - { type: 'group', label: 'Other Information', icon: 'briefcase', css_class: 'col-sm-6' }
                     - { property: 'type'}
                     - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }

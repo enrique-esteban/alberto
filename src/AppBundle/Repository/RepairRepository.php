@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class RepairRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOneRepairDeviceByCode ($slug)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            'SELECT r, d, p, b
+             FROM AppBundle:Repair r
+             JOIN r.device d
+             JOIN d.phone p
+             JOIN p.brand b
+             WHERE r.code = :slug'
+        )->setParameters(array(
+            'slug' => $slug
+        ));
+
+        return $query->getOneOrNullResult();
+    }
 }
