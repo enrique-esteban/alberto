@@ -53,6 +53,13 @@ class Sale
     private $state;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=100)
+     */
+    private $type;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="sales")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      */
@@ -71,6 +78,20 @@ class Sale
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price_financed", type="float", nullable=true)
+     */
+    private $priceFinanced;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="opening_costs", type="float", nullable=true)
+     */
+    private $openingCosts;
 
     /**
      * @var float
@@ -173,6 +194,38 @@ class Sale
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPriceFinanced()
+    {
+        return $this->priceFinanced;
+    }
+
+    /**
+     * @param float $priceFinanced
+     */
+    public function setPriceFinanced($priceFinanced)
+    {
+        $this->priceFinanced = $priceFinanced;
+    }
+
+    /**
+     * @return float
+     */
+    public function getOpeningCosts()
+    {
+        return $this->openingCosts;
+    }
+
+    /**
+     * @param float $openingCosts
+     */
+    public function setOpeningCosts($openingCosts)
+    {
+        $this->openingCosts = $openingCosts;
     }
 
     /**
@@ -293,6 +346,22 @@ class Sale
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**

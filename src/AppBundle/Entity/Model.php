@@ -3,16 +3,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Model
  *
- * @ORM\Table(name="Phone")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PhoneRepository")
+ * @ORM\Table(name="Model")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ModelRepository")
+ *
+ * @Vich\Uploadable
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
-class Phone
+class Model
 {
     /**
      * @var int
@@ -24,7 +28,7 @@ class Phone
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="phones")
+     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
      * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $brand;
@@ -37,6 +41,30 @@ class Phone
     private $name;
 
     /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="brand_image", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * Entidad creada para consistir el event listeners, de lo contrario, no sera llamado
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="web_page", type="string", length=255, nullable=true)
@@ -45,9 +73,10 @@ class Phone
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Device", mappedBy="phone")
+     * @ORM\OneToMany(targetEntity="Device", mappedBy="model")
      */
     private $devices;
+
     /**
      * Constructor
      */
@@ -71,7 +100,7 @@ class Phone
      *
      * @param string $name
      *
-     * @return Phone
+     * @return Model
      */
     public function setName($name)
     {
@@ -95,7 +124,7 @@ class Phone
      *
      * @param string $webPage
      *
-     * @return Phone
+     * @return Model
      */
     public function setWebPage($webPage)
     {
@@ -119,7 +148,7 @@ class Phone
      *
      * @param \AppBundle\Entity\Brand $brand
      *
-     * @return Phone
+     * @return Model
      */
     public function setBrand(\AppBundle\Entity\Brand $brand = null)
     {
@@ -139,11 +168,91 @@ class Phone
     }
 
     /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Brand
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /*
+    * Set $this->imageFile
+    *
+    * @param File|UploadedFile $image
+    *
+    * @return Brand
+    */
+    public function setImageFile(File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($imageFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+
+        return $this;
+    }
+
+    /**
+     * Get imageFile
+     *
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Brand
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * Add device
      *
      * @param \AppBundle\Entity\Device $device
      *
-     * @return Phone
+     * @return Model
      */
     public function addDevice(\AppBundle\Entity\Device $device)
     {

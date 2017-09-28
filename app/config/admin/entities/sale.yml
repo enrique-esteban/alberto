@@ -6,29 +6,32 @@ easy_admin:
             list:
                 title: 'Ventas'
                 sort: [ 'saleDate', 'ASC' ]
-                fields: ['code', 'device', 'category', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
+                fields: ['code', 'device', 'category', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'priceFinanced', 'openingCosts', 'advance', 'discount', 'saleDate' ]
             show:
-                fields: ['id', 'code', 'device', 'device.color', 'device.storageSize', 'category', 'device.imeiPrimary', 'device.imeiSecondary', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'advance', 'discount', 'saleDate' ]
+                fields: ['id', 'code', 'device', 'device.color', 'device.storageSize', 'category', 'device.imeiPrimary', 'device.imeiSecondary', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'client', 'seller', 'price', 'priceFinanced', 'openingCosts', 'advance', 'discount', 'saleDate' ]
             form:
                 fields:
-                    - { type: 'group', label: 'Code', icon: 'barcode', css_class: 'col-sm-4' }
+                    - { type: 'group', label: 'Code', icon: 'barcode', css_class: 'col-sm-6' }
                     - { property: 'code', help: 'Código alfanumérico de 15 dígitos max., si no se especifica es auto generado', css_class: 'large', type_options: { required: false } }
 
-                    - { type: 'group', label: 'User info', icon: 'users', css_class: 'col-sm-4' }
+                    - { type: 'group', label: 'User info', icon: 'users', css_class: 'col-sm-6' }
                     - { property: 'client', }
                     - { property: 'seller' }
 
                     - { type: 'group', label: 'Device', icon: 'mobile', css_class: 'col-sm-4' }
                     - { property: 'device' }
+                    - { property: 'type', type: 'choice', type_options: { multiple: true, choices: { 'Reacondicionado': 'Reacondicionado', 'Nuevos': 'Nuevo'} } }
                     - { property: 'category' }
                     - { property: 'state' }
                     #- { property: 'imeis', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ImeiType', by_reference: false, required: true } }
 
 
-                    - { type: 'group', label: 'Sale', icon: 'credit-card', css_class: 'col-sm-6' }
+                    - { type: 'group', label: 'Sale', icon: 'credit-card', css_class: 'col-sm-4' }
                     - { property: 'price', type: 'money', type_options: { currency: 'EUR' } }
+                    - { property: 'priceFinanced', type: 'money', type_options: { currency: 'EUR' } }
+                    - { property: 'openingCosts', type: 'money', type_options: { currency: 'EUR' } }
                     - { property: 'advance', type: 'money', type_options: { currency: 'EUR' } }
                     - { property: 'discount', type: 'money', type_options: { currency: 'EUR' } }
 
-                    - { type: 'group', label: 'Date', icon: 'calendar', css_class: 'col-sm-6' }
+                    - { type: 'group', label: 'Date', icon: 'calendar', css_class: 'col-sm-4' }
                     - { property: 'saleDate' }

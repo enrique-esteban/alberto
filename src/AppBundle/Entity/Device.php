@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Device
  *
@@ -24,24 +25,53 @@ class Device
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Phone", inversedBy="devices")
+     * @ORM\ManyToOne(targetEntity="Model", inversedBy="devices")
      * @ORM\JoinColumn(name="phone_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $phone;
+    private $model;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=100)
+     * @ORM\Column(name="screen", type="string", length=100, nullable=true)
+     */
+    private $screen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cpu", type="string", length=100, nullable=true)
+     */
+    private $cpu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ram", type="string", length=100, nullable=true)
+     */
+    private $ram;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="camera", type="string", length=100, nullable=true)
+     */
+    private $camera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=100, nullable=true)
      */
     private $color;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="storage_size", type="string", length=100)
+     * @ORM\Column(name="storage_size", type="string", length=100, nullable=true)
      */
     private $storageSize;
+
 
     /**
      * @var string
@@ -57,6 +87,11 @@ class Device
      */
     private $imeiSecondary;
 
+//    /**
+//     * One Product has Many Features.
+//     * @ORM\OneToMany(targetEntity="Imei", mappedBy="device")
+//     */
+//    private $imeis;
 
     /**
      * One Product has Many Features.
@@ -77,6 +112,7 @@ class Device
     {
         $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->imeis = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -138,6 +174,70 @@ class Device
     }
 
     /**
+     * @return string
+     */
+    public function getScreen()
+    {
+        return $this->screen;
+    }
+
+    /**
+     * @param string $screen
+     */
+    public function setScreen($screen)
+    {
+        $this->screen = $screen;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCpu()
+    {
+        return $this->cpu;
+    }
+
+    /**
+     * @param string $cpu
+     */
+    public function setCpu($cpu)
+    {
+        $this->cpu = $cpu;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRam()
+    {
+        return $this->ram;
+    }
+
+    /**
+     * @param string $ram
+     */
+    public function setRam($ram)
+    {
+        $this->ram = $ram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCamera()
+    {
+        return $this->camera;
+    }
+
+    /**
+     * @param string $camera
+     */
+    public function setCamera($camera)
+    {
+        $this->camera = $camera;
+    }
+
+    /**
      * Set imeiPrimary
      *
      * @param string $imeiPrimary
@@ -188,13 +288,13 @@ class Device
     /**
      * Set model
      *
-     * @param \AppBundle\Entity\Phone $phone
+     * @param \AppBundle\Entity\Model $model
      *
      * @return Device
      */
-    public function setPhone(\AppBundle\Entity\Phone $phone = null)
+    public function setModel(\AppBundle\Entity\Model $model = null)
     {
-        $this->phone = $phone;
+        $this->model = $model;
 
         return $this;
     }
@@ -202,11 +302,11 @@ class Device
     /**
      * Get model
      *
-     * @return \AppBundle\Entity\Phone
+     * @return \AppBundle\Entity\Model
      */
-    public function getPhone()
+    public function getModel()
     {
-        return $this->phone;
+        return $this->model;
     }
 
     /**
@@ -277,11 +377,45 @@ class Device
         return $this->sales;
     }
 
+//    /**
+//     * Add imei
+//     *
+//     * @param \AppBundle\Entity\Imei $imei
+//     *
+//     * @return Device
+//     */
+//    public function addImei(\AppBundle\Entity\Imei $imei)
+//    {
+//        $this->imeis[] = $imei;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove imei
+//     *
+//     * @param \AppBundle\Entity\Imei $imei
+//     */
+//    public function removeImei(\AppBundle\Entity\Imei $imei)
+//    {
+//        $this->imeis->removeElement($imei);
+//    }
+//
+//    /**
+//     * Get imeis
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getImeis()
+//    {
+//        return $this->imeis;
+//    }
+
     /**
      * @return mixed
      */
     public function __toString()
     {
-        return (string)$this->getPhone().' <'.$this->getImeiPrimary().'>';
+        return (string)$this->getModel().' <'.$this->getImeiPrimary().'>';
     }
 }

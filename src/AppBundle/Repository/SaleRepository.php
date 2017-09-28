@@ -12,4 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class SaleRepository extends EntityRepository
 {
+    public function findDevicesToSaleByType ($type)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            "SELECT s, d, m, b, t
+             FROM AppBundle:Sale s
+             JOIN s.device d
+             JOIN d.model m
+             JOIN m.brand b
+             JOIN s.state t
+             WHERE s.type = :type AND t.name = 'En venta'"
+        )->setParameters(array(
+            'type' => $type,
+        ));
+
+        return $query->getArrayResult();
+    }
 }

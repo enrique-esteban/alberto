@@ -155,26 +155,66 @@ class SiteController extends Controller
      * @param $slug string
      * @return Response
      */
-    public function courseAction($slug)
+    public function curseAction($slug)
     {
         return $this->render('curso-'.sprintf('%s.html.twig', $slug), array('nav' => 'cursos' ));
     }
 
-    /** 
-     * Muestra las páginas de ventas
-     * 
+    /**
+     * Muestra las páginas de ventas -> otros
+     *
      * @Route(
-     *     "/venta/{slug}/",
-     *     requirements={ "slug"="recreativas-y-emulacion|repuestos-y-consumibles|desarrollo-web" },
-     *     name="sales",
+     *     "/venta/moviles/{slug}/",
+     *     requirements={ "slug"="reacondicionados|nuevos" },
+     *     name="sales-smartphone",
      * )
      *
      * @param $slug string
      * @return Response
      */
-    public function saleAction($slug)
+    public function saleSmartphoneAction($slug)
     {
-        return $this->render('venta-'.sprintf('%s.html.twig', $slug), array('nav' => 'ventas' ));
+        switch ($slug) {
+            case "reacondicionados":
+                $type = 'Reacondicionado';
+                break;
+            case "nuevos":
+                $type = 'Nuevo';
+                break;
+//            case "otros":
+//                $type = 'otro';
+//                break;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $sales = $em->getRepository('AppBundle:Sale')->findDevicesToSaleByType($type);
+
+        if (!$sales) {
+            $slug = 'error';
+        }
+
+        return $this->render('venta-smartphone-'.sprintf('%s.html.twig', $slug), array(
+            'nav' => 'smartphone',
+            'sales' => $sales,
+            'type' => $type,
+        ));
+    }
+
+    /** 
+     * Muestra las páginas de ventas -> otros
+     * 
+     * @Route(
+     *     "/venta/otros/{slug}/",
+     *     requirements={ "slug"="recreativas-y-emulacion|repuestos-y-consumibles|desarrollo-web" },
+     *     name="sales-others",
+     * )
+     *
+     * @param $slug string
+     * @return Response
+     */
+    public function saleOtherAction($slug)
+    {
+        return $this->render('venta-'.sprintf('%s.html.twig', $slug), array('nav' => 'otras-ventas' ));
     }
 
     /** 

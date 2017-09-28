@@ -7,8 +7,8 @@
 ///**
 // * Imei (se añadirá más adelante a producción)
 // *
-//// * @ORM\Table(name="Imei")
-//// * @ORM\Entity(repositoryClass="AppBundle\Repository\ImeiRepository")
+// * @ORM\Table(name="Imei")
+// * @ORM\Entity(repositoryClass="AppBundle\Repository\ImeiRepository")
 // *
 // * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
 // */
@@ -32,10 +32,10 @@
 //
 //    /**
 //     * Many Features have One Product.
-//     * @ORM\ManyToOne(targetEntity="Sale", inversedBy="imeis")
-//     * @ORM\JoinColumn(name="sale_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+//     * @ORM\ManyToOne(targetEntity="Device", inversedBy="imeis")
+//     * @ORM\JoinColumn(name="device_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
 //     */
-//    private $sale;
+//    private $device;
 //
 //    /**
 //     * Get id
@@ -72,27 +72,19 @@
 //    }
 //
 //    /**
-//     * Set sale
-//     *
-//     * @param \AppBundle\Entity\Sale $sale
-//     *
-//     * @return Imei
+//     * @return mixed
 //     */
-//    public function setSale(\AppBundle\Entity\Sale $sale)
+//    public function getDevice()
 //    {
-//        $this->sale = $sale;
-//
-//        return $this;
+//        return $this->device;
 //    }
 //
 //    /**
-//     * Get sale
-//     *
-//     * @return \AppBundle\Entity\Sale
+//     * @param mixed $device
 //     */
-//    public function getSale()
+//    public function setDevice($device)
 //    {
-//        return $this->sale;
+//        $this->device = $device;
 //    }
 //
 //    /**

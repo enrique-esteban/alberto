@@ -1,0 +1,128 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title 'Venta de móviles: Más Movil' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li><a>Móviles</a></li>
+                    <li class="current-page"><a href="{{ path('sales-smartphone', { 'slug': 'nuevos'}) }}">Nuevos</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="little">Venta de móviles nuevos</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Venta de móviles nuevos</h2>
+        </div>
+        <div class="twelve column text-center">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        {% for sale in sales %}
+            <div class="six column">
+                <table class="table-green">
+                    <tr>
+                        <th colspan="2">{{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}</th>
+                    </tr>
+                    <tr class="odd">
+                        <td colspan="2">
+                            <div class="lightbox-item smartphone-table">
+                                {% if sale.device.model.image %}
+                                    <img class="center" src="{{ asset(vich_model_images ~ sale.device.model.image) }}" alt="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name}}">
+                                    <div class="lightbox-item-overlay-content">
+                                        <a class="preview fancybox" href="{{ asset(vich_model_images ~ sale.device.model.image) }}" data-fancybox-group="gallery" title="{{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                    </div>
+                                {% else %}
+                                    <img class="center" src="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" alt="Logo de {{ sale.device.model.brand.name }}" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}">
+                                    <div class="lightbox-item-overlay-content">
+                                        <a class="preview fancybox" href="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" data-fancybox-group="gallery" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Pantalla</b></td>
+                        <td>{{ sale.device.screen }}</td>
+                    </tr>
+                    <tr class="odd">
+                        <td><b>Núcleo</b></td>
+                        <td>{{ sale.device.cpu }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Memoria</b></td>
+                        <td>{{ sale.device.ram ~ '/' ~ sale.device.storageSize }}</td>
+                    </tr>
+                    <tr class="odd">
+                        <td><b>Cámara</b></td>
+                        <td>{{ sale.device.camera }}</td>
+                    </tr>
+                    {% if sale.priceFinanced %}
+                        <tr>
+                            <td><b>Precio*</b></td>
+                            <td>{{ sale.price ~ ' €' }}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td><b>Financiado*</b></td>
+                            <td><b>{{ sale.priceFinanced }} €/mes</b>**</td>
+                        </tr>
+                        <tr>
+                            <td><b>Gastos de apertura</b></td>
+                            <td>{{ sale.openingCosts }}€ </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td><b>Precio*</b></td>
+                            <td><b>{{ sale.price ~ ' €' }}</b></td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+            {% if loop.index % 2 == 0 %}
+                </div>
+                <div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="twelve column">
+            <div class="twelve">
+                <p class="text-s">
+                    * Todos los precios de nuestros terminales incluye el Canon Digital marcado por el Real Derecho-ley 12/2017, del 3 de Julio. Precios con impuesto incluido.
+                    <br>
+                    ** TIN 0,00%. TAE 8,33%.
+                </p>
+            </div>
+        </div>
+        <div class="twelve column">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="nine column">
+            <div class="note-folded">
+                <h4>¡Lo quieres y LO SABES!</h4>
+                <p>El dinero ya no es un problema. Elige el móvil que más te guste y fináncialo hasta en 24 meses sin intereses.</p>
+                <p>Páguelo en <span class="text-xxl">24</span> meses a <span class="text-xxl">0%</span> de interés.</p>
+            </div>
+        </div>
+        <div class="three column">
+            <img src="{{ asset(vich_brand_images ~ 'evo-finance.jpg') }}" alt="Logo de Evo Finance" title="Logo de Evo Finance">
+        </div>
+    </div>
+{% endblock %}
+

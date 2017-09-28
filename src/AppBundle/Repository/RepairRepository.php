@@ -15,11 +15,11 @@ class RepairRepository extends \Doctrine\ORM\EntityRepository
         $em = $this->getEntityManager();
 
         $query = $em->createQuery(
-            'SELECT r, d, p, b
+            'SELECT r, d, m, b
              FROM AppBundle:Repair r
              JOIN r.device d
-             JOIN d.phone p
-             JOIN p.brand b
+             JOIN d.model m
+             JOIN m.brand b
              WHERE r.code = :slug'
         )->setParameters(array(
             'slug' => $slug

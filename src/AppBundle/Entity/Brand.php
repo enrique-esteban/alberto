@@ -35,9 +35,9 @@ class Brand
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Phone", mappedBy="brand")
+     * @ORM\OneToMany(targetEntity="Model", mappedBy="brand")
      */
-    private $phones;
+    private $models;
 
     /**
      * It only stores the name of the image associated with the product.
@@ -56,18 +56,19 @@ class Brand
     private $imageFile;
 
     /**
-     * Entidad creada para consistir el event listeners, de lo contrario, no sera llamado
+     * Propiedad creada para consistir el event listeners, de lo contrario, no sera llamado
      *
      * @ORM\Column(type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->models = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -193,7 +194,7 @@ class Brand
      */
     public function addModel(\AppBundle\Entity\Device $model)
     {
-        $this->phones[] = $model;
+        $this->models[] = $model;
 
         return $this;
     }
@@ -205,7 +206,7 @@ class Brand
      */
     public function removeModel(\AppBundle\Entity\Device $model)
     {
-        $this->phones->removeElement($model);
+        $this->models->removeElement($model);
     }
 
     /**
@@ -213,9 +214,9 @@ class Brand
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPhones()
+    public function getModels()
     {
-        return $this->phones;
+        return $this->models;
     }
 
     /**

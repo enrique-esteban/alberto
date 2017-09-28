@@ -5,16 +5,21 @@ easy_admin:
             list:
                 title: 'Dispositivos'
                 max_results: 10
-                fields: [ 'phone', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary' ]
+                fields: [ { property: 'model.image', type: 'image', base_path: '%vich_model_images%', label: 'Imagen' } 'model', 'screen', 'cpu', 'ram', 'camera', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary' ]
             show:
-                fields: [ 'id', 'phone', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary', 'repairs', 'sales'  ]
+                fields: [ 'id', { property: 'model.image', type: 'image', base_path: '%vich_model_images%', label: 'Imagen' }, 'model', 'screen', 'cpu', 'ram', 'camera', 'color', 'storageSize', 'imeiPrimary', 'imeiSecondary', 'repairs', 'sales'  ]
             form:
                 fields:
                     - { type: 'group', label: 'Device Information', icon: 'mobile', css_class: 'col-sm-6' }
-                    - { property: 'phone' }
+                    - { property: 'model' }
+                    - { property: 'screen' }
+                    - { property: 'cpu' }
+                    - { property: 'ram' }
+                    - { property: 'camera' }
                     - { property: 'color' }
                     - { property: 'storageSize' }
 
                     - { type: 'group', label: 'IMEI', icon: 'barcode', css_class: 'col-sm-6' }
                     - { property: 'imeiPrimary' }
                     - { property: 'imeiSecondary' }
+#                    - { property: 'imeis' }

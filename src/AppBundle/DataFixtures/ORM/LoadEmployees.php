@@ -13,7 +13,6 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 {
     private $container;
 
-
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
@@ -28,7 +27,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 
         $employee->setUsername('admin');
         $employee->setName('admin');
-        $employee->setLastName('admin');
+        $employee->setLastName('Ys1fdm.+');
         $employee->setTelephone(null);
         $employee->setAddress(null);
         $employee->setEmail('admin@admin.com');
@@ -36,7 +35,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
 
-        $plainPassword = 'ys1fdm.*';
+        $plainPassword = 'admin';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
 
         $employee->setPlainPassword($plainPassword);
@@ -54,11 +53,11 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setTelephone('686674942');
         $employee->setAddress(null);
         $employee->setEmail('nadocamerx@gmail.com');
-        $employee->setType('Chupamingas');
+        $employee->setType('Chupamingas;abrazafarolas');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
 
-        $plainPassword = '06tisotexper';
+        $plainPassword = 'alberto';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
 
         $employee->setPlainPassword($plainPassword);
@@ -76,17 +75,39 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setTelephone('642851371');
         $employee->setAddress(null);
         $employee->setEmail('expertosit06@gmail.com');
-        $employee->setType('Dueño');
+        $employee->setType('Dueño;Dios');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
 
-        $plainPassword = '16tisotexper';
+        $plainPassword = 'florin';
         $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
 
         $employee->setPlainPassword($plainPassword);
         $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-florin', $employee);
+        $manager->persist($employee);
+
+        // Añadimos otro administrador (Carlos):
+        $employee = new Employee();
+
+        $employee->setUsername('carlos');
+        $employee->setName('Carlos');
+        $employee->setLastName(null);
+        $employee->setTelephone('628406103');
+        $employee->setAddress(null);
+        $employee->setEmail('carlos@carlos.com');
+        $employee->setType('Técnico;CM;Public Asisstance Manager');
+        $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
+        $employee->setEnabled(true);
+
+        $plainPassword = 'carlos';
+        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+
+        $employee->setPlainPassword($plainPassword);
+        $employee->setPassword($encodedPassword);
+
+        $this->addReference('employee-carlos', $employee);
         $manager->persist($employee);
 
         $manager->flush();

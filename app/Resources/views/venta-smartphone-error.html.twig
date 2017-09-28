@@ -1,0 +1,41 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Venta de móviles: Sin stock' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li>Móviles</li>
+                    <li>Sin stock</li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1>Sin stock</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+     <div class="row">
+        <div class="ten column offset-by-one text-center">
+            <div id="error">
+                <div class="note-folded red">
+                    <h1>Ningún móvil encontrado (sin stock)</h1><br>
+                    <p class="lead">En estos momentos no hay ningún móvil disponible en stock para la venta en esta categoría. Puede consultar más móviles en nuestra otra categoría:</p>
+                    {% if type != "Reacondicionado" %}
+                        <a class="button medium white margin-top" href="{{ path('sales-smartphone', { 'slug': 'reacondicionados' }) }}">Reacondicionados</a>
+                    {% endif %}
+                    {% if type != "Nuevo" %}
+                        <a class="button medium white margin-top" href="{{ path('sales-smartphone', { 'slug': 'primera-mano' }) }}">Nuevos</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title 'Venta de móviles: Reacondicionados' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li><a>Móviles</a></li>
+                    <li class="current-page"><a href="{{ path('sales-smartphone', { 'slug': 'reacondicionados'}) }}">Reacondicionados</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1 class="very-little">Móviles reacondicionados</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>Venta de móviles reacondicionados</h2>
+        </div>
+        <div class="twelve column text-center">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <table class="table-green smartphone">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Precio*</th>
+                    <th>Categoría</th>
+                    <th>URL</th>
+                </tr>
+                {% for sale in sales %}
+                    <tr {% if loop.index % 2 == 0 %}class="odd"{% endif %}>
+                        <td>
+                            <div class="lightbox-item smartphone-table">
+                                {% if sale.device.model.image %}
+                                    <img src="{{ asset(vich_model_images ~ sale.device.model.image) }}" alt="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}">
+                                    <div class="lightbox-item-overlay-content">
+                                        <a class="preview-table fancybox" href="{{ asset(vich_model_images ~ sale.device.model.image) }}" data-fancybox-group="gallery" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                    </div>
+                                {% else %}
+                                    <img src="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" alt="Logo de {{ sale.device.model.brand.name }}" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}">
+                                    <div class="lightbox-item-overlay-content">
+                                        <a class="preview-table fancybox" href="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" data-fancybox-group="gallery" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td >{{ sale.device.model.brand.name ~ '' ~ sale.device.model.name }}</td>
+                        <td>{{ sale.device.color|capitalize }}</td>
+                        <td>{{ sale.price|default('Desconocido') }}  €</td>
+                        <td>{{ sale.category }}</td>
+                        {% if sale.device.model.webPage %}
+                            <td><a href="{{ sale.device.model.webPage }}" target="_blank"><i class="icon-opennewwindow"></i></a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve column">
+            <div class="twelve">
+                <p class="text-s">
+                    * Todos los precios de nuestros terminales incluye el Canon Digital marcado por el Real Derecho-ley 12/2017, del 3 de Julio. Precios con impuesto incluido.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

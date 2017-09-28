@@ -1,0 +1,21 @@
+easy_admin:
+    entities:
+        Model:
+            class: AppBundle\Entity\Model
+            list:
+                title: 'Modelos de Smartphone'
+                fields: [ { property: 'image', type: 'image', base_path: '%vich_model_images%', label: 'Imagen' }, 'brand', 'name', { property: 'webPage', type: 'url' } ]
+            show:
+                fields: [ 'id', { property: 'image', type: 'image', base_path: '%vich_model_images%', label: 'Imagen' }, 'brand', 'name', { property: 'webPage', type: 'url' }, 'devices' ]
+            form:
+                fields:
+                    - { type: 'group', label: 'Web Page', icon: 'external-link', css_class: 'col-sm-6' }
+                    - { property: 'imageFile', type: 'vich_image' }
+
+                    - { type: 'group', label: 'Device Information', icon: 'mobile', css_class: 'col-sm-6' }
+                    - { property: 'brand' }
+                    - { property: 'name' }
+
+
+                    - { type: 'group', label: 'Web Page', icon: 'external-link', css_class: 'col-sm-12' }
+                    - { property: 'webPage', type: 'url' }

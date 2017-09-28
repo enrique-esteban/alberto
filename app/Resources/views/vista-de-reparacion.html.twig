@@ -24,7 +24,7 @@
 {% block content %}
 <div class="row">
     <div class="twelve column">
-        <h4>Dispositivo: {{ repair.device.phone }}</h4>
+        <h4>Dispositivo: {{ repair.device.model }}</h4>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
         <!-- Brand Image -->
         <div class="four column">
             <ul class="client-box brand">
-                <li><img src="{{ asset('/images/brands/') ~ repair.device.phone.brand.image }}" alt=""></li>
+                <li><img src="{{ asset('/images/brands/') ~ repair.device.model.brand.image }}" alt=""></li>
             </ul>
         </div>
         <!-- Brand Image End -->
@@ -68,7 +68,7 @@
                 </tr>
 
                 <tr class="odd">
-                    <td colspan="2">{{ repair.device.phone }}</td>
+                    <td colspan="2">{{ repair.device.model }}</td>
                     <td>{{ repair.device.color|capitalize }}</td>
                     <td>{{ repair.device.storageSize }}</td>
                     <td>{{ repair.device.imeiPrimary }}</td>

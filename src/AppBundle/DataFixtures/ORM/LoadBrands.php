@@ -82,6 +82,15 @@ class LoadBrands extends AbstractFixture implements OrderedFixtureInterface
         // Insertamos otra marca:
         $brand = new Brand();
 
+        $brand->setName('Innjoo');
+        $brand->setImage('innjoo.jpg');
+
+        $this->addReference('brand-innjoo', $brand);
+        $manager->persist($brand);
+
+        // Insertamos otra marca:
+        $brand = new Brand();
+
         $brand->setName('Lenovo');
         $brand->setImage('lenovo.jpg');
 
@@ -104,6 +113,15 @@ class LoadBrands extends AbstractFixture implements OrderedFixtureInterface
         $brand->setImage('motorola.jpg');
 
         $this->addReference('brand-moto', $brand);
+        $manager->persist($brand);
+
+        // Insertamos otra marca:
+        $brand = new Brand();
+
+        $brand->setName('Nubia');
+        $brand->setImage('nubia.jpg');
+
+        $this->addReference('brand-nubia', $brand);
         $manager->persist($brand);
 
         // Insertamos otra marca:
@@ -149,6 +167,15 @@ class LoadBrands extends AbstractFixture implements OrderedFixtureInterface
         $brand->setImage('xiaomi.jpg');
 
         $this->addReference('brand-xiaomi', $brand);
+        $manager->persist($brand);
+
+        // Insertamos otro dispositivo:
+        $brand = new Brand();
+
+        $brand->setName('ZTE');
+        $brand->setImage('zte.jpg');
+
+        $this->addReference('brand-zte', $brand);
         $manager->persist($brand);
 
         // Persistimos la base de datos

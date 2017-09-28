@@ -400,4 +400,24 @@ class Repair
             $this->code = $date->format('U');
         }
     }
+
+    /**
+     * HasLifecycleCallbacks: Quitamos las etiquetas html de la descripcion
+     *
+     * @ORM\PreFlush
+     */
+    public function removeHtmlChartSet()
+    {
+        if ($this->description)
+        {
+            // Se quita las etiquetas <p> del principio y el final
+            $this->description = substr($this->description, 3, -4);
+
+            // Se quita los caracteres especiales de html
+            $this->description = html_entity_decode(htmlspecialchars_decode($this->description, ENT_QUOTES));
+
+            // Por ultimo se quita los posibles espacios en blanco al final y al principio de la cadena
+            $this->description = trim($this->description);
+        }
+    }
 }

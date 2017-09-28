@@ -28,4 +28,4 @@ easy_admin:
 
                     - { type: 'group', label: 'Other Information', icon: 'briefcase', css_class: 'col-sm-6' }
                     - { property: 'type'}
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Usuario': 'ROLE_USER', 'Administrador': 'ROLE_ADMIN' } } }

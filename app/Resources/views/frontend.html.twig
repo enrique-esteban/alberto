@@ -52,9 +52,8 @@
                             <nav id="mainmenu">
                                 <ul id="menu">
                                     <li {% if nav == "index" %}class="selected"{% endif %}>
-                                        <a href="{{ path('index') }}">Inicio</a>
+                                        <a class="menu-icon" href="{{ path('index') }}"><i class="icon-home"></i></a>
                                     </li>
-
 
                                     <li {% if nav == "cursos" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
                                         <a>Cursos</a>
@@ -62,7 +61,6 @@
                                             <li>
                                                 <a class="sublink" href="{{ path('courses', { 'slug': 'reparacion-de-moviles' }) }}">Reparación de móviles</a>
                                             </li>
-
                                             <li>
                                                 <a class="sublink" href="{{ path('courses', { 'slug': 'iniciacion-a-las-nuevas-tecnologias' }) }}">Iniciación a las nuevas tecnologias</a>
                                             </li>
@@ -81,18 +79,29 @@
                                         </ul>
                                     </li>
 
-                                    <li {% if nav == "ventas" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
-                                        <a>Ventas</a>
+                                    <li {% if nav == "smartphone" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
+                                        <a>Móviles</a>
                                         <ul>
                                             <li>
-                                                <a class="sublink" href="{{ path('sales', { 'slug': 'repuestos-y-consumibles' }) }}">Repuestos y consumibles</a>
+                                                <a class="sublink" href="{{ path('sales-smartphone', { 'slug': 'nuevos' }) }}">Nuevos</a>
                                             </li>
+                                            {#<li>#}
+                                                {#<a class="sublink" href="{{ path('sales-smartphone', { 'slug': 'iniciacion-a-las-nuevas-tecnologias' }) }}">Iniciación a las nuevas tecnologias</a>#}
+                                            {#</li>#}
+                                        </ul>
+                                    </li>
 
+                                    <li {% if nav == "otras-ventas" %}class="dropdown selected"{% else %}class="dropdown"{% endif %}>
+                                        <a>Otros</a>
+                                        <ul>
                                             <li>
-                                                <a class="sublink" href="{{ path('sales', { 'slug': 'recreativas-y-emulacion' }) }}">Recreativas y emulación</a>
+                                                <a class="sublink" href="{{ path('sales-others', { 'slug': 'repuestos-y-consumibles' }) }}">Venta de repuestos y consumibles</a>
                                             </li>
                                             <li>
-                                                <a class="sublink" href="{{ path('sales', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
+                                                <a class="sublink" href="{{ path('sales-others', { 'slug': 'recreativas-y-emulacion' }) }}">Venta de recreativas y emulación</a>
+                                            </li>
+                                            <li>
+                                                <a class="sublink" href="{{ path('sales-others', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -176,16 +185,24 @@
                             </ul>
                         </li>
                         <li class="no-bullet">
-                            <a>Ventas</a>
+                            <a>Móviles</a>
                             <ul class="no-bullet">
                                 <li>
-                                    <a href="{{ path('sales', { 'slug': 'repuestos-y-consumibles' }) }}">Repuesto y consumibles</a>
+                                    <a href="{{ path('sales-smartphone', { 'slug': 'nuevos' }) }}">Nuevos</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="no-bullet">
+                            <a>Otros</a>
+                            <ul class="no-bullet">
+                                <li>
+                                    <a href="{{ path('sales-others', { 'slug': 'repuestos-y-consumibles' }) }}">Venta de repuestos y consumibles</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('sales', { 'slug': 'recreativas-y-emulacion' }) }}">Recreativas y emulación</a>
+                                    <a href="{{ path('sales-others', { 'slug': 'recreativas-y-emulacion' }) }}">Venta de recreativas y emulación</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('sales', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
+                                    <a href="{{ path('sales-others', { 'slug': 'desarrollo-web' }) }}">Desarrollo web</a>
                                 </li>
                             </ul>
                         </li>

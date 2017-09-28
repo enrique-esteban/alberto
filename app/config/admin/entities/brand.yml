@@ -5,9 +5,9 @@ easy_admin:
             list:
                 title: 'Marcas'
                 sort: [ 'name', 'ASC' ]
-                fields: [ { property: 'image', type: 'image', base_path: '%vich_product_images%' }, 'name', 'phones' ]
+                fields: [ { property: 'image', type: 'image', base_path: '%vich_brand_images%' }, 'name', 'phones' ]
             show:
-                fields: [ 'id', { property: 'image', type: 'image', base_path: '%vich_product_images%' }, 'name', 'phones' ]
+                fields: [ 'id', { property: 'image', type: 'image', base_path: '%vich_brand_images%' }, 'name', 'phones' ]
             form:
                 fields:
                     - { type: 'group', label: 'Image', icon: 'picture-o', css_class: 'col-sm-6' }
