@@ -31,5 +31,5 @@ easy_admin:
                     - { property: 'discount', type: 'money', type_options: { currency: 'EUR' } }
 
                     - { type: 'group', label: 'Fecha', icon: 'calendar', css_class: 'col-sm-6' }
-                    - { property: 'startDate' }
+                    - { property: 'startDate', help: 'Guarda la fecha actual si no se especifica alguna', type_options: { required: false } }
                     - { property: 'deliveryDate' }

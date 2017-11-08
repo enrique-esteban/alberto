@@ -187,7 +187,7 @@ class SiteController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $sales = $em->getRepository('AppBundle:Sale')->findDevicesToSaleByType($type);
+        $sales = $em->getRepository('AppBundle:Sale')->findSalesByType($type, 'En venta');
 
         if (!$sales) {
             $slug = 'error';

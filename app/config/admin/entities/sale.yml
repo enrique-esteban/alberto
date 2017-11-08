@@ -20,7 +20,7 @@ easy_admin:
 
                     - { type: 'group', label: 'Device', icon: 'mobile', css_class: 'col-sm-4' }
                     - { property: 'device' }
-                    - { property: 'type', type: 'choice', type_options: { multiple: true, choices: { 'Reacondicionado': 'Reacondicionado', 'Nuevos': 'Nuevo'} } }
+                    - { property: 'type', type: 'choice', type_options: { multiple: true, choices: { 'Reacondicionado': 'Reacondicionado', 'Nuevo': 'Nuevo'} } }
                     - { property: 'category' }
                     - { property: 'state' }
                     #- { property: 'imeis', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ImeiType', by_reference: false, required: true } }

@@ -380,7 +380,7 @@ class Repair
      */
     public function __toString()
     {
-        return $this->getClient().' - '.$this->getDevice().' - <'.$this->getCode().'>';
+        return 'Cliente: '.$this->getClient().' - Modelo: '.$this->getDevice().' - Code: '.$this->getCode();
     }
 
     /**

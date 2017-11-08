@@ -47,7 +47,7 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="string", length=255, unique=true, nullable=true)
      */
     private $email;
 
@@ -297,6 +297,11 @@ class Client
      */
     public function __toString()
     {
-        return $this->getName().' '.$this->getLastName().' <'.$this->getEmail().'>';
+        if ($this->getEmail()) {
+            return $this->getName().' '.$this->getLastName().' <'.$this->getEmail().'>';
+        }
+        else {
+            return $this->getName().' '.$this->getLastName();
+        }
     }
 }

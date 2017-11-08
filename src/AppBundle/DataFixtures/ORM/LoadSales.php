@@ -150,7 +150,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-huawei-p8-lite-masmovil', $sale);
@@ -170,7 +170,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-huawei-y7-toronto', $sale);
@@ -190,7 +190,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-honor-6a', $sale);
@@ -210,7 +210,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-alcatel-8079', $sale);
@@ -230,7 +230,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-alcatel-u53g', $sale);
@@ -250,7 +250,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-zte-blade-a612', $sale);
@@ -270,7 +270,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-zte-blade-l7', $sale);
@@ -290,7 +290,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-innjoo-fire-4', $sale);
@@ -310,7 +310,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-innjoo-f4', $sale);
@@ -330,7 +330,7 @@ class LoadSales extends AbstractFixture implements OrderedFixtureInterface
         $sale->setAdvance(0);
         $sale->setDiscount(0);
         $sale->setState($this->getReference('state-para-venta'));
-        $sale->setType('MásMóvil');
+        $sale->setType('Nuevo');
         $sale->setSaleDate(new \DateTime('now'));
 
         $this->addReference('sale-nubia-n1-lite', $sale);

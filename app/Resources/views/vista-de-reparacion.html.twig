@@ -32,13 +32,15 @@
 <div class="row">
     <!-- Left Side -->
     <div class="nine column">
-        <!-- Brand Image -->
-        <div class="four column">
-            <ul class="client-box brand">
-                <li><img src="{{ asset('/images/brands/') ~ repair.device.model.brand.image }}" alt=""></li>
-            </ul>
-        </div>
-        <!-- Brand Image End -->
+        {% if repair.device.image %}
+            <!-- Brand Image -->
+            <div class="four column">
+                <ul class="client-box brand">
+                    <li><img src="{{ asset(vich_model_images ~ repair.device.image) }}" alt="Teléfono móvil {{ repair.device.brand ~ ' ' ~ repair.device.model }}" title="Teléfono móvil {{ repair.device.brand ~ ' ' ~ repair.device.model }}"></li>
+                </ul>
+            </div>
+            <!-- Brand Image End -->
+        {% endif %}
 
         <!-- Table -->
         <div class="eight column">
@@ -68,7 +70,7 @@
                 </tr>
 
                 <tr class="odd">
-                    <td colspan="2">{{ repair.device.model }}</td>
+                    <td colspan="2">{{ repair.device.brand ~ repair.device.model }}</td>
                     <td>{{ repair.device.color|capitalize }}</td>
                     <td>{{ repair.device.storageSize }}</td>
                     <td>{{ repair.device.imeiPrimary }}</td>

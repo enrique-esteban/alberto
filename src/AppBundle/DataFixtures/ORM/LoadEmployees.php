@@ -27,7 +27,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 
         $employee->setUsername('admin');
         $employee->setName('admin');
-        $employee->setLastName('Ys1fdm.+');
+        $employee->setLastName('admin');
         $employee->setTelephone(null);
         $employee->setAddress(null);
         $employee->setEmail('admin@admin.com');

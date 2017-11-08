@@ -10,16 +10,18 @@ namespace AppBundle\Repository;
  */
 class RepairRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function findOneRepairDeviceByCode ($slug)
     {
         $em = $this->getEntityManager();
 
         $query = $em->createQuery(
-            'SELECT r, d, m, b
+            'SELECT r, d
              FROM AppBundle:Repair r
              JOIN r.device d
-             JOIN d.model m
-             JOIN m.brand b
              WHERE r.code = :slug'
         )->setParameters(array(
             'slug' => $slug

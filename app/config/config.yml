@@ -41,7 +41,6 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-      vich_brand_images: '%vich_brand_images%/'
       vich_model_images: '%vich_model_images%/'
 
 # Doctrine Configuration
@@ -93,5 +92,5 @@ vich_uploader:
     db_driver: orm
     mappings:
         brand_image:
-            uri_prefix:         '%vich_brand_images%'
+            uri_prefix:         '%vich_model_images%'
             upload_destination: '%kernel.root_dir%/../web/images/brands'

@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -10,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Device")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DeviceRepository")
+ *
+ * @Vich\Uploadable
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
@@ -25,10 +29,49 @@ class Device
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Model", inversedBy="devices")
-     * @ORM\JoinColumn(name="phone_id", referencedColumnName="id", onDelete="CASCADE")
+     * @var string
+     *
+     * @ORM\Column(name="brand", type="string", length=100)
+     */
+    private $brand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="model", type="string", length=255)
      */
     private $model;
+
+    /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="brand_image", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * Entidad creada para consistir el event listeners, de lo contrario, no sera llamado
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="web_page", type="string", length=255, nullable=true)
+     */
+    private $webPage;
 
     /**
      * @var string
@@ -76,7 +119,7 @@ class Device
     /**
      * @var string
      *
-     * @ORM\Column(name="imei_primary", type="string", length=20, unique=true)
+     * @ORM\Column(name="imei_primary", type="string", length=20, nullable=true, unique=true)
      */
     private $imeiPrimary;
 
@@ -112,7 +155,6 @@ class Device
     {
         $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
-        //$this->imeis = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -123,6 +165,252 @@ class Device
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param string $brand
+     *
+     * @return Device
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return string
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set model
+     *
+     * @param string $model
+     *
+     * @return Device
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Device
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set imageFile
+     *
+     * @param File|null $imageFile
+     * @return $this
+     */
+    public function setImageFile(File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($imageFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get imageFile
+     *
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Device
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set webPage
+     *
+     * @param string $webPage
+     *
+     * @return Device
+     */
+    public function setWebPage($webPage)
+    {
+        $this->webPage = $webPage;
+
+        return $this;
+    }
+
+    /**
+     * Get webPage
+     *
+     * @return string
+     */
+    public function getWebPage()
+    {
+        return $this->webPage;
+    }
+
+    /**
+     * Set screen
+     *
+     * @param string $screen
+     *
+     * @return Device
+     */
+    public function setScreen($screen)
+    {
+        $this->screen = $screen;
+
+        return $this;
+    }
+
+    /**
+     * Get screen
+     *
+     * @return string
+     */
+    public function getScreen()
+    {
+        return $this->screen;
+    }
+
+    /**
+     * Set cpu
+     *
+     * @param string $cpu
+     *
+     * @return Device
+     */
+    public function setCpu($cpu)
+    {
+        $this->cpu = $cpu;
+
+        return $this;
+    }
+
+    /**
+     * Get cpu
+     *
+     * @return string
+     */
+    public function getCpu()
+    {
+        return $this->cpu;
+    }
+
+    /**
+     * Set ram
+     *
+     * @param string $ram
+     *
+     * @return Device
+     */
+    public function setRam($ram)
+    {
+        $this->ram = $ram;
+
+        return $this;
+    }
+
+    /**
+     * Get ram
+     *
+     * @return string
+     */
+    public function getRam()
+    {
+        return $this->ram;
+    }
+
+    /**
+     * Set camera
+     *
+     * @param string $camera
+     *
+     * @return Device
+     */
+    public function setCamera($camera)
+    {
+        $this->camera = $camera;
+
+        return $this;
+    }
+
+    /**
+     * Get camera
+     *
+     * @return string
+     */
+    public function getCamera()
+    {
+        return $this->camera;
     }
 
     /**
@@ -174,70 +462,6 @@ class Device
     }
 
     /**
-     * @return string
-     */
-    public function getScreen()
-    {
-        return $this->screen;
-    }
-
-    /**
-     * @param string $screen
-     */
-    public function setScreen($screen)
-    {
-        $this->screen = $screen;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCpu()
-    {
-        return $this->cpu;
-    }
-
-    /**
-     * @param string $cpu
-     */
-    public function setCpu($cpu)
-    {
-        $this->cpu = $cpu;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRam()
-    {
-        return $this->ram;
-    }
-
-    /**
-     * @param string $ram
-     */
-    public function setRam($ram)
-    {
-        $this->ram = $ram;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCamera()
-    {
-        return $this->camera;
-    }
-
-    /**
-     * @param string $camera
-     */
-    public function setCamera($camera)
-    {
-        $this->camera = $camera;
-    }
-
-    /**
      * Set imeiPrimary
      *
      * @param string $imeiPrimary
@@ -283,30 +507,6 @@ class Device
     public function getImeiSecondary()
     {
         return $this->imeiSecondary;
-    }
-
-    /**
-     * Set model
-     *
-     * @param \AppBundle\Entity\Model $model
-     *
-     * @return Device
-     */
-    public function setModel(\AppBundle\Entity\Model $model = null)
-    {
-        $this->model = $model;
-
-        return $this;
-    }
-
-    /**
-     * Get model
-     *
-     * @return \AppBundle\Entity\Model
-     */
-    public function getModel()
-    {
-        return $this->model;
     }
 
     /**
@@ -377,45 +577,13 @@ class Device
         return $this->sales;
     }
 
-//    /**
-//     * Add imei
-//     *
-//     * @param \AppBundle\Entity\Imei $imei
-//     *
-//     * @return Device
-//     */
-//    public function addImei(\AppBundle\Entity\Imei $imei)
-//    {
-//        $this->imeis[] = $imei;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Remove imei
-//     *
-//     * @param \AppBundle\Entity\Imei $imei
-//     */
-//    public function removeImei(\AppBundle\Entity\Imei $imei)
-//    {
-//        $this->imeis->removeElement($imei);
-//    }
-//
-//    /**
-//     * Get imeis
-//     *
-//     * @return \Doctrine\Common\Collections\Collection
-//     */
-//    public function getImeis()
-//    {
-//        return $this->imeis;
-//    }
-
-    /**
-     * @return mixed
-     */
     public function __toString()
     {
-        return (string)$this->getModel().' <'.$this->getImeiPrimary().'>';
+        if ($this->getImeiPrimary()) {
+            return $this->getBrand(). ' '.$this->getModel().' - IMEI: '.$this->getImeiPrimary();
+        }
+        else {
+            return $this->getBrand(). ' '.$this->getModel();
+        }
     }
 }

@@ -30,15 +30,11 @@ easy_admin:
         - label: 'Smartphones'
           icon: 'tablet'
           children:
-            - { label: 'Dispositivos', entity: 'Device', icon: 'tablet' }
-            - { label: 'Modelos', entity: 'Model', icon: 'mobile' }
+            - { label: 'Dispositivos', entity: 'Device', icon: 'mobile' }
 #            - { label: 'IMEI', entity: 'Imei', icon: 'barcode' }
-            - { label: 'Marcas', entity: 'Brand', icon: 'android' }
             - { label: 'Añadir' }
             - { label: 'Dispositivo', entity: 'Device', icon: 'plus-circle', params: { action: 'new' } }
-            - { label: 'Modelo', entity: 'Model', icon: 'plus-circle', params: { action: 'new' } }
 #            - { label: 'IMEI', entity: 'Imei', icon: 'plus-circle', params: { action: 'new' } }
-            - { label: 'Marca', entity: 'Brand', icon: 'plus-circle', params: { action: 'new' } }
 
         - label: 'Estados'
           icon: 'tachometer'

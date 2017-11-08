@@ -36,21 +36,18 @@
             <div class="six column">
                 <table class="table-green">
                     <tr>
-                        <th colspan="2">{{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}</th>
+                        <th colspan="2">{{ sale.device.brand ~ ' ' ~ sale.device.model }}</th>
                     </tr>
                     <tr class="odd">
                         <td colspan="2">
                             <div class="lightbox-item smartphone-table">
-                                {% if sale.device.model.image %}
-                                    <img class="center" src="{{ asset(vich_model_images ~ sale.device.model.image) }}" alt="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name}}">
+                                {% if sale.device.image %}
+                                    <img class="center" src="{{ asset(vich_model_images ~ sale.device.image) }}" alt="Teléfono móvil {{ sale.device.brand ~ ' ' ~ sale.device.model }}" title="Teléfono móvil {{ sale.device.brand ~ ' ' ~ sale.device.model }}">
                                     <div class="lightbox-item-overlay-content">
-                                        <a class="preview fancybox" href="{{ asset(vich_model_images ~ sale.device.model.image) }}" data-fancybox-group="gallery" title="{{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                        <a class="preview fancybox" href="{{ asset(vich_model_images ~ sale.device.image) }}" data-fancybox-group="gallery" title="{{ sale.device.brand ~ ' ' ~ sale.device.model }}"><i class="icon-search"></i></a>
                                     </div>
                                 {% else %}
-                                    <img class="center" src="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" alt="Logo de {{ sale.device.model.brand.name }}" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}">
-                                    <div class="lightbox-item-overlay-content">
-                                        <a class="preview fancybox" href="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" data-fancybox-group="gallery" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}"><i class="icon-search"></i></a>
-                                    </div>
+                                    N/A
                                 {% endif %}
                             </div>
                         </td>
@@ -121,7 +118,7 @@
             </div>
         </div>
         <div class="three column">
-            <img src="{{ asset(vich_brand_images ~ 'evo-finance.jpg') }}" alt="Logo de Evo Finance" title="Logo de Evo Finance">
+            <img src="{{ asset(vich_model_images ~ 'evo-finance.jpg') }}" alt="Logo de Evo Finance" title="Logo de Evo Finance">
         </div>
     </div>
 {% endblock %}

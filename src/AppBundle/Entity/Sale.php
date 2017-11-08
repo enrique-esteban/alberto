@@ -417,7 +417,7 @@ class Sale
      */
     public function __toString()
     {
-        return $this->getDevice().' <'.$this->getCode().'>';
+        return $this->getDevice().' - Code: '.$this->getCode();
     }
 
     /**

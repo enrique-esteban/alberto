@@ -47,25 +47,22 @@
                     <tr {% if loop.index % 2 == 0 %}class="odd"{% endif %}>
                         <td>
                             <div class="lightbox-item smartphone-table">
-                                {% if sale.device.model.image %}
-                                    <img src="{{ asset(vich_model_images ~ sale.device.model.image) }}" alt="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}">
+                                {% if sale.device.image %}
+                                    <img src="{{ asset(vich_model_images ~ sale.device.image) }}" alt="Teléfono móvil {{ sale.device.brand ~ ' ' ~ sale.device.model }}" title="Teléfono móvil {{ sale.device.brand ~ ' ' ~ sale.device.model }}">
                                     <div class="lightbox-item-overlay-content">
-                                        <a class="preview-table fancybox" href="{{ asset(vich_model_images ~ sale.device.model.image) }}" data-fancybox-group="gallery" title="Teléfono móvil {{ sale.device.model.brand.name ~ ' ' ~ sale.device.model.name }}"><i class="icon-search"></i></a>
+                                        <a class="preview-table fancybox" href="{{ asset(vich_model_images ~ sale.device.image) }}" data-fancybox-group="gallery" title="Teléfono móvil {{ sale.device.brand ~ ' ' ~ sale.device.model }}"><i class="icon-search"></i></a>
                                     </div>
                                 {% else %}
-                                    <img src="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" alt="Logo de {{ sale.device.model.brand.name }}" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}">
-                                    <div class="lightbox-item-overlay-content">
-                                        <a class="preview-table fancybox" href="{{ asset(vich_brand_images ~ sale.device.model.brand.image) }}" data-fancybox-group="gallery" title="Logo de {{ sale.device.model.brand.name }} para el teléfono móvil {{ sale.device.model.name }}"><i class="icon-search"></i></a>
-                                    </div>
+                                    N/A
                                 {% endif %}
                             </div>
                         </td>
-                        <td >{{ sale.device.model.brand.name ~ '' ~ sale.device.model.name }}</td>
+                        <td >{{ sale.device.brand ~ '' ~ sale.device.model }}</td>
                         <td>{{ sale.device.color|capitalize }}</td>
                         <td>{{ sale.price|default('Desconocido') }}  €</td>
                         <td>{{ sale.category }}</td>
-                        {% if sale.device.model.webPage %}
-                            <td><a href="{{ sale.device.model.webPage }}" target="_blank"><i class="icon-opennewwindow"></i></a></td>
+                        {% if sale.device.webPage %}
+                            <td><a href="{{ sale.device.webPage }}" target="_blank"><i class="icon-opennewwindow"></i></a></td>
                         {% endif %}
                     </tr>
                 {% endfor %}
