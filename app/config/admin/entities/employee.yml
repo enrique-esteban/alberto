@@ -6,7 +6,7 @@ easy_admin:
             list:
                 title: 'Empleados'
                 sort: [ 'username', 'ASC' ]
-                fields: ['enabled', 'username', 'email', 'completeName', 'address',  { property: 'telephone', type: 'tel' }, 'type', 'roles' ]
+                fields: ['enabled', 'username', 'email', 'name', 'lastName', 'address',  { property: 'telephone', type: 'tel' }, 'type', 'roles' ]
             show:
                 fields: ['id', 'username', 'email', 'name', 'lastName', 'address', { property: 'telephone', type: 'tel' }, 'type', 'roles', 'enabled', 'repairs', 'sales' ]
             new:
@@ -22,6 +22,7 @@ easy_admin:
                     - { type: 'group', label: 'Personal Information', icon: 'envelope-o', css_class: 'col-sm-6' }
                     - { property: 'name' }
                     - { property: 'lastName' }
+                    - { property: 'dni' }
                     - { property: 'email', type: 'email' }
                     - { property: 'telephone', type: 'number' }
                     - { property: 'address' }

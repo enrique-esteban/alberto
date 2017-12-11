@@ -1,9 +1,6 @@
 <?php
-
 namespace AppBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
-
 /**
  * SaleOrderRepository
  *
@@ -20,7 +17,6 @@ class SaleRepository extends EntityRepository
     public function findSalesByType ($type, $status = 'En venta')
     {
         $em = $this->getEntityManager();
-
         $query = $em->createQuery(
             'SELECT s, d, t
              FROM AppBundle:Sale s
@@ -31,7 +27,6 @@ class SaleRepository extends EntityRepository
             'type' => $type,
             'status' => $status,
         ));
-
         return $query->getArrayResult();
     }
 }

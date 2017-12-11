@@ -9,32 +9,25 @@ easy_admin:
                 - '/bundles/easyadmin/stylesheet/custom.css'
         form_theme: 'vertical'
         menu:
+        - label: 'Facturas'
+          icon: 'folder'
+          children:
+            - { label: 'Recibos', entity: 'Receipt', icon: 'folder-open', default: true }
+            - { label: 'Facturas', entity: 'Invoice', icon: 'folder-open' }
+            - { label: 'Añadir'}
+            - { label: 'Recibo', entity: 'Receipt', icon: 'plus-circle', params: { action: 'new' } }
+            - { label: 'Factura', entity: 'Invoice', icon: 'plus-circle', params: { action: 'new' } }
+
         - label: 'Tienda'
           icon: 'shopping-cart'
           children:
-            - { label: 'Reparaciones', entity: 'Repair', icon: 'cog', default: true }
-            - { label: 'Ventas', entity: 'Sale', icon: 'shopping-cart' }
-            - { label: 'Añadir'}
-            - { label: 'Reparación', entity: 'Repair', icon: 'plus-circle', params: { action: 'new' } }
-            - { label: 'Venta', entity: 'Sale', icon: 'plus-circle', params: { action: 'new' } }
-
-        - label: 'Personal'
-          icon: 'users'
-          children:
             - { label: 'Empleados', entity: 'Employee', icon: 'user' }
             - { label: 'Clientes', entity: 'Client', icon: 'user' }
+            - { label: 'Dispositivos', entity: 'Device', icon: 'tablet' }
             - { label: 'Añadir' }
             - { label: 'Empleado', entity: 'Employee', icon: 'plus-circle', params: { action: 'new' } }
             - { label: 'Cliente', entity: 'Client', icon: 'plus-circle', params: { action: 'new' } }
-
-        - label: 'Smartphones'
-          icon: 'tablet'
-          children:
-            - { label: 'Dispositivos', entity: 'Device', icon: 'mobile' }
-#            - { label: 'IMEI', entity: 'Imei', icon: 'barcode' }
-            - { label: 'Añadir' }
-            - { label: 'Dispositivo', entity: 'Device', icon: 'plus-circle', params: { action: 'new' } }
-#            - { label: 'IMEI', entity: 'Imei', icon: 'plus-circle', params: { action: 'new' } }
+            - { label: 'Dispositivos', entity: 'Device', icon: 'plus-circle', params: { action: 'new' } }
 
         - label: 'Estados'
           icon: 'tachometer'

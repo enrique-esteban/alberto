@@ -1,0 +1,233 @@
+{% extends 'base.html.twig' %}
+
+{% block title  'Fatura: ' ~ constancy.code %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('css/constancy.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="book">
+        <!--PÁGINA 1: RECIBO-->
+        <div class="page">
+            <div class="subpage">
+                <section id="memo">
+                    <div class="company-info">
+                        <span>Calle Consenso nº 30,</span>
+                        <span>28041, Madrid</span>
+                        <br>
+                        <span>912 546 050 - 615 849 881</span>
+                        <br>
+                        <span>www.expertosit.es | info@expertosit.es</span>
+                    </div>
+
+                    <div class="logo">
+                        <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
+                    </div>
+                </section>
+
+                <section id="invoice-title-number">
+                    <div id="title">RECIBO</div>
+                </section>
+
+                <section id="client-info">
+                    <span>CLIENTE:</span>
+                    <div class="client-name">
+                        <span>{{ constancy.clientName }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientPhone }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientAddress }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientEmail }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <section id="invoice-info">
+                    <div>
+                        <span>Código:</span> <span>{{ constancy.code }}</span>
+                    </div>
+
+                    <div>
+                        <span>Fecha:</span> <span>{{ constancy.startDate|date('d/m/Y') }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <div class="currency">
+                    <span>Moneda:</span> <span>EUR</span>
+                </div>
+
+                <section id="items">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="articulo">ARTÍCULO</th>
+                            <th class="descripcion">DESCRIPCIÓN</th>
+                            <th class="cantidad">CANTIDAD</th>
+                            <th class="precio">PRECIO</th>
+                            <th class="descuento">DESCUENTO</th>
+                            <th class="total">TOTAL</th>
+                        </tr>
+
+                        <tr data-iterate="item">
+                            <td>{{ constancy.device }}</td>
+                            <td>{{ constancy.description|raw }}</td>
+                            <td>{{ constancy.cantidad|default(1) }}</td>
+                            <td>{{ constancy.cost|number_format(2, ',', '.') }}</td>
+                            <td>{{ constancy.discount }}</td>
+                            {% set subtotal = (constancy.cost - constancy.discount) * constancy.cantidad|default(1) %}
+                            <td>{{ subtotal|number_format(2, ',', '.') }}</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="sums">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th>Subtotal:</th>
+                            <td>{{ subtotal|number_format(2, ',', '.') }}</td>
+                        </tr>
+
+                        <tr class="amount-total">
+                            <!-- {amount_total_label} -->
+                            <td colspan="2">{{ subtotal|number_format(2, ',', '.') }}</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="info-foot">
+                    <ul></ul>
+                    <li>De acuerdo con el LOPD el cliente debe entregar el terminal sin tarjeta de memoria ni tarjeta SIM. No nos hacemos responsables de la pérdida de las mismas en caso que el cliente no las retire.</li>
+                    <li>La apertura del dispositivo o manipulación del mismo por parte del servicio técnico puede hacer que se pierda la garantía del mismo, por lo cual ExpertosIT no se hace de las reclamaciones recibidas por este motivo.</li>
+                    <li>ExpertosIT no hace responsable de cualquier otra avería no notifica o que no pueda ser comprobada (e.j. por que el dispositivo no encienda) en el momento de la entrega.</li>
+                    <li>Todos los dispositivos reparados cuentan con 6 meses de garantía, a excepción de los mojados que no cuentan con garantía. Dicha garantía se hará efectiva desde el momento de la entrega del dispositivo al cliente. La garantía sólo cubre la(s) avería(s) tratada(s) por el servicio técnico, por tanto no cubrirá nuevas averías.</li>
+                    <li>Para cualquier reclamación es imprescindible presentar este recibo, ExpertosIT declina toda responsabilidad derivada de la pérdida del mismo ni otros desperfectos.</li>
+                </section>
+            </div>
+        </div>
+
+        <!--PÁGICA 2: FACTURA-->
+        <div class="page">
+            <div class="subpage">
+                <section id="memo">
+                    <div class="company-info">
+                        <span>Calle Consenso nº 30,</span>
+                        <span>28041, Madrid</span>
+                        <br>
+                        <span>912 546 050 - 615 849 881</span>
+                        <br>
+                        <span>www.expertosit.es | info@expertosit.es</span>
+                    </div>
+
+                    <div class="logo">
+                        <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
+                    </div>
+                </section>
+
+                <section id="invoice-title-number">
+                    <div id="title">FACTURA</div>
+                </section>
+
+                <section id="client-info">
+                    <span>CLIENTE:</span>
+                    <div class="client-name">
+                        <span>{{ constancy.clientName }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientPhone}}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientEmail }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ constancy.clientAddress }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <section id="invoice-info">
+                    <div>
+                        <span>Código:</span> <span>{{ constancy.code }}</span>
+                    </div>
+
+                    <div>
+                        <span>Fecha:</span> <span>{{ constancy.startDate|date('d/m/Y') }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <div class="currency">
+                    <span>Moneda:</span> <span>EUR</span>
+                </div>
+
+                <section id="items">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="articulo">ARTÍCULO</th>
+                            <th class="descripcion">DESCRIPCIÓN</th>
+                            <th class="cantidad">CANTIDAD</th>
+                            <th class="precio">PRECIO</th>
+                            <th class="descuento">DESCUENTO</th>
+                            <th class="total">TOTAL</th>
+                        </tr>
+
+                        <tr data-iterate="item">
+                            <td>{{ constancy.device }}</td>
+                            <td>{{ constancy.description|raw }}</td>
+                            <td>{{ constancy.cantidad|default(1) }}</td>
+                            <td>{{ constancy.cost|number_format(2, ',', '.') }}</td>
+                            <td>{{ constancy.discount|number_format(2, ',', '.') }}</td>
+                            {% set subtotal = (constancy.cost - constancy.discount) * constancy.cantidad|default(1) %}
+                            <td>{{ subtotal|number_format(2, ',', '.') }}</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="sums">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th>Subtotal:</th>
+                            <td>{{ subtotal|number_format(2, ',', '.') }}</td>
+                        </tr>
+
+                        <tr data-iterate="tax">
+                            <th>I.V.A. (21%):</th>
+                            <td>{{ (subtotal * 0.21) | number_format(2, ',', '.') }}</td>
+                        </tr>
+
+                        <tr class="amount-total">
+                            <!-- {amount_total_label} -->
+                            <td colspan="2">{{ (subtotal + subtotal * 0.21) | number_format(2, ',', '.') }}</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <div class="payment-info">
+                    <div>Detalles del pago</div>
+                    <div>ACC: </div>
+                    <div>IBAN: </div>
+                    <div>SWIFT: </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}
+

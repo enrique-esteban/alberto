@@ -1,0 +1,69 @@
+{% extends 'frontend.html.twig' %}
+
+{% block title  'Desarrollo Web' %}
+
+{% block sub_header %}
+    <!-- pagetitle start here -->
+    <section id="pagetitle-container">
+        <div class="row">
+            <div class="five column breadcrumb">
+                <ul>
+                    <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
+                    <li><a>Venta</a></li>
+                    <li><a>Otros</a></li>
+                    <li class="current-page"><a href="{{ path('sales-others', { 'slug': 'black-friday'}) }}">Black Friday</a></li>
+                </ul>
+            </div>
+            <div class="seven column pagetitle">
+                <h1>Black Friday</h1>
+            </div>
+        </div>
+    </section>
+    <!-- pagetitle end here -->
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="twelve column text-center">
+            <h2>¡Black Friday en ExpertosIT!<sup>*</sup></h2>
+            <p>Llega el Black Friday a ExpertosIT, si contratas algunos de nuestros cursos antes de diciembre consigue un 40% de descuento.</p>
+
+            <div class="twelve column">
+                <hr/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <img src="{{ asset('images/pages/black-friday-nov-2017.jpg') }}" alt="Black Friday ExpertosIT" title="Black Friday en ExpertosIT">
+            <p>
+                <sup>*</sup>Nuestra oferta abarca las dos modalidades de cursos disponibles en todas sus variantes, para más información puedes consultar nuestros curso en las siguientes url:
+                <a href="{{ path('courses', { 'slug': 'reparacion-de-moviles' }) }}">curso de reparación de móviles y tablets</a> y
+                <a href="{{ path('courses', { 'slug': 'iniciacion-a-las-nuevas-tecnologias'}) }}">curso de iniciación a las nuevas tecnologías</a>.
+                Válida desde el 25 de nov. del 2017 hasta el 30 de nov. del 2017 a las 20:00.
+                Para más información pongase en contacto con nosotros (ver link más abajo).
+            </p>
+            <p>
+                <sup>*</sup>Oferta no acumulable a otras ofertas.
+            </p>
+
+            <div class="twelve column">
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve column">
+            <div class="promo-box">
+                <div class="promo-text">
+                    <h3>¿Quieres saber más sobre nuestros precios y ofertas?</h3>
+                    <p>No lo dudes, ponte en contacto con nosotros.</p>
+                </div>
+                <div class="promo-button">
+                    <a href="{{ path('contact') }}" class="button medium green">Contacta con nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

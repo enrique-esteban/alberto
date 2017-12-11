@@ -1,0 +1,420 @@
+/*! Invoice Templates @author: Invoicebus @email: info@invoicebus.com @web: https://invoicebus.com @version: 1.0.0 @updated: 2015-03-27 14:03:24 @license: Invoicebus */
+/* Reset */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700&subset=cyrillic,cyrillic-ext,latin,greek-ext,greek,latin-ext,vietnamese");
+@import url("https://fonts.googleapis.com/css?family=Sanchez&subset=latin,latin-ext");
+html, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+html {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+a img {
+  border: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  font: 12pt "Tahoma";
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+table {
+    table-layout: fixed;
+}
+table th, table td {
+    vertical-align: top;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+/*pages*/
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  /*padding: 20mm;*/
+  margin: 10mm auto;
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+  padding: 1cm;
+  /*border: 5px red solid;*/
+  height: 257mm;
+  /*outline: 2cm #FFEAEA solid;*/
+  position: relative;
+}
+
+/*clear*/
+.clearfix {
+    display: block;
+    clear: both;
+}
+
+/*memo*/
+#memo .company-info {
+    float: right;
+}
+#memo .company-info div {
+    font-size: 28px;
+    text-transform: uppercase;
+    min-width: 20px;
+    line-height: 1em;
+}
+#memo .company-info span {
+    font-size: 12px;
+    color: #858585;
+    display: inline-block;
+    min-width: 20px;
+}
+#memo .logo {
+    float: left;
+    margin-left: 15px;
+}
+#memo .logo img {
+    width: 300px;
+}
+#memo:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*title*/
+#invoice-title-number {
+    margin: 50px 0 20px 0;
+    display: inline-block;
+    float: left;
+}
+#invoice-title-number .title-top {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+#invoice-title-number .title-top span {
+    display: inline-block;
+    min-width: 20px;
+}
+#invoice-title-number .title-top #number {
+    text-align: right;
+    float: right;
+    color: #858585;
+}
+#invoice-title-number .title-top:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#invoice-title-number #title {
+    display: inline-block;
+    background: #97b830;
+    color: white;
+    font-size: 50px;
+    padding: 7px;
+    font-family: Sanchez, Serif;
+    line-height: 1em;
+}
+
+/*client info*/
+#client-info {
+    float: right;
+    text-align: right;
+    margin-top: 50px;
+    min-width: 220px;
+}
+#client-info .client-name {
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 7px 0;
+}
+#client-info > div {
+    margin-bottom: 3px;
+    min-width: 20px;
+}
+#client-info span {
+    display: block;
+    min-width: 20px;
+}
+#client-info > span {
+    text-transform: uppercase;
+    color: #858585;
+    font-size: 15px;
+}
+
+/*invoice info*/
+#invoice-info {
+    float: left;
+    margin-top: 10px;
+}
+#invoice-info div {
+    margin-bottom: 3px;
+}
+#invoice-info div span {
+    display: inline-block;
+    min-width: 20px;
+    min-height: 18px;
+}
+#invoice-info div span:first-child {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+#invoice-info:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*currency*/
+.currency {
+    margin-top: 20px;
+    text-align: right;
+    color: #858585;
+    font-style: italic;
+    font-size: 12px;
+}
+.currency span {
+    display: inline-block;
+    min-width: 20px;
+}
+
+/*items table*/
+#items {
+    margin-top: 10px;
+}
+#items .first-cell, #items table th:first-child, #items table td:first-child {
+    /*width: 18px;*/
+    text-align: left;
+}
+#items table {
+    border-collapse: separate;
+    width: 100%;
+}
+#items table th {
+    font-family: Sanchez, Serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 5px 3px;
+    text-align: right;
+    background: #474747;
+    color: white;
+}
+#items table th.articulo {
+    text-align: left;
+    width: 15%;
+}
+#items table th.descripcion {
+    text-align: left;
+}
+#items table th.cantidad {
+    width: 11%;
+}
+#items table th.precio {
+    width: 9%;
+}
+#items table th.adelanto {
+    width: 11%;
+}
+#items table th.descuento {
+    width: 13%;
+}
+#items table th.total {
+    width: 8%;
+}
+#items table tr.pair {
+    background: #ededed;
+}
+#items table td {
+    font-size: 12px;
+    padding: 3px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+#items table td:first-child {
+    text-align: left;
+}
+#items table td:nth-child(2) {
+    text-align: left;
+}
+
+/*sub-table*/
+#sums {
+    float: right;
+    margin-top: 30px;
+}
+#sums table tr th, #sums table tr td {
+    min-width: 100px;
+    padding: 5px 3px;
+    text-align: right;
+}
+#sums table tr th {
+    padding-right: 25px;
+}
+#sums table tr.amount-total td {
+    background: #758e28;
+    background: #758e28;
+    color: white;
+    font-family: Sanchez, Serif;
+    font-size: 35px;
+    line-height: 1em;
+    padding: 7px !important;
+}
+#sums table tr.due-amount th, #sums table tr.due-amount td {
+    font-weight: bold;
+}
+
+/*payment info*/
+.payment-info {
+    font-size: 12px;
+    color: #858585;
+    margin-top: 30px;
+}
+.payment-info div {
+    min-width: 20px;
+}
+.payment-info div:first-child {
+    font-weight: bold;
+}
+
+/*left stripes*/
+.left-stripes {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    bottom: 0;
+    width: 1cm;
+    background: url("../images/invoices/stripe-bg.jpg") repeat;
+}
+.left-stripes .circle {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #97b830;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 1mm;
+}
+.left-stripes .circle.c-upper {
+    top: 440px;
+}
+.left-stripes .circle.c-lower {
+    top: 690px;
+}
+
+/*info pages*/
+#info-pages {
+    background: #d2e59a;
+    bottom: 105px;
+    color: #202020;
+    font-family: Sanchez, Serif;
+    font-size: 12px;
+    padding: 11px;
+    border: 1px solid #97b830;
+    position: absolute;
+    text-align: justify;
+    width: 18.95cm;
+}
+#info-pages ol {
+    margin: 10px 0 0 25px;
+    list-style: decimal;
+}
+#info-pages li {
+    margin: 0 0 8px 0;
+}
+#info-pages li:last-child {
+    margin: 0;
+}
+
+/*info foot*/
+#info-foot {
+    background: #d2e59a;
+    bottom: 0px;
+    color: #202020;
+    font-family: Sanchez, Serif;
+    font-size: 11px;
+    list-style: none;
+    margin: 0 0 -3cm 0;
+    padding: 11px;
+    position: absolute;
+    text-align: justify;
+    width: 18.95cm;
+}
+#info-foot li {
+    margin: 0 0 8px 0;
+}
+#info-foot li:last-child {
+    margin: 0;
+}
+#info-pages strong {
+    font-weight: bold;
+}
+
+/*media*/
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+  .page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+  }
+}

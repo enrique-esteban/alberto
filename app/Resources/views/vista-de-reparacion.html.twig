@@ -1,6 +1,6 @@
 {% extends 'frontend.html.twig' %}
 
-{% block title 'Vista reparación ' ~ repair.code %}
+{% block title 'Vista reparación ' ~ receipt.code %}
 
 {% block sub_header %}
 <!-- pagetitle start here -->
@@ -10,11 +10,11 @@
             <ul>
                 <li><a href="{{ path('index') }}"><i class="icon-home"></i></a></li>
                 <li><a>Reparación</a></li>
-                <li class="current-page"><a href="{{ path('repair-query') }}">{{ repair.code }}</a></li>
+                <li class="current-page"><a href="{{ path('repair-query') }}">{{ receipt.code }}</a></li>
             </ul>
         </div>
         <div class="seven column pagetitle">
-            <h1 class="little">Reparación {{ repair.code }}</h1>
+            <h1 class="little">Reparación {{ receipt.code }}</h1>
         </div>
     </div>
 </section>
@@ -24,7 +24,7 @@
 {% block content %}
 <div class="row">
     <div class="twelve column">
-        <h4>Dispositivo: {{ repair.device.model }}</h4>
+        <h4>Reparación: {{ receipt.code}}</h4>
     </div>
 </div>
 
@@ -32,64 +32,28 @@
 <div class="row">
     <!-- Left Side -->
     <div class="nine column">
-        {% if repair.device.image %}
-            <!-- Brand Image -->
-            <div class="four column">
-                <ul class="client-box brand">
-                    <li><img src="{{ asset(vich_model_images ~ repair.device.image) }}" alt="Teléfono móvil {{ repair.device.brand ~ ' ' ~ repair.device.model }}" title="Teléfono móvil {{ repair.device.brand ~ ' ' ~ repair.device.model }}"></li>
-                </ul>
-            </div>
-            <!-- Brand Image End -->
-        {% endif %}
+        {#{% if receipt.device.image %}#}
+            {#<!-- Brand Image -->#}
+            {#<div class="four column">#}
+                {#<ul class="client-box brand">#}
+                    {#<li><img src="{{ asset(vich_model_images ~ receipt.device.image) }}" alt="Teléfono móvil {{ receipt.device }}" title="Teléfono móvil {{ receipt.device }}"></li>#}
+                {#</ul>#}
+            {#</div>#}
+            {#<!-- Brand Image End -->#}
+        {#{% endif %}#}
 
         <!-- Table -->
         <div class="eight column">
-            <table class="table-{{ repair.state.color|lower }}">
+            <table class="table-{{ receipt.state.color|lower }}">
                 <thead>
                     <th >Code:</th>
                     <th>Estado:</th>
 
                 </thead>
                 <tbody>
-                    <td>{{ repair.code }}</td>
-                    <td>{{ repair.state }}</td>
+                    <td>{{ receipt.code }}</td>
+                    <td>{{ receipt.state }}</td>
                 </tbody>
-            </table>
-        </div>
-        <!-- Table End -->
-
-        <!-- Table -->
-        <div class="twelve column">
-            <table class="table-{{ repair.state.color|lower }}">
-                <tr>
-                    <td colspan="2">Dispositivo</td>
-                    <td>Color</td>
-                    <td>Capacidad</td>
-                    <td>Imei primario</td>
-                    <td>Imei secundario</td>
-                </tr>
-
-                <tr class="odd">
-                    <td colspan="2">{{ repair.device.brand ~ repair.device.model }}</td>
-                    <td>{{ repair.device.color|capitalize }}</td>
-                    <td>{{ repair.device.storageSize }}</td>
-                    <td>{{ repair.device.imeiPrimary }}</td>
-                    <td>{{ repair.device.imeiSecondary }}</td>
-                </tr>
-            </table>
-        </div>
-        <!-- Table End -->
-
-        <!-- Table -->
-        <div class="twelve column">
-            <table class="table-{{ repair.state.color|lower }}">
-                <tr>
-                    <td>Descripción</td>
-                </tr>
-
-                <tr class="odd">
-                    <td>{{ repair.description }}</td>
-                </tr>
             </table>
         </div>
         <!-- Table End -->
@@ -102,11 +66,49 @@
                     <td>Empleado</td>
                 </tr>
                 <tr class="odd">
-                    <td>{{ repair.client.completeName }}</td>
-                    <td>{{ repair.repairAssigned.completeName }}</td>
+                    <td>{{ receipt.clientName }}</td>
+                    <td>{{ receipt.employee.name }}</td>
                 </tr>
-             </table>
+            </table>
         </div>
+        <!-- Table End -->
+
+        <!-- Table -->
+        <div class="twelve column">
+            <table class="table-{{ receipt.state.color|lower }}">
+                <tr>
+                    <td>Articulo</td>
+                    <td>Descripción</td>
+                    <td>Precio</td>
+                </tr>
+                {% for item in receipt.items %}
+                   <tr{{ (loop.index % 2 != 0) ? ' class="odd"' : '' }}>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description|raw }}</td>
+                        <td>{{ item.cost|number_format(2, ',', '.') }} €</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!-- Table End -->
+
+
+
+        <!-- Table -->
+        {#<div class="six column">#}
+            {#<table>#}
+                {#<tr>#}
+                    {#<td colspan="2">Precio</td>#}
+                    {#<td colspan="2">Adelanto</td>#}
+                    {#<td colspan="2">Descuento</td>#}
+                {#</tr>#}
+                {#<tr class="odd">#}
+                    {#<td colspan="2">{{ receipt.cost|number_format(2, ',', '.') }}</td>#}
+                    {#<td colspan="2">{{ receipt.advance|number_format(2, ',', '.') }}</td>#}
+                    {#<td colspan="2">{{ receipt.discount|number_format(2, ',', '.') }}</td>#}
+                {#</tr>#}
+            {#</table>#}
+        {#</div>#}
         <!-- Table End -->
 
         <!-- Table -->
@@ -117,25 +119,8 @@
                     <td colspan="3">Fecha de entrega</td>
                 </tr>
                 <tr class="odd">
-                    <td colspan="3">{{ repair.startDate|date("m/d/Y")  }}</td>
-                    <td colspan="3">{{ repair.deliveryDate|date("m/d/Y")  }}</td>
-                </tr>
-            </table>
-        </div>
-        <!-- Table End -->
-
-        <!-- Table -->
-        <div class="six column">
-            <table>
-                <tr>
-                    <td colspan="2">Precio</td>
-                    <td colspan="2">Adelanto</td>
-                    <td colspan="2">Descuento</td>
-                </tr>
-                <tr class="odd">
-                    <td colspan="2">{{ repair.cost }}</td>
-                    <td colspan="2">{{ repair.advance }}</td>
-                    <td colspan="2">{{ repair.discount }}</td>
+                    <td colspan="3">{{ receipt.createdAt|date("m/d/Y")  }}</td>
+                    <td colspan="3">{{ receipt.deliveryDate|date("m/d/Y")  }}</td>
                 </tr>
             </table>
         </div>

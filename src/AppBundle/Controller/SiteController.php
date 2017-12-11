@@ -8,9 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-use AppBundle\Entity\ContactMail;
 use AppBundle\Form\ContactMailType;
-use AppBundle\Entity\Repair;
+use AppBundle\Entity\Receipt;
 use AppBundle\Form\RepairDeviceQueryType;
 
 /**
@@ -246,7 +245,7 @@ class SiteController extends Controller
      */
     public function repairQueryAction(Request $request)
     {
-        $repair = new Repair();
+        $repair = new Receipt();
 
         $form = $this->createForm(RepairDeviceQueryType::class, $repair);
         $form->handleRequest($request);
@@ -287,9 +286,9 @@ class SiteController extends Controller
     public function repairShowAction($code)
     {
         $em = $this->getDoctrine()->getManager();
-        $repair = $em->getRepository('AppBundle:Repair')->findOneRepairDeviceByCode($code);
+        $receipt = $em->getRepository('AppBundle:Receipt')->findOneByCode($code);
 
-        if ($repair === null) {
+        if ($receipt === null) {
             $this->addFlash('error', 'No existe ninguna reparación con el código <strong class="flash">'.$code.'</strong>.');
 
             return $this->redirectToRoute('repair-query');
@@ -297,7 +296,7 @@ class SiteController extends Controller
 
         return $this->render('vista-de-reparacion.html.twig', array(
             'nav' => 'reparaciones',
-            'repair' => $repair
+            'receipt' => $receipt
         ));
     }
 
@@ -315,11 +314,42 @@ class SiteController extends Controller
     public function siteMapAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $repairs = $em->getRepository('AppBundle:Repair')->findAll();
+        $repairs = $em->getRepository('Receipt.php')->findAll();
 
         return $this->render('sitemap.xml.twig', array(
             'nav' => 'index',
             'repairs' => $repairs
+        ));
+    }
+
+    /**
+     * Página de testeo.
+     *
+     * @Route(
+     *     "/test/",
+     *     name="test",
+     * )
+     *
+     * @return Response
+     */
+    public function testAction()
+    {
+        $invoice = array(
+            'code' => '123456',
+            'clientName' => 'Pepe',
+            'clientPhone' => '600111222',
+            'clientAddress' => '',
+            'clientEmail' => '',
+            'startDate' => new \DateTime('now'),
+            'device' => 'BQ Aquaris X5',
+            'description' => '<p>lsdjas dfkasd fasdkf asdf.</p><p>djfjsdfjask djfk sd ksdfk asjdflñaksd.</p>',
+            'cost' => 25,
+            'discount' => 0,
+        );
+
+
+        return $this->render('receipt-a4.html.twig', array(
+            'invoice' => $invoice,
         ));
     }
 
@@ -338,5 +368,55 @@ class SiteController extends Controller
     public function staticAction($slug)
     {
         return $this->render(sprintf('%s.html.twig', $slug), array('nav' => 'index' ));
+    }
+
+    /**
+     *
+     * @Route(
+     *     "admin2462/receipt/",
+     *     name="receipt",
+     *  )
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function receiptAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id = $request->query->get('id');
+
+        $receipt = $em->getRepository('AppBundle:Receipt')->findOneById($id);
+
+        if (!$receipt) {
+            $this->createNotFoundException();
+        }
+
+        return $this->render('receipt-a4.html.twig', array('receipt' => $receipt ));
+    }
+
+    /**
+     *
+     * @Route(
+     *     "admin2462/invoice/",
+     *     name="invoice",
+     *  )
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function invoiceAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id = $request->query->get('id');
+
+        $invoice = $em->getRepository('AppBundle:Invoice')->findOneById($id);
+
+        if (!$invoice) {
+            $this->createNotFoundException();
+        }
+
+        return $this->render('invoice-a4.html.twig', array('invoice' => $invoice ));
     }
 }

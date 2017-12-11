@@ -2,7 +2,7 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Repair;
+use AppBundle\Entity\Receipt;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\SubmitButton;
@@ -35,7 +35,7 @@ class RepairDeviceQueryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Repair::class,
+            'data_class' => Receipt::class,
         ));
     }
 

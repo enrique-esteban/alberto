@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="State")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\StateRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\HasLifecycleCallbacks()
  *
  * @author Enrique José Esteban Plaza <ense.esteban@gmail.com>
  */
@@ -47,24 +46,23 @@ class State
     private $color;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Repair", mappedBy="state")
+     * One Receipt has Many Features.
+     * @ORM\OneToMany(targetEntity="Receipt", mappedBy="state")
      */
-    private $repairs;
+    private $receipts;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Sale", mappedBy="state")
+     * One Receipt has Many Features.
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="state")
      */
-    private $sales;
-    
+    private $invoices;
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->receipts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invoices = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -150,71 +148,71 @@ class State
     }
 
     /**
-     * Add repair
+     * Add receipt
      *
-     * @param \AppBundle\Entity\Repair $repair
+     * @param \AppBundle\Entity\Receipt $receipt
      *
      * @return State
      */
-    public function addRepair(\AppBundle\Entity\Repair $repair)
+    public function addReceipt(\AppBundle\Entity\Receipt $receipt)
     {
-        $this->repairs[] = $repair;
+        $this->receipts[] = $receipt;
 
         return $this;
     }
 
     /**
-     * Remove repair
+     * Remove receipt
      *
-     * @param \AppBundle\Entity\Repair $repair
+     * @param \AppBundle\Entity\Receipt $receipt
      */
-    public function removeRepair(\AppBundle\Entity\Repair $repair)
+    public function removeReceipt(\AppBundle\Entity\Receipt $receipt)
     {
-        $this->repairs->removeElement($repair);
+        $this->receipts->removeElement($receipt);
     }
 
     /**
-     * Get repairs
+     * Get receipts
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRepairs()
+    public function getReceipts()
     {
-        return $this->repairs;
+        return $this->receipts;
     }
 
     /**
-     * Add sale
+     * Add invoice
      *
-     * @param \AppBundle\Entity\Sale $sale
+     * @param \AppBundle\Entity\Invoice $invoice
      *
      * @return State
      */
-    public function addSale(\AppBundle\Entity\Sale $sale)
+    public function addInvoice(\AppBundle\Entity\Invoice $invoice)
     {
-        $this->sales[] = $sale;
+        $this->invoices[] = $invoice;
 
         return $this;
     }
 
     /**
-     * Remove sale
+     * Remove invoice
      *
-     * @param \AppBundle\Entity\Sale $sale
+     * @param \AppBundle\Entity\Invoice $invoice
      */
-    public function removeSale(\AppBundle\Entity\Sale $sale)
+    public function removeInvoice(\AppBundle\Entity\Invoice $invoice)
     {
-        $this->sales->removeElement($sale);
+        $this->invoices->removeElement($invoice);
     }
 
     /**
-     * Get sales
+     * Get invoices
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSales()
+    public function getInvoices()
     {
-        return $this->sales;
+        return $this->invoices;
     }
 
     /**
@@ -235,7 +233,6 @@ class State
     {
         return $this->getName();
     }
-
     /**
      * HasLifecycleCallbacks: Se elimina el formato de CKEditor antes de guardarla en la base de datos
      *

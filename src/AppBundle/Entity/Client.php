@@ -59,27 +59,6 @@ class Client
     private $telephone;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Repair", mappedBy="client")
-     */
-    private $repairs;
-
-    /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Sale", mappedBy="client")
-     */
-    private $sales;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -207,74 +186,6 @@ class Client
     public function getTelephone()
     {
         return $this->telephone;
-    }
-
-    /**
-     * Add repair
-     *
-     * @param \AppBundle\Entity\Repair $repair
-     *
-     * @return Client
-     */
-    public function addRepair(\AppBundle\Entity\Repair $repair)
-    {
-        $this->repairs[] = $repair;
-
-        return $this;
-    }
-
-    /**
-     * Remove repair
-     *
-     * @param \AppBundle\Entity\Repair $repair
-     */
-    public function removeRepair(\AppBundle\Entity\Repair $repair)
-    {
-        $this->repairs->removeElement($repair);
-    }
-
-    /**
-     * Get repairs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRepairs()
-    {
-        return $this->repairs;
-    }
-
-    /**
-     * Add sale
-     *
-     * @param \AppBundle\Entity\Sale $sale
-     *
-     * @return Client
-     */
-    public function addSale(\AppBundle\Entity\Sale $sale)
-    {
-        $this->sales[] = $sale;
-
-        return $this;
-    }
-
-    /**
-     * Remove sale
-     *
-     * @param \AppBundle\Entity\Sale $sale
-     */
-    public function removeSale(\AppBundle\Entity\Sale $sale)
-    {
-        $this->sales->removeElement($sale);
-    }
-
-    /**
-     * Get sales
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSales()
-    {
-        return $this->sales;
     }
 
     /**

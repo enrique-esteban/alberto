@@ -127,7 +127,7 @@
             <h2>¿Por qué realizar el curso con Expertosit?</h2>
 
             <ul class="check">
-                <li>Prácticas con nosotros en nuestra tienda.</li>
+                <li>Prácticas reales con nosotros en nuestra tienda.</li>
                 <li>Profesores conectados vía whatsapp y telefóno</li>
                 <li>Te proveemos de todas las herramientas y respuestos que necesites</li>
                 <li>Te asesoramos en las reparaciones que no sepas realizar</li>
@@ -139,18 +139,65 @@
     </div>
 
     <div class="row">
-        <div class="five column offset-by-one">
-            <div class="note-folded">
-                <h4>Regalos Exclusivos</h4>
-                <p>Al finalizar el curso, además de tú título, recibe en exclusiva una cubeta de ultrasonidos y un juego de destornilladores de precisión como regalo.</p>
-            </div>
-        </div>
-        <div class="six column">
-            <img src="{{ asset('/images/pages/regalos-fin-curso.jpg') }}" alt="regalos fin de curso" title="Regalos de fin de curso para los alumnos" width="359" height="179">
-        </div>
-
         <div class="twelve column">
-            <hr/>
+            <h4>Precios</h4>
+
+            <!-- Tabla precio cursos -->
+            <ul class="pricing-grid three-up">
+                <li class="pricing-column">
+                    <h6 class="pricing-title">Express</h6>
+                    <div class="pricing-price">
+                        <h6><span class="dollar">€</span>420</h6>
+                        <p>Ideal para ampliar tus conocimientos.</p>
+                    </div>
+                    <ul class="pricing-content">
+                        <li><strong>20 h.</strong> Clases teóricas.</li>
+                        <li>Sin horas prácticas<sup>*</sup>.</li>
+                        <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
+                        <li>Financiación en <strong>3 meses</strong><sup>**</sup>.</li>
+                    </ul>
+                    <div class="pricing-button">
+                        {#<a href="#" class="button medium grey">Order Now</a>#}
+                    </div>
+                </li>
+                <li class="pricing-column green-plan featured-plan">
+                    <h6 class="pricing-title">Senior</h6>
+                    <div class="pricing-price">
+                        <h6><span class="dollar">€</span>850{#<span class="permonth">/month</span>#}</h6>
+                        <p>Para aprenderlo todo desde 0.</p>
+                    </div>
+                    <ul class="pricing-content">
+                        <li><strong>50 h.</strong> Clases teóricas.</li>
+                        <li><strong>10 h.</strong> Prácticas en la tienda<sup>*</sup>.</li>
+                        <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
+                        <li>Financiación en <strong>4 meses</strong><sup>**</sup>.</li>
+                    </ul>
+                    <div class="pricing-button">
+                        {#<a href="#" class="button medium green">Order Now</a>#}
+                    </div>
+                </li>
+                <li class="pricing-column">
+                    <h6 class="pricing-title">Senior +</h6>
+                    <div class="pricing-price">
+                        <h6><span class="dollar">€</span>1520{#<span class="permonth">/month</span>#}</h6>
+                        <p>Si 10h. no te parecen suficiente.</p>
+                    </div>
+                    <ul class="pricing-content">
+                        <li><strong>50 h.</strong> Clases teóricas.</li>
+                        <li><strong>50 h.</strong> Prácticas en la tienda<sup>*</sup>.</li>
+                        <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
+                        <li>Financiación en <strong>5 meses</strong><sup>**</sup>.</li>
+                    </ul>
+                    <div class="pricing-button">
+                        {#<a href="#" class="button medium grey">Order Now</a>#}
+                    </div>
+                </li>
+            </ul>
+            <!-- Fin tabla precio cursos -->
+
+            <p><sup>*</sup> Se pueden contratar paquetes de horas extra (<a href="#horas">ver aquí</a>).</p>
+            <p><sup>**</sup> Sólo la mitad del coste total del curso es financiada por ExpertosIT, la otra mitad se abonará por alelantado. Financiación del 100% a través de nuestra entidad colaboradora.</p>
+            <hr>
         </div>
     </div>
 
@@ -160,7 +207,7 @@
 
             <!-- Tabla curso senior -->
             <div class="six column">
-                <h5 class="courses">Curso Senior (50h. de clases + 50h. prácticas)</h5>
+                <h5 class="courses">Curso Senior y Senior +</h5>
 
                 <ul class="tabs-right">
                     <li class="active"><a href="#tab-sample1">Día 1</a></li>
@@ -287,7 +334,7 @@
 
             <!-- Tabla curso express -->
             <div class="six column">
-                <h5 class="courses">Curso Express (20h. de clases + 30h. prácticas)</h5>
+                <h5 class="courses">Curso Express</h5>
 
                 <ul class="tabs-left">
                     <li><a href="#tab-sample11">Día 1</a></li>
@@ -339,6 +386,84 @@
         </div>
 
          <div class="twelve column">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve column">
+            <h4 id="horas">Paquetes de horas extras</h4>
+
+            <!-- Tabla precio horas practicas -->
+            <ul class="pricing-grid three-up">
+                <li class="pricing-column green-plan">
+                    <h6 class="pricing-title color-dark-grey">10 horas</h6>
+                    <div class="pricing-price">
+                        <h6 class="color-dark-grey"><span class="dollar">€</span>250</h6>
+                        <p class="color-dark-grey"><strong>10 horas</strong> de clases prácticas.</p>
+                    </div>
+                    {#<ul class="pricing-content">#}
+                        {#<li><strong>10 h.</strong> de clases prácticas.</li>#}
+                        {#<li>Asesoramiento con nuestros profesores.</li>#}
+                        {#<li>Uso de nuestras herramientas.</li>#}
+                        {#<li>Te proveemos de los respuestos que necesites.</li>#}
+                    {#</ul>#}
+                    {#<div class="pricing-button">#}
+                        {#<a href="#" class="button medium grey">Order Now</a>#}
+                    {#</div>#}
+                </li>
+                <li class="pricing-column green-plan">
+                    <h6 class="pricing-title color-dark-grey">20 horas</h6>
+                    <div class="pricing-price">
+                        <h6 class="color-dark-grey"><span class="dollar">€</span>400</h6>
+                        <p class="color-dark-grey"><strong>20 horas</strong> de clases prácticas.</p>
+                    </div>
+                    {#<ul class="pricing-content">#}
+                        {#<li><strong>20 h.</strong> de clases prácticas.</li>#}
+                        {#<li>Asesoramiento con nuestros profesores.</li>#}
+                        {#<li>Uso de nuestras herramientas.</li>#}
+                        {#<li>Te proveemos de los respuestos que necesites.</li>#}
+                    {#</ul>#}
+                    {#<div class="pricing-button">#}
+                        {#<a href="#" class="button medium green">Order Now</a>#}
+                    {#</div>#}
+                </li>
+                <li class="pricing-column green-plan">
+                    <h6 class="pricing-title color-dark-grey">Personalizado</h6>
+                    <div class="pricing-price">
+                        <h6 class="color-dark-grey"><span class="dollar">€</span>28<span class="permonth">/hora</span></h6>
+                        <p class="color-dark-grey">Personalize las horas que necesites.</p>
+                    </div>
+                    {#<ul class="pricing-content">#}
+                        {#<li>Personaliza las horas que necesites.</li>#}
+                        {#<li>Asesoramiento con nuestros profesores.</li>#}
+                        {#<li>Uso de nuestras herramientas.</li>#}
+                        {#<li>Te proveemos de los respuestos que necesites.</li>#}
+                    {#</ul>#}
+                    {#<div class="pricing-button">#}
+                        {#<a href="#" class="button medium grey">Order Now</a>#}
+                    {#</div>#}
+                </li>
+            </ul>
+            <!-- Fin tabla precio horas practicas -->
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5 id="regalos">Regalos Exclusivos</h5>
+        <br>
+        <div class="five column offset-by-one">
+            <div class="note-folded">
+                <h4>Regalos Exclusivos</h4>
+                <p>Al finalizar el curso, además de tú título, recibe en exclusiva una cubeta de ultrasonidos y un juego de destornilladores de precisión como regalo.</p>
+            </div>
+        </div>
+        <div class="six column">
+            <img src="{{ asset('/images/pages/regalos-fin-curso.jpg') }}" alt="regalos fin de curso" title="Regalos de fin de curso para los alumnos" width="359" height="179">
+        </div>
+
+        <div class="twelve column">
             <hr/>
         </div>
     </div>

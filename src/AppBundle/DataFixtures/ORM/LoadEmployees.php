@@ -25,21 +25,22 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         // Añadimos un administrador (Admin):
         $employee = new Employee();
 
-        $employee->setUsername('admin');
-        $employee->setName('admin');
-        $employee->setLastName('admin');
-        $employee->setTelephone(null);
+        $employee->setUsername('enrique');
+        $employee->setName('Enrique');
+        $employee->setDni(null);
+        $employee->setLastName('Esteban');
+        $employee->setTelephone('677800959');
         $employee->setAddress(null);
-        $employee->setEmail('admin@admin.com');
+        $employee->setEmail('ense.esteban@gmail.com');
         $employee->setType('Administrador web');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
-
-        $plainPassword = 'admin';
-        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
-
-        $employee->setPlainPassword($plainPassword);
-        $employee->setPassword($encodedPassword);
+        $employee->setPassword('$2y$13$FQuJP0QqrSCsThSeqye30.ZPEAyLL./HLB0my190L/5sqXd8vpzFq');
+//        $plainPassword = 'admin';
+//        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+//
+//        $employee->setPlainPassword($plainPassword);
+//        $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-admin', $employee);
         $manager->persist($employee);
@@ -49,6 +50,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 
         $employee->setUsername('alberto');
         $employee->setName('Alberto');
+        $employee->setDni(null);
         $employee->setLastName('Rivera');
         $employee->setTelephone('686674942');
         $employee->setAddress(null);
@@ -56,12 +58,12 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setType('Chupamingas;abrazafarolas');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
-
-        $plainPassword = 'alberto';
-        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
-
-        $employee->setPlainPassword($plainPassword);
-        $employee->setPassword($encodedPassword);
+        $employee->setPassword('$2y$13$FQuJP0QqrSCsThSeqye30.ZPEAyLL./HLB0my190L/5sqXd8vpzFq');
+//        $plainPassword = 'alberto';
+//        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+//
+//        $employee->setPlainPassword($plainPassword);
+//        $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-alberto', $employee);
         $manager->persist($employee);
@@ -71,6 +73,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 
         $employee->setUsername('florin');
         $employee->setName('Florin');
+        $employee->setDni(null);
         $employee->setLastName('Olaru');
         $employee->setTelephone('642851371');
         $employee->setAddress(null);
@@ -78,12 +81,12 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setType('Dueño;Dios');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
-
-        $plainPassword = 'florin';
-        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
-
-        $employee->setPlainPassword($plainPassword);
-        $employee->setPassword($encodedPassword);
+        $employee->setPassword('$2y$13$FQuJP0QqrSCsThSeqye30.ZPEAyLL./HLB0my190L/5sqXd8vpzFq');
+//        $plainPassword = 'florin';
+//        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+//
+//        $employee->setPlainPassword($plainPassword);
+//        $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-florin', $employee);
         $manager->persist($employee);
@@ -93,6 +96,7 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
 
         $employee->setUsername('carlos');
         $employee->setName('Carlos');
+        $employee->setDni(null);
         $employee->setLastName(null);
         $employee->setTelephone('628406103');
         $employee->setAddress(null);
@@ -100,12 +104,12 @@ class LoadEmployees extends AbstractFixture implements OrderedFixtureInterface, 
         $employee->setType('Técnico;CM;Public Asisstance Manager');
         $employee->setRoles(array('ROLE_ADMIN', 'ROLE_USER'));
         $employee->setEnabled(true);
-
-        $plainPassword = 'carlos';
-        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
-
-        $employee->setPlainPassword($plainPassword);
-        $employee->setPassword($encodedPassword);
+        $employee->setPassword('$2y$13$FQuJP0QqrSCsThSeqye30.ZPEAyLL./HLB0my190L/5sqXd8vpzFq');
+//        $plainPassword = 'carlos';
+//        $encodedPassword = $encoder->encodePassword($employee, $plainPassword);
+//
+//        $employee->setPlainPassword($plainPassword);
+//        $employee->setPassword($encodedPassword);
 
         $this->addReference('employee-carlos', $employee);
         $manager->persist($employee);

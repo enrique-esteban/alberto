@@ -39,6 +39,12 @@ class Employee extends BaseUser
      */
     protected $lastName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dni", type="string", length=9, nullable=true)
+     */
+    protected $dni;
 
     /**
      * @var string
@@ -50,7 +56,7 @@ class Employee extends BaseUser
     /**
      * @var int
      *
-     * @ORM\Column(name="telephone", type="integer", nullable=true)
+     * @ORM\Column(name="telephone", type="string", length=50, nullable=true)
      */
     protected $telephone;
 
@@ -62,24 +68,16 @@ class Employee extends BaseUser
     protected $type;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Repair", mappedBy="repairAssigned")
+     * One Receipt has Many Features.
+     * @ORM\OneToMany(targetEntity="Receipt", mappedBy="employee")
      */
-    protected $repairs;
+    protected $receipts;
 
     /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Sale", mappedBy="seller")
+     * One Receipt has Many Features.
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="employee")
      */
-    protected $sales;
-
-    /**
-     * @inheritdoc
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $invoices;
 
     /**
      * Set name
@@ -130,6 +128,30 @@ class Employee extends BaseUser
     }
 
     /**
+     * Set dni
+     *
+     * @param string $dni
+     *
+     * @return Employee
+     */
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
+    /**
+     * Get dni
+     *
+     * @return string
+     */
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
      * Set address
      *
      * @param string $address
@@ -156,7 +178,7 @@ class Employee extends BaseUser
     /**
      * Set telephone
      *
-     * @param integer $telephone
+     * @param string $telephone
      *
      * @return Employee
      */
@@ -170,7 +192,7 @@ class Employee extends BaseUser
     /**
      * Get telephone
      *
-     * @return integer
+     * @return string
      */
     public function getTelephone()
     {
@@ -202,105 +224,70 @@ class Employee extends BaseUser
     }
 
     /**
-     * Add repair
+     * Add receipt
      *
-     * @param \AppBundle\Entity\Repair $repair
+     * @param \AppBundle\Entity\Receipt $receipt
      *
      * @return Employee
      */
-    public function addRepair(\AppBundle\Entity\Repair $repair)
+    public function addReceipt(\AppBundle\Entity\Receipt $receipt)
     {
-        $this->repairs[] = $repair;
+        $this->receipts[] = $receipt;
 
         return $this;
     }
 
     /**
-     * Remove repair
+     * Remove receipt
      *
-     * @param \AppBundle\Entity\Repair $repair
+     * @param \AppBundle\Entity\Receipt $receipt
      */
-    public function removeRepair(\AppBundle\Entity\Repair $repair)
+    public function removeReceipt(\AppBundle\Entity\Receipt $receipt)
     {
-        $this->repairs->removeElement($repair);
+        $this->receipts->removeElement($receipt);
     }
 
     /**
-     * Get repairs
+     * Get receipts
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRepairs()
+    public function getReceipts()
     {
-        return $this->repairs;
+        return $this->receipts;
     }
 
     /**
-     * Add sale
+     * Add invoice
      *
-     * @param \AppBundle\Entity\Sale $sale
+     * @param \AppBundle\Entity\Invoice $invoice
      *
      * @return Employee
      */
-    public function addSale(\AppBundle\Entity\Sale $sale)
+    public function addInvoice(\AppBundle\Entity\Invoice $invoice)
     {
-        $this->sales[] = $sale;
+        $this->invoices[] = $invoice;
 
         return $this;
     }
 
     /**
-     * Remove sale
+     * Remove invoice
      *
-     * @param \AppBundle\Entity\Sale $sale
+     * @param \AppBundle\Entity\Invoice $invoice
      */
-    public function removeSale(\AppBundle\Entity\Sale $sale)
+    public function removeInvoice(\AppBundle\Entity\Invoice $invoice)
     {
-        $this->sales->removeElement($sale);
+        $this->invoices->removeElement($invoice);
     }
 
     /**
-     * Get sales
+     * Get invoices
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSales()
+    public function getInvoices()
     {
-        return $this->sales;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getCompleteName()
-    {
-        if ($this->getName() && $this->getLastName()) {
-            return $this->getName().' '.$this->getLastName();
-        }
-        elseif ($this->getName()) {
-            return $this->getName();
-        }
-        elseif ($this->getLastName()) {
-            return $this->getLastName();
-        }
-        else {
-            return null;
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        if ($this->getName() && $this->getLastName()) {
-            return $this->getName().' '.$this->getLastName().' <'.$this->getUsername().'>';
-        }
-        elseif ($this->getName()) {
-            return $this->getName().' <'.$this->getUsername().'>';
-        }
-        else {
-            return $this->getUsername();
-        }
+        return $this->invoices;
     }
 }

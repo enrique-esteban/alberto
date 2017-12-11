@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title  'Fatura: ' ~ invoice.code %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('css/receipt-and-invoice.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="book">
+        <!--PÁGINA 1: RECIBO-->
+        <div class="page">
+            <div class="subpage">
+                <section id="memo">
+                    <div class="company-info">
+                        <span>Calle Consenso nº 30,</span>
+                        <span>28041, Madrid</span>
+                        <br>
+                        <span>912 546 050 - 615 849 881</span>
+                        <br>
+                        <span>www.expertosit.es | info@expertosit.es</span>
+                    </div>
+
+                    <div class="logo">
+                        <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
+                    </div>
+                </section>
+
+                <section id="invoice-title-number">
+                    <div id="title">FACTURA</div>
+                </section>
+
+                <section id="client-info">
+                    <span>CLIENTE:</span>
+                    <div class="client-name">
+                        <span>{{ invoice.clientName }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ invoice.clientPhone }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ invoice.clientAddress }}</span>
+                    </div>
+
+                    <div>
+                        <span>{{ invoice.clientEmail }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <section id="invoice-info">
+                    <div>
+                        <span>Código:</span> <span>{{ invoice.code }}</span>
+                    </div>
+
+                    <div>
+                        <span>Fecha:</span> <span>{{ invoice.createdAt|date('d/m/Y') }}</span>
+                    </div>
+                </section>
+
+                <div class="clearfix"></div>
+
+                <div class="currency">
+                    <span>Moneda:</span> <span>EUR</span>
+                </div>
+
+                <section id="items">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="articulo">ARTÍCULO</th>
+                            <th class="descripcion">DESCRIPCIÓN</th>
+                            <th class="cantidad">CANTIDAD</th>
+                            <th class="precio">PRECIO</th>
+                            <th class="descuento">DESCUENTO</th>
+                            <th class="adelanto">ADELANTO</th>
+                            <th class="total">TOTAL</th>
+                        </tr>
+
+                        {% set total = 0 %}
+                        {% for item in invoice.items %}
+                            <tr {{ (loop.index % 2 == 0) ? 'class="pair"' : '' }} data-iterate="item">
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.description|raw }}</td>
+                                <td>{{ item.quantity|default(1) }}</td>
+                                <td>{{ item.cost|number_format(2, ',', '.') }} €</td>
+                                <td>
+                                    {% if item.discount %}
+                                        {{ item.discount }} %
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if item.advance %}
+                                        {{ item.advance|number_format(2, ',', '.') }} €
+                                    {% endif %}
+                                </td>
+                                {% set subtotal = (item.cost - (item.cost * item.discount / 100)) * item.quantity|default(1) - item.advance  %}
+                                <td>{{ subtotal|number_format(2, ',', '.') }} €</td>
+                                {%  set total = (subtotal + total) %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </section>
+
+                <section id="sums">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th>Subtotal:</th>
+                            <td>{{ total|number_format(2, ',', '.') }} €</td>
+
+                        </tr>
+
+                        {% set total = total + (total * 0.21) %}
+                        <tr>
+                            <th>I.V.A. (21 %):</th>
+                            <td>{{ total|number_format(2, ',', '.') }} €</td>
+                        </tr>
+
+                        <tr class="amount-total">
+                            <!-- {amount_total_label} -->
+                            <td colspan="2">{{ total|number_format(2, ',', '.') }} €</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} {% endblock %}
+

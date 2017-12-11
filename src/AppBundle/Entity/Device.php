@@ -136,11 +136,6 @@ class Device
 //     */
 //    private $imeis;
 
-    /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Repair", mappedBy="device")
-     */
-    private $repairs;
 
     /**
      * One Product has Many Features.
@@ -153,7 +148,6 @@ class Device
      */
     public function __construct()
     {
-        $this->repairs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -507,40 +501,6 @@ class Device
     public function getImeiSecondary()
     {
         return $this->imeiSecondary;
-    }
-
-    /**
-     * Add repair
-     *
-     * @param \AppBundle\Entity\Repair $repair
-     *
-     * @return Device
-     */
-    public function addRepair(\AppBundle\Entity\Repair $repair)
-    {
-        $this->repairs[] = $repair;
-
-        return $this;
-    }
-
-    /**
-     * Remove repair
-     *
-     * @param \AppBundle\Entity\Repair $repair
-     */
-    public function removeRepair(\AppBundle\Entity\Repair $repair)
-    {
-        $this->repairs->removeElement($repair);
-    }
-
-    /**
-     * Get repairs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRepairs()
-    {
-        return $this->repairs;
     }
 
     /**

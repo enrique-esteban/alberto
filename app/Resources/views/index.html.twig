@@ -6,7 +6,17 @@
     <!-- slideshow start here -->
     <section id="slideshow-container">
         <div class="banner">
-            <ul>      
+            <ul>
+                <!-- slide 0 -->
+                {#<li data-transition="fade">#}
+                    {#<img src="{{ asset('/images/slideshow/bg-black-friday.jpg') }}" alt="Fondo aula de cursos" width="1126" height="450" />#}
+
+                    {#<div class="caption media-position1 randomrotate tp-caption start" data-x="725" data-y="330" data-speed="900" data-endspeed="900" data-start="1200" data-end="8300" data-easing="easeOutBack" data-endeasing="easeInBack" style="font-size: 12.5453px; padding: 0px; margin: 0px 0px 0px -21.5062px; border-width: 0px; border-style: initial; border-color: initial; line-height: 22.7222px; white-space: nowrap; left: 434.605px; top: 257.216px; opacity: 1; transform: scale(1, 1) rotate(0deg) translate(0px, 0px); visibility: visible;">#}
+                        {#<a class="button medium grey" href="{{ path('sales-others', { 'slug': 'black-friday' }) }}">Más información</a>#}
+                    {#</div>#}
+                {#</li>#}
+                <!-- End slide 0 -->
+
                 <!-- slide 1 -->
                 <li data-transition="fade">
                     <img src="{{ asset('/images/slideshow/bg-aula.jpg') }}" alt="Fondo aula de cursos" width="1126" height="450" />
@@ -276,6 +286,7 @@
                         <img src="{{ asset('/images/pages/logo-la-uci-del-movil.jpg') }}" alt="logo de la uci del movil" title="La UCI del móvil" class="retina" />
                     </a>
                 </li>
+            </ul>
         </div>
     </div>
 {% endblock %}

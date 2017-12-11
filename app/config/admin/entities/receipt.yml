@@ -1,0 +1,33 @@
+easy_admin:
+    entities:
+        Receipt:
+            class: AppBundle\Entity\Receipt
+            password_encoding: { algorithm: 'bcrypt', cost: 4 }
+            list:
+                title: 'Recibos'
+                sort: 'code'
+                actions:
+                  - { name: 'receipt', type: 'route', label: '', icon: 'print', target: '_blank' }
+                fields: [ 'code', 'clientName', 'clientPhone', 'items', 'employee', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' }, 'createdAt', 'deliveryDate', 'tax' ]
+            show:
+                fields: [ 'id', 'code', 'clientName', 'clientPhone', 'clientEmail', 'clientAddress', 'employee', 'items', { property: 'state.nameAndColor', template: 'state.html.twig', label: 'State' } 'createdAt', 'deliveryDate', 'tax' ]
+            form:
+                fields:
+                    - { type: 'group', label: 'Código', icon: 'barcode', css_class: 'col-sm-12' }
+                    - { property: 'code', label: 'Código', help: 'Código alfanumérico de 15 dígitos max., si no se especifica es auto generado', css_class: 'large', type_options: { required: false } }
+
+                    - { type: 'group', label: 'Información de los artículos', icon: 'mobile', css_class: 'col-sm-6' }
+                    - { property: 'tax', label: 'Habilitar I.V.A. (21%)' }
+                    - { property: 'state', label: 'Estado' }
+                    - { property: 'items', label: 'Artículos', type: 'collection', type_options: { entry_type: 'AppBundle\Form\ItemType', by_reference: false } }
+
+
+                    - { type: 'group', label: 'Información del recibo', icon: 'cogs', css_class: 'col-sm-6' }
+                    - { property: 'clientName', label: 'Dueño' }
+                    - { property: 'clientPhone', label: 'Teléfono' }
+                    - { property: 'clientEmail', label: 'e-mail' }
+                    - { property: 'clientAddress', label: 'Dirección' }
+                    - { property: 'employee', label: 'Empleado' }
+                    - { type: 'divider' }
+                    - { property: 'createdAt', label: 'Fecha inicio', type: 'date', help: 'Guarda la fecha actual si no se especifica alguna', type_options: { required: false } }
+                    - { property: 'deliveryDate', label: 'Fecha entrega', type: 'date' }

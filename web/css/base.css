@@ -85,6 +85,7 @@ line-height: 22px;
 sup {bottom:1px;}
 sub {top:1px;font-size:.6em;}
 em {font-style:italic;}
+strong {font-weight: bold;  line-height: inherit;}/*Modificado*/
 strong.flash {font-weight: bold;  line-height: inherit;}/*Modificado*/
 strong.green {font-weight: bold;  line-height: inherit; color: #9eaf6b; } /*Modificado*/
 small {font-size:80%;}
@@ -1740,6 +1741,7 @@ padding:20px 0 10px;
 .permonth {font-size:14px;}
 .dollar {font-size:20px; position:relative; top:-16px;}
 .pricing-price h1 {font-size:44px; color:#fff; margin-top:8px; padding-top:8px;}
+.pricing-price h6 {font-size:44px; color:#fff; margin-top:8px; padding-top:8px;} /*modificado*/
 .featured-plan {top:-16px; position:relative; -webkit-box-shadow:0 5px 27px rgba(0,0,0,0.2); -moz-box-shadow:0 5px 27px rgba(0,0,0,0.2); box-shadow:0 5px 27px rgba(0,0,0,0.2);}
 .featured-plan .pricing-title {padding:14px 0px 13px 0px;}
 .featured-plan .pricing-button {padding-bottom:26px;}
