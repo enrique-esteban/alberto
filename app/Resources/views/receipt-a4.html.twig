@@ -11,131 +11,306 @@
         <!--PÁGINA 1: RECIBO-->
         <div class="page">
             <div class="subpage">
-                <section id="memo">
-                    <div class="company-info">
-                        <span>Calle Consenso nº 30,</span>
-                        <span>28041, Madrid</span>
-                        <br>
-                        <span>912 546 050 - 615 849 881</span>
-                        <br>
-                        <span>www.expertosit.es | info@expertosit.es</span>
-                    </div>
+                <!--PARTE SUPERIOR-->
+                <div class="up">
+                    <section id="memo">
+                        <div class="company-info">
+                            <span>Calle Consenso nº 30,</span>
+                            <span>28041, Madrid</span>
+                            <br>
+                            <span>912 546 050 - 615 849 881</span>
+                            <br>
+                            <span>www.expertosit.es | info@expertosit.es</span>
+                        </div>
 
-                    <div class="logo">
-                        <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
-                    </div>
-                </section>
+                        <div class="logo">
+                            <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
+                        </div>
+                    </section>
 
-                <section id="invoice-title-number">
-                    <div id="title">RECIBO</div>
-                </section>
+                    <section id="invoice-title-number">
+                        <div id="title">RECIBO</div>
+                    </section>
 
-                <section id="client-info">
-                    <span>CLIENTE:</span>
-                    <div class="client-name">
-                        <span>{{ receipt.clientName }}</span>
-                    </div>
-
-                    <div>
-                        <span>{{ receipt.clientPhone }}</span>
-                    </div>
-
-                    <div>
-                        <span>{{ receipt.clientAddress }}</span>
-                    </div>
-
-                    <div>
-                        <span>{{ receipt.clientEmail }}</span>
-                    </div>
-                </section>
-
-                <div class="clearfix"></div>
-
-                <section id="invoice-info">
-                    <div>
-                        <span>Código:</span> <span>{{ receipt.code }}</span>
-                    </div>
-
-                    {% if receipt.deliveryDate %}
-                        <div>
-                            <span>Fecha de inicio:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                    <section id="client-info">
+                        <span>CLIENTE:</span>
+                        <div class="client-name">
+                            <span>{{ receipt.clientName }}</span>
                         </div>
 
                         <div>
-                            <span>Fecha entrega:</span> <span>{{ receipt.deliveryDate |date('d/m/Y') }}</span>
+                            <span>{{ receipt.clientPhone|phone }}</span>
                         </div>
-                    {% else %}
+
                         <div>
-                            <span>Fecha:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                            <span>{{ receipt.clientAddress }}</span>
                         </div>
-                    {% endif %}
-                </section>
 
-                <div class="clearfix"></div>
+                        <div>
+                            <span>{{ receipt.clientEmail }}</span>
+                        </div>
+                    </section>
 
-                <div class="currency">
-                    <span>Moneda:</span> <span>EUR</span>
-                </div>
+                    <div class="clearfix"></div>
 
-                <section id="items">
-                    <table cellpadding="0" cellspacing="0">
-                        <tr>
-                            <th class="articulo">ARTÍCULO</th>
-                            <th class="descripcion">DESCRIPCIÓN</th>
-                            <th class="cantidad">CANTIDAD</th>
-                            <th class="precio">PRECIO</th>
-                            <th class="adelanto">ADELANTO</th>
-                            <th class="descuento">DESCUENTO</th>
-                            <th class="total">TOTAL</th>
-                        </tr>
+                    <section id="invoice-info">
+                        <div>
+                            <span>Código:</span> <span>{{ receipt.code }}</span>
+                        </div>
 
-                        {% set total = 0 %}
-                        {% for item in receipt.items %}
-                            <tr {{ (loop.index % 2 == 0) ? 'class="pair"' : '' }} data-iterate="item">
-                                <td>{{ item.name }}</td>
-                                <td>{{ item.description|raw }}</td>
-                                <td>{{ item.quantity|default(1) }}</td>
-                                <td>{{ item.cost|number_format(2, ',', '.') }} €</td>
-                                <td>
-                                    {% if item.advance %}
-                                        {{ item.advance|number_format(2, ',', '.') }} €
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if item.discount %}
-                                        {{ item.discount }} %
-                                    {% endif %}
-                                </td>
-                                {% set subtotal = (item.cost - (item.cost * item.discount / 100)) * item.quantity|default(1) - item.advance  %}
-                                <td>{{ subtotal|number_format(2, ',', '.') }} €</td>
-                                {%  set total = (subtotal + total) %}
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </section>
+                        {% if receipt.deliveryDate %}
+                            <div>
+                                <span>Fecha de inicio:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                            </div>
 
-                <section id="sums">
-                    <table cellpadding="0" cellspacing="0">
-                        <tr>
-                            <th>Subtotal:</th>
-                            <td>{{ total|number_format(2, ',', '.') }} €</td>
-
-                        </tr>
-                        {% if receipt.tax %}
-                            {% set total = total + (total * 0.21) %}
-                            <tr>
-                                <th>I.V.A. (21 %):</th>
-                                <td>{{ total|number_format(2, ',', '.') }} €</td>
-                            </tr>
+                            <div>
+                                <span>Fecha entrega:</span> <span>{{ receipt.deliveryDate |date('d/m/Y') }}</span>
+                            </div>
+                        {% else %}
+                            <div>
+                                <span>Fecha:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                            </div>
                         {% endif %}
+                    </section>
 
-                        <tr class="amount-total">
-                            <!-- {amount_total_label} -->
-                            <td colspan="2">{{ total|number_format(2, ',', '.') }} €</td>
-                        </tr>
-                    </table>
-                </section>
+                    <div class="clearfix"></div>
 
+                    <div class="currency">
+                        <span>Moneda:</span> <span>EUR</span>
+                    </div>
+
+                    <section id="items">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th class="numero">#</th>
+                                <th class="articulo">ARTÍCULO</th>
+                                <th class="descripcion">DESCRIPCIÓN</th>
+                                <th class="cantidad">CANTIDAD</th>
+                                <th class="precio">PRECIO</th>
+                                <th class="adelanto">ADELANTO</th>
+                                <th class="descuento">DESCUENTO</th>
+                                <th class="total">TOTAL</th>
+                            </tr>
+
+                            {% set total = 0 %}
+                            {% for item in receipt.items %}
+                                <tr {{ (loop.index % 2 == 0) ? 'class="pair"' : '' }} data-iterate="item">
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.description|raw }}</td>
+                                    <td>{{ item.quantity|default(1) }}</td>
+                                    <td>{{ item.cost|number_format(2, ',', '.') }} €</td>
+                                    <td>
+                                        {% if item.advance %}
+                                            {{ item.advance|number_format(2, ',', '.') }} €
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.discount %}
+                                            {{ item.discount }} %
+                                        {% endif %}
+                                    </td>
+                                    {% set subtotal = (item.cost - (item.cost * item.discount / 100)) * item.quantity|default(1) - item.advance  %}
+                                    <td>{{ subtotal|number_format(2, ',', '.') }} €</td>
+                                    {%  set total = (subtotal + total) %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </section>
+
+                    <section id="sums">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>Subtotal:</th>
+                                <td>{{ total|number_format(2, ',', '.') }} €</td>
+
+                            </tr>
+                            {% if receipt.tax %}
+                                {% set total = total + (total * 0.21) %}
+                                <tr>
+                                    <th>I.V.A. (21 %):</th>
+                                    <td>{{ total|number_format(2, ',', '.') }} €</td>
+                                </tr>
+                            {% endif %}
+
+                            <tr class="amount-total">
+                                <!-- {amount_total_label} -->
+                                <td colspan="2">{{ total|number_format(2, ',', '.') }} €</td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+                <!--FIN PARTE SUPERIOR-->
+
+                <hr class="separator">
+
+                <!--PARTE INFERIOR-->
+                <div class="down">
+                    <section id="memo">
+                        <div class="company-info">
+                            <span>Calle Consenso nº 30,</span>
+                            <span>28041, Madrid</span>
+                            <br>
+                            <span>912 546 050 - 615 849 881</span>
+                            <br>
+                            <span>www.expertosit.es | info@expertosit.es</span>
+                        </div>
+
+                        <div class="logo">
+                            <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('images/logo-grey@2x.png') }}" />
+                        </div>
+                    </section>
+
+                    <section id="invoice-title-number">
+                        <div id="title">Justificante</div>
+                    </section>
+
+                    <section id="client-info">
+                        <span>CLIENTE:</span>
+                        <div class="client-name">
+                            <span>{{ receipt.clientName }}</span>
+                        </div>
+
+                        <div>
+                            <span>{{ receipt.clientPhone|phone }}</span>
+                        </div>
+
+                        <div>
+                            <span>{{ receipt.clientAddress }}</span>
+                        </div>
+
+                        <div>
+                      te-info      <span>{{ receipt.clientEmail }}</span>
+                        </div>
+                    </section>
+
+                    <div class="clearfix"></div>
+
+                    <section id="invoice-info">
+                        <div>
+                            <span>Código:</span> <span>{{ receipt.code }}</span>
+                        </div>
+
+                        {% if receipt.deliveryDate %}
+                            <div>
+                                <span>Fecha de inicio:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                            </div>
+
+                            <div>
+                                <span>Fecha entrega:</span> <span>{{ receipt.deliveryDate |date('d/m/Y') }}</span>
+                            </div>
+                        {% else %}
+                            <div>
+                                <span>Fecha:</span> <span>{{ receipt.createdAt|date('d/m/Y') }}</span>
+                            </div>
+                        {% endif %}
+                    </section>
+
+                    <div class="clearfix"></div>
+
+                    <div class="currency">
+                        <span>Moneda:</span> <span>EUR</span>
+                    </div>
+
+                    <section id="items">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th class="numero">#</th>
+                                <th class="articulo">ARTÍCULO</th>
+                                <th class="descripcion">DESCRIPCIÓN</th>
+                                <th class="cantidad">CANTIDAD</th>
+                                <th class="precio">PRECIO</th>
+                                <th class="adelanto">ADELANTO</th>
+                                <th class="descuento">DESCUENTO</th>
+                                <th class="total">TOTAL</th>
+                            </tr>
+
+                            {% set total = 0 %}
+                            {% for item in receipt.items %}
+                                <tr {{ (loop.index % 2 == 0) ? 'class="pair"' : '' }} data-iterate="item">
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.description|raw }}</td>
+                                    <td>{{ item.quantity|default(1) }}</td>
+                                    <td>{{ item.cost|number_format(2, ',', '.') }} €</td>
+                                    <td>
+                                        {% if item.advance %}
+                                            {{ item.advance|number_format(2, ',', '.') }} €
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.discount %}
+                                            {{ item.discount }} %
+                                        {% endif %}
+                                    </td>
+                                    {% set subtotal = (item.cost - (item.cost * item.discount / 100)) * item.quantity|default(1) - item.advance  %}
+                                    <td>{{ subtotal|number_format(2, ',', '.') }} €</td>
+                                    {%  set total = (subtotal + total) %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </section>
+
+                    <section id="sums">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>Subtotal:</th>
+                                <td>{{ total|number_format(2, ',', '.') }} €</td>
+
+                            </tr>
+                            {% if receipt.tax %}
+                                {% set total = total + (total * 0.21) %}
+                                <tr>
+                                    <th>I.V.A. (21 %):</th>
+                                    <td>{{ total|number_format(2, ',', '.') }} €</td>
+                                </tr>
+                            {% endif %}
+
+                            <tr class="amount-total">
+                                <!-- {amount_total_label} -->
+                                <td colspan="2">{{ total|number_format(2, ',', '.') }} €</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section id="note-info">
+                        <div>
+                            <span><strong>Código</strong>:</span>
+                            <span>{{ receipt.code }}</span>
+                        </div>
+
+                        <div>
+                            <span><strong>{{ receipt.clientName }}</strong>:</span>
+                            <span>{{ receipt.clientPhone|phone }}</span>
+                        </div>
+
+                        <div>
+
+                        </div>
+
+                        <div>
+                            <table>
+                                {% for item in receipt.items %}
+                                    <tr {{ (loop.index % 2 == 1) ? 'class="odd"' : '' }}>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.description|raw }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </section>
+
+                    {#<section id="signature">#}
+                        {#<div>Firma:<span class="line"></span></div>#}
+                    {#</section>#}
+                </div>
+                <!--FIN PARTE INFERIOR-->
+            </div>
+        </div>
+
+        <!--PÁGINA 2: INFO-->
+        <div class="page">
+            <div class="subpage">
                 <section id="info-pages">
                     <p>Puede consultar el estado de su reparación desde nuestra página web, para ello siga los siguientes pasos:</p>
                     <ol>
@@ -145,37 +320,36 @@
                         <li>
                             Luego pulse el menú, <strong>Reparaciones > Consulta de reparaciones</strong> .
                         </li>
-                        <li>
+                        <li>8
                             Por último <strong>introduce el código de la reparación</strong> (lo verá más arriba, a la izquierda) en la caja de texto y pulse enviar.
                         </li>
                     </ol>
                 </section>
 
-                <section id="info-foot">
+                <section id="info-legal">
                     <ul>
                         <li>
-                            De acuerdo con el LOPD el cliente debe entregar el terminal sin tarjeta de memoria ni
-                            tarjeta SIM. No nos hacemos responsables de la pérdida de las mismas en caso que el cliente
-                            no las retire.
+                            De acuerdo con el LOPD el cliente debe entregar el terminal sin tarjeta de memoria ni tarjeta SIM.
+                            Por lo tanto no nos hacemos responsable de la pérdida de las mismas en caso que el cliente no las retire.
                         </li>
                         <li>
                             La apertura del dispositivo o manipulación del mismo por parte del servicio técnico puede
-                            hacer que se pierda la garantía del mismo, por lo cual ExpertosIT no se hace de las
+                            hacer que se pierda la garantía del mismo, por lo cual no nos hacemos responsable de las
                             reclamaciones recibidas por este motivo.
                         </li>
                         <li>
-                            ExpertosIT no hace responsable de cualquier otra avería no notifica o que no pueda ser
-                            comprobada (e.j. por que el dispositivo no encienda) en el momento de la entrega.
+                            ExpertosIT no se hace responsable de cualquier otra avería no notifica o que no pueda ser
+                            comprobada en el momento de la entrega (e.j. por que el dispositivo no encienda).
                         </li>
                         <li>
                             Todos los dispositivos reparados cuentan con 6 meses de garantía, a excepción de los mojados
-                            que no cuentan con garantía. Dicha garantía se hará efectiva desde el momento de la entrega
+                            que carecen de ella. Dicha garantía se hará efectiva desde el momento de la entrega
                             del dispositivo al cliente. La garantía sólo cubre la(s) avería(s) tratada(s) por el
-                            servicio técnico, por tanto no cubrirá nuevas averías.
+                            servicio técnico, por tanto no cubrirá nuevas averías ni otros desperfectos.
                         </li>
                         <li>
-                            Para cualquier reclamación es imprescindible presentar este recibo, ExpertosIT declina toda
-                            responsabilidad derivada de la pérdida del mismo ni otros desperfectos.
+                            Para cualquier reclamación es imprescindible presentar este recibo, se declinará toda
+                            responsabilidad derivada por la pérdida del mismo.
                         </li>
                     </ul>
                 </section>

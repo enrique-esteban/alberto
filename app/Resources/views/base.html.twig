@@ -35,8 +35,8 @@
 <!-- //     Google Webfont Files     // -->
 <!-- ////////////////////////////////// -->
 {% block google_fonts %}
-    <link rel="stylesheet" href="{{ asset('http://fonts.googleapis.com/css?family=Roboto:300,400') }}"/>
-    <link rel="stylesheet" href="{{ asset('http://fonts.googleapis.com/css?family=Raleway:400,300,200') }}"/>
+    <link rel="stylesheet" href="{{ asset('//fonts.googleapis.com/css?family=Roboto:300,400') }}"/>
+    <link rel="stylesheet" href="{{ asset('//fonts.googleapis.com/css?family=Raleway:400,300,200') }}"/>
 {% endblock %}
 
 <!-- ////////////////////////////////// -->
@@ -45,7 +45,7 @@
 <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}"/>
 
 <!-- IE Fix for HTML5 Tags -->
-<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 <!-- ////////////////////////////////// -->
 <!-- //       Código Analityc        // -->
@@ -63,12 +63,12 @@
 
 <body>
     {% block body %}{% endblock %}
-</body>
+
     {% block javascripts %}
         <!-- ////////////////////////////////// -->
     <!-- //      Javascript Files        // -->
     <!-- ////////////////////////////////// -->
-    <script src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') }}"></script>
+    <script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/modernizr.js') }}"></script>
     <script src="{{ asset('/js/jquery.themepunch.plugins.min.js') }}"></script>
     <script src="{{ asset('/js/jquery.themepunch.revolution.min.js') }}"></script>
@@ -97,7 +97,7 @@
                 cookieAnalyticsMessage: 'Expertosit.es usa cookies propias y de terceros para mejorar sus servicios web. Si continua navegando, se considerará que acepta su uso.',
                 cookieNotificationLocationBottom: true,
                 cookieAcceptButtonText: "Entendido",
-                cookieWhatAreLinkText: "¿Quieres saber más acerca de las coockies?",
+                cookieWhatAreLinkText "¿Quieres saber más acerca de las coockies?",
                 cookieWhatAreTheyLink: "/aviso-legal/"
             });
         });
@@ -116,4 +116,5 @@
         }
     </script>
     {% endblock %}
+</body>
 </html>

@@ -22,7 +22,11 @@ class SiteController extends Controller
     /**
      * Muestra la portada del sitio web.
      *
-     * @Route("/", name="index")
+     * @Route(
+     *     "/",
+     *     name="index",
+     *     schemes={"https"}
+     *)
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -36,12 +40,15 @@ class SiteController extends Controller
     /**
      * Muestra el formulario de contacto y también procesa el envío de emails.
      *
-     * @Route("/contacto/", name="contact")
+     * @Route("/contacto/",
+     *     name="contact",
+     *     schemes={"https"}
+     * )
      *
      * @param Request $request
      * @return RedirectResponse|Response
      */
-    public function contactoAction(Request $request)
+    public function contactAction(Request $request)
     {
         //$contactMail = new ContactMail();
         
@@ -149,12 +156,13 @@ class SiteController extends Controller
      *     "/curso/{slug}/",
      *     requirements={ "slug"="reparacion-de-moviles|iniciacion-a-las-nuevas-tecnologias" },
      *     name="courses",
+     *     schemes={"https"}
      * )
      *
      * @param $slug string
      * @return Response
      */
-    public function curseAction($slug)
+    public function courseAction($slug)
     {
         return $this->render('curso-'.sprintf('%s.html.twig', $slug), array('nav' => 'cursos' ));
     }
@@ -166,6 +174,7 @@ class SiteController extends Controller
      *     "/venta/moviles/{slug}/",
      *     requirements={ "slug"="reacondicionados|nuevos" },
      *     name="sales-smartphone",
+     *     schemes={"https"}
      * )
      *
      * @param $slug string
@@ -206,6 +215,7 @@ class SiteController extends Controller
      *     "/venta/otros/{slug}/",
      *     requirements={ "slug"="recreativas-y-emulacion|repuestos-y-consumibles|desarrollo-web" },
      *     name="sales-others",
+     *     schemes={"https"}
      * )
      *
      * @param $slug string
@@ -223,6 +233,7 @@ class SiteController extends Controller
      *     "/servicio-tecnico/",
      *     requirements={ "slug"="technical-support" },
      *     name="technical-support",
+     *     schemes={"https"}
      * )
      *
      * @return Response
@@ -238,6 +249,7 @@ class SiteController extends Controller
      * @Route(
      *     "/consulta-de-reparacion/",
      *     name="repair-query",
+     *     schemes={"https"}
      * )
      *
      * @param Request $request
@@ -278,6 +290,7 @@ class SiteController extends Controller
      * @Route(
      *     "/reparacion/{code}/",
      *     name="repair-show",
+     *     schemes={"https"}
      * )
      *
      * @param $code string
@@ -307,6 +320,7 @@ class SiteController extends Controller
      *     "/sitemap.{_format}",
      *     requirements={ "_format" = "xml" },
      *     name="sitemap",
+     *     schemes={"https"}
      * )
      *
      * @return Response
@@ -314,11 +328,11 @@ class SiteController extends Controller
     public function siteMapAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $repairs = $em->getRepository('Receipt.php')->findAll();
+        $receipts = $em->getRepository('AppBundle:Receipt')->findAll();
 
         return $this->render('sitemap.xml.twig', array(
             'nav' => 'index',
-            'repairs' => $repairs
+            'receipts' => $receipts
         ));
     }
 
@@ -334,23 +348,23 @@ class SiteController extends Controller
      */
     public function testAction()
     {
-        $invoice = array(
-            'code' => '123456',
-            'clientName' => 'Pepe',
-            'clientPhone' => '600111222',
-            'clientAddress' => '',
-            'clientEmail' => '',
-            'startDate' => new \DateTime('now'),
-            'device' => 'BQ Aquaris X5',
-            'description' => '<p>lsdjas dfkasd fasdkf asdf.</p><p>djfjsdfjask djfk sd ksdfk asjdflñaksd.</p>',
-            'cost' => 25,
-            'discount' => 0,
-        );
+        $em = $this->getDoctrine()->getManager();
+        $invoices = $em->getRepository('AppBundle:Invoice')->findByYear('2017');
 
+        dump($invoices);
 
-        return $this->render('receipt-a4.html.twig', array(
-            'invoice' => $invoice,
-        ));
+        $maxNum = 0;
+        foreach ($invoices as $invoice) {
+            $numCode = (int) substr($invoice->getCode(), -5);
+            if ($numCode > $maxNum) {
+                $maxNum = $numCode;
+            }
+        }
+
+        dump($maxNum, str_pad($maxNum + 1,'5','0',STR_PAD_LEFT));
+
+        die();
+        return null;
     }
 
     /**
@@ -360,6 +374,7 @@ class SiteController extends Controller
      *     "/{slug}/",
      *     requirements={ "slug" = "aviso-legal|politicas-de-privacidad" },
      *     name="static",
+     *     schemes={"https"}
      * )
      *
      * @param $slug string
@@ -375,6 +390,7 @@ class SiteController extends Controller
      * @Route(
      *     "admin2462/receipt/",
      *     name="receipt",
+     *     schemes={"https"}
      *  )
      *
      * @param Request $request
@@ -400,6 +416,7 @@ class SiteController extends Controller
      * @Route(
      *     "admin2462/invoice/",
      *     name="invoice",
+     *     schemes={"https"}
      *  )
      *
      * @param Request $request

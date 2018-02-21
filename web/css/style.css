@@ -428,6 +428,10 @@ overflow:hidden;
 
 
 /***** Extra Stylesheet *****/
+a.phone-link, a.mail-link{
+    color: #d4d4d4;
+}
+
 #masorny {clear:both;}
 
 .masonry,

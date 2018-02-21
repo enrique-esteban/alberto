@@ -32,7 +32,7 @@
 
     <div class="row">
         <div class="five column">
-            <img src="{{ asset('/images/pages/aula-curso-reparacion-moviles-01.jpg') }}" alt="aula cursos, vista trasera 1" title="Vista trasera del aula de los cursos" width="366" height="274" class="img-center"/>
+            <img src="{{ asset('/images/pages/osciloscopio-01.jpg') }}" alt="aula cursos, vista trasera 1" title="Vista trasera del aula de los cursos" width="437" height="301" class="img-center"/>
         </div>
 
         <div class="seven column">
@@ -41,12 +41,12 @@
     </div>
 
     <div class="row">
-        <div class="six column">
+        <div class="twelve column">
             <p align="justify">Los dispositivos portátiles junto a Internet han cambiado nuestra vida, es un hecho, ya nada es como antes de que aparecieran y en Expertosit lo sabemos, por eso hace ya más de dos años comenzamos en este mundo. No sólo como una oportunidad laboral si no como entusiastas de todos los gadgets que aparecen mes a mes en el mercado.<br>Nos gusta lo que hacemos y ahora queremos transmitir ese entusiasmo y conocimiento a nuestros alumnos en forma de cursos de formación en reparación, mantenimiento y aprovechamiento de estos aparatos y de sus sistemas operativos.<br>¿Porqué mi teléfono se descarga tan rápido?, ¿Porqué se calienta en exceso?, Mi Tablet no enciende a pesar de que la batería es nueva, Cómo puedo recuperar mis fotos borradas?... Todas estas son preguntas que surgen todos los días debido a la gran expansión de estos nuevos smartphones en la sociedad. Pensemos por un momento en que supiéramos darle respuesta y solución a estas cuestiones: Una oportunidad laboral se abre ante nosotros con más de 30 millones de estos aparatos usándose día a día en nuestro país.<br>En Expertosit contamos con todas las herramientas de reparación y diagnostico que existen a día de hoy en el mercado y puedes aprender a utilizarlas con nuestros cursos de reparación de telefonía móvil y tablets. A continuación listamos nuestras características.</p>
         </div>
 
-         <div class="six column">
-            <img src="{{ asset('/images/pages/taller-del-aula.jpg') }}" alt="taller del aula" title="Taller del aula para las prácticas" class="img-center" width="515" height="525" />
+         <div class="twelve column">
+            <img src="{{ asset('/images/pages/taller-del-aula-01.jpg') }}" alt="taller del aula" title="Taller del aula para las prácticas" class="img-center" width="930" height="424" />
         </div>
 
         <div class="twelve column">
@@ -151,10 +151,11 @@
                         <p>Ideal para ampliar tus conocimientos.</p>
                     </div>
                     <ul class="pricing-content">
-                        <li><strong>20 h.</strong> Clases teóricas.</li>
-                        <li>Sin horas prácticas<sup>*</sup>.</li>
+                        <li><strong>30 h.</strong> Clases (teoría + práctica)<sup>*</sup>.</li>
+                        {#<li><strong>10 h.</strong> Clases prácticas.</li>#}
+                        <li>Sin prácticas tras finalizar las clases<sup>**</sup>.</li>
                         <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
-                        <li>Financiación en <strong>3 meses</strong><sup>**</sup>.</li>
+                        <li>Financiación en <strong>3 meses</strong><sup>***</sup>.</li>
                     </ul>
                     <div class="pricing-button">
                         {#<a href="#" class="button medium grey">Order Now</a>#}
@@ -167,10 +168,11 @@
                         <p>Para aprenderlo todo desde 0.</p>
                     </div>
                     <ul class="pricing-content">
-                        <li><strong>50 h.</strong> Clases teóricas.</li>
-                        <li><strong>10 h.</strong> Prácticas en la tienda<sup>*</sup>.</li>
+                        <li><strong>50 h.</strong> Clases (teoría + práctica)<sup>*</sup>.</li>
+                        {#<li><strong>30 h.</strong> Clases prácticas.</li>#}
+                        <li><strong>10 h.</strong> de prácticas en la tienda tras finalizar las clases<sup>**</sup>.</li>
                         <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
-                        <li>Financiación en <strong>4 meses</strong><sup>**</sup>.</li>
+                        <li>Financiación en <strong>4 meses</strong><sup>***</sup>.</li>
                     </ul>
                     <div class="pricing-button">
                         {#<a href="#" class="button medium green">Order Now</a>#}
@@ -180,13 +182,14 @@
                     <h6 class="pricing-title">Senior +</h6>
                     <div class="pricing-price">
                         <h6><span class="dollar">€</span>1520{#<span class="permonth">/month</span>#}</h6>
-                        <p>Si 10h. no te parecen suficiente.</p>
+                        <p>Nuestro curso más completo.</p>
                     </div>
                     <ul class="pricing-content">
-                        <li><strong>50 h.</strong> Clases teóricas.</li>
-                        <li><strong>50 h.</strong> Prácticas en la tienda<sup>*</sup>.</li>
+                        <li><strong>50 h.</strong> Clases (teoría + práctica)<sup>*</sup>.</li>
+                        {#<li><strong>30 h.</strong> Clases prácticas.</li>#}
+                        <li><strong>50 h.</strong> de prácticas en la tienda tras finalizar las clases<sup>**</sup>.</li>
                         <li>2 regalos exclusivos (<a href="#regalos">ver aquí</a>).</li>
-                        <li>Financiación en <strong>5 meses</strong><sup>**</sup>.</li>
+                        <li>Financiación en <strong>5 meses</strong><sup>***</sup>.</li>
                     </ul>
                     <div class="pricing-button">
                         {#<a href="#" class="button medium grey">Order Now</a>#}
@@ -195,8 +198,9 @@
             </ul>
             <!-- Fin tabla precio cursos -->
 
-            <p><sup>*</sup> Se pueden contratar paquetes de horas extra (<a href="#horas">ver aquí</a>).</p>
-            <p><sup>**</sup> Sólo la mitad del coste total del curso es financiada por ExpertosIT, la otra mitad se abonará por alelantado. Financiación del 100% a través de nuestra entidad colaboradora.</p>
+            <p><sup>*</sup> Las clases se dividen entre teoría sobre electrónica y software y prácticas de las técnicas de soldadura aprendidas.</p>
+            <p><sup>**</sup> Terminada las clases podrás realizar prácticas reales en nuestra tienda, donde podrás reparar móviles tuyos o de nuestro propio stock, haciendo uso de nuestras herramientas y con un tutor asesorándote en todo momento. También se pueden contratar paquetes de horas extras (<a href="#horas">ver precios aquí</a>).</p>
+            <p><sup>***</sup> Sólo la mitad del coste total del curso es financiada por ExpertosIT, la otra mitad se abonará por alelantado. Financiación del 100% a través de nuestra entidad colaboradora.</p>
             <hr>
         </div>
     </div>
@@ -399,7 +403,7 @@
                 <li class="pricing-column green-plan">
                     <h6 class="pricing-title color-dark-grey">10 horas</h6>
                     <div class="pricing-price">
-                        <h6 class="color-dark-grey"><span class="dollar">€</span>250</h6>
+                        <h6 class="color-dark-grey"><span class="dollar">€</span>250<span class="permonth"></span></h6>
                         <p class="color-dark-grey"><strong>10 horas</strong> de clases prácticas.</p>
                     </div>
                     {#<ul class="pricing-content">#}
@@ -415,7 +419,7 @@
                 <li class="pricing-column green-plan">
                     <h6 class="pricing-title color-dark-grey">20 horas</h6>
                     <div class="pricing-price">
-                        <h6 class="color-dark-grey"><span class="dollar">€</span>400</h6>
+                        <h6 class="color-dark-grey"><span class="dollar">€</span>400<span class="permonth"></span></h6>
                         <p class="color-dark-grey"><strong>20 horas</strong> de clases prácticas.</p>
                     </div>
                     {#<ul class="pricing-content">#}

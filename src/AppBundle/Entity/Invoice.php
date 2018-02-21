@@ -27,9 +27,16 @@ class Invoice
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=15, unique=true)
+     * @ORM\Column(name="code", type="string", length=10, unique=true)
      */
     private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tax", type="boolean")
+     */
+    private $tax;
 
     /**
      * @var string
@@ -130,6 +137,22 @@ class Invoice
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * @param string $tax
+     */
+    public function setTax($tax)
+    {
+        $this->tax = $tax;
     }
 
     /**
@@ -369,9 +392,5 @@ class Invoice
         $date = new \DateTime('now');
         // Establecemos la fecha de inicio
         $this->createdAt = $date;
-        // Creamos un código de compra usando la hora Unix actual, en caso de que no haya sido establecido manualmente
-        if (!$this->code) {
-            $this->code = $date->format('U');
-        }
     }
 }
