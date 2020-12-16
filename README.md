@@ -1,4 +1,4 @@
-alberto.local
+ExpertosIT
 =============
 
-A Symfony project created on April 12, 2017, 12:00 pm.
+Web de la empresa ExpertosIT de Madrid. Página corporativa orientada a impartir cursos de reparación de móviles. 
